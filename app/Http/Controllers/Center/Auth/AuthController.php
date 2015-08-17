@@ -1,4 +1,4 @@
-<?php namespace Acordes\Http\Controllers\Auth;
+<?php namespace Acordes\Http\Controllers\Center\Auth;
 
 use Acordes\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
@@ -42,12 +42,12 @@ class AuthController extends Controller
 
 	public function getRegister()
 	{
-		return view('auth.register');
+		return view('Center.auth.register');
 	}
 
 	public function getLogin()
 	{
-		return view('auth.login');
+		return view('Center.auth.login');
 	}
 
 	public function postLogin(Request $request)

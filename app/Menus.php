@@ -18,4 +18,9 @@ class Menus extends Model {
      */
     protected $fillable = ['nombre', 'descripcion','tipo'];
 
+    public function opciones()
+    {
+        return $this->hasMany('Acordes\Opciones','menu','id');
+    }
+
 }

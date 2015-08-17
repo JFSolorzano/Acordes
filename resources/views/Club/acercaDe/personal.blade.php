@@ -7,7 +7,7 @@
                 </header>
                 <div class="members-details-container">
                     @foreach($empleados as $empleado)
-                        @include('Club.inicio.miembro',['empleado'=>$empleado])
+                        @include('Club.acercaDe.miembro',['empleado'=>$empleado])
                     @endforeach
                 </div><!-- /members-details-container -->
                 <div class="team-carousel-nav"></div>

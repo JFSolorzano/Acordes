@@ -18,7 +18,7 @@
 						</div>
 					@endif
 
-					<form class="form-horizontal" role="form" method="POST" action="{{ route('post.ingresar') }}">
+					<form class="form-horizontal" role="form" method="POST" action="{{ route('adminPostIngresar') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 						<div class="form-group">
@@ -51,7 +51,7 @@
 									Login
 								</button>
 
-								<a href="olvide">Forgot Your Password?</a>
+								<a href="#">Forgot Your Password?</a>
 							</div>
 						</div>
 					</form>

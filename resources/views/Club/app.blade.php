@@ -65,6 +65,7 @@
         <script src="{{ asset('club/js/mediaelement-and-player.min.js') }}"></script>
         <script src="{{ asset('club/js/tweetie.min.js') }}"></script>
         <script src="{{ asset('club/js/jquery.scrollme.min.js') }}"></script>
+        <script src="{{ asset('club/js/jquery.dotdotdot.min.js') }}"></script>
         <script src="{{ asset('club/js/plugins.js') }}"></script>
         <script src="{{ asset('club/js/main.js') }}"></script>
         <script type="text/javascript">

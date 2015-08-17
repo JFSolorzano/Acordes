@@ -36,7 +36,7 @@ class EmpresaCtrl extends Controller
     {
 
         if (!\Entrust::can('crud-empresa')) {
-            return \Redirect::to('/inicio');
+            return \Redirect::to('/');
 
         } else {
 

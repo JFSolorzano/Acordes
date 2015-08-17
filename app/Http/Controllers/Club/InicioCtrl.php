@@ -27,14 +27,16 @@ class InicioCtrl extends Controller {
         $array = array_merge($opcionesMenu->toArray(), $promociones->toArray());
         shuffle($array);
 
+        $datos -> menus = Menus::with('opciones')->get();
+
         $datos -> galeria = $array;
 
         $datos -> filtros = Menus::all(['nombre']);
 
         $datos -> servicios = Servicios::all(['nombre','descripcion', 'imagen', 'estado']);
 
-//        dd($datos -> galeria);
-//
+//        dd($datos -> menus );
+
         return view('Club.inicio')
             ->with('datos',$datos);
 

@@ -18,4 +18,9 @@ class Cargos extends Model {
      */
     protected $fillable = ['nombre', 'descripcion' ];
 
+    public function empleados()
+    {
+        return $this->hasMany('Acordes\Empleados','cargo','id');
+    }
+
 }

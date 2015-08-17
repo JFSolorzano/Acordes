@@ -11,7 +11,7 @@
                 <div class="row">
                     <?php $delay = 0 ?>
                     @foreach($servicios as $servicio)
-                        @include('Club.inicio.servicio',[
+                        @include('Club.servicios.servicio',[
                             'delay' => $delay,
                             'servicio' => $servicio
                         ])

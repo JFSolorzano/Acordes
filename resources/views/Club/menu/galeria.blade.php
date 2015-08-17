@@ -14,7 +14,6 @@
             <div class = "col-md-12 wow fadeInDown" >
                 <div class = "gallery-filter-container" >
                     <ul class = "gallery-filter" >
-                        <li class = "filter active" data-filter = "all" ><span >Todo</span ></li >
                         @foreach($filtros as $filtro)
                             <li class = "filter" data-filter = ".{{ preg_replace('/\s+/', '', $filtro->nombre) }}" >
                                 <span >{{ $filtro->nombre }}</span ></li >

@@ -1,4 +1,4 @@
-<?php namespace Acordes\Http\Controllers\Auth;
+<?php namespace Acordes\Http\Controllers\Center\Auth;
 
 use Acordes\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;

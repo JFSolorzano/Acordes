@@ -8,20 +8,22 @@
 
         @include('Club.inicio.main-slider')
 
-        @include('Club.inicio.galeria',[
+        @include('Club.menu.galeria',[
             'galeria' => $datos -> galeria,
             'filtros' => $datos -> filtros
         ])
 
-        @include('Club.inicio.servicios',[
+        @include('Club.servicios.inicio',[
             'servicios' => $datos -> servicios
         ])
 
-        @include('Club.inicio.personal',[
+        @include('Club.acercaDe.personal',[
             'empleados'=> $datos -> empleados
         ])
 
-        @include('Club.inicio.menu')
+        @include('Club.menu.inicio',[
+            'menus' => $datos -> menus
+        ])
 
         @include('Club.contacto.mapa')
 
