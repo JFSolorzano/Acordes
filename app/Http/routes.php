@@ -8,6 +8,40 @@
 */
 Route::group(array( 'domain' => 'restauranteacordes.com', 'namespace' => 'Club' ), function () {
 
+//------------------------------------------AUTENTICACION
+
+    Route::controllers([
+        'auth' => 'Auth\AuthController',
+        'password' => 'Auth\PasswordController',
+    ]);
+
+    Route::get( '/registrar' , [
+        'as' => 'clubRegistrar' ,
+        'uses' => 'Auth\AuthController@getRegister'
+    ] );
+
+    Route::post( '/registrar' , [
+        'as' => 'clubPostRegistrar' ,
+        'uses' => 'Auth\AuthController@postRegister'
+    ] );
+
+    Route::get( '/ingresar' , [
+        'as' => 'clubIngresar' ,
+        'uses' => 'Auth\AuthController@getLogin'
+    ] );
+
+    Route::post( '/ingresar' , [
+        'as' => 'clubPostIngresar' ,
+        'uses' => 'Auth\AuthController@postLogin'
+    ] );
+
+    Route::get( '/salir' , [
+        'as' => 'clubSalir' ,
+        'uses' => 'Auth\AuthController@getLogout'
+    ] );
+
+//-------------------------------------------INICIO
+
     Route::get('/', [
         'as' => 'publicInicio',
         'uses' => 'InicioCtrl@inicio'
@@ -59,6 +93,8 @@ Route::group(array( 'domain' => 'restauranteacordes.com', 'namespace' => 'Club' 
         'as' => 'publicReservacionCrear',
         'uses' => 'ReservacionCtrl@crear'
     ]);
+
+    Route::post('/nueva-reservacion', 'ReservacionCtrl@insertar');
 
     Route::get('/mis-reservaciones/{id}', [
         'as' => 'publicReservacionDetalle',

@@ -65,12 +65,11 @@ class PreguntasCtrl extends Controller {
             $registro ->respuesta = \Input::get('respuesta');
             $registro ->save();
 
-            return \Redirect::route('adminPreguntas')
-                ->with('alerta','La pregunta ha sido agregada con exito!');
+            return \Redirect::route('publicInicio');
 
         } catch ( ValidationException $e ) {
 
-            return \Redirect::route( 'adminPreguntaCrear' )
+            return \Redirect::route( 'publicReservacion' )
                 ->withInput()
                 ->withErrors( $e->get_errors() );
 

@@ -9,6 +9,10 @@ class reservaciones extends Validation {
      */
     public $rules = array(
 
+        'servicio' => array( 'required'),
+        'detalles' => array( 'required', 'string', 'min:10'),
+        'fecha' => array('required','date','after: now')
+
     );
 
 }   //end of class

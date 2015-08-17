@@ -23,9 +23,9 @@
 
         @include('Club.inicio.menu')
 
-        @include('Club.inicio.mapa')
+        @include('Club.contacto.mapa')
 
-        @include('Club.inicio.contacto')
+        @include('Club.contacto.formulario')
 
     </div><!-- /wrapper -->
     <!-- End wrapper -->
