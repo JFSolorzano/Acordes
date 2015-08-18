@@ -4,7 +4,7 @@
             <div class="col-md-3 align-center">
                 <div class="logo-container wow fadeInLeft">
                     <a href="#">
-                        <img src="{{ asset('club/img/logo/logo-light-blue.png') }}" alt="Acordes Logo">
+                        <img src="{{ asset('club/img/logo/150x150p-light-blue.png') }}" alt="Acordes Logo">
                     </a>
                 </div><!-- /logo-container -->
                 <div class="socials-container">

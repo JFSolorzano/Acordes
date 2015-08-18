@@ -17,7 +17,7 @@
     <div class="main-nav-inner">
         <div class="logo-container">
             <a href="#">
-                <img src="{{ asset('club/img/logo/logo.png') }}" alt="Acordes - Restaurante, Bar, Club">
+                <img src="{{ asset('club/img/logo/150x150p.png') }}" alt="Acordes - Restaurante, Bar, Club">
             </a>
         </div><!-- /logo-container -->
         <nav class="main-nav">
