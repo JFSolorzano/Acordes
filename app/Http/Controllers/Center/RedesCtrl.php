@@ -56,7 +56,6 @@ class RedesCtrl extends Controller {
 
             $registro ->nombre = \Input::get('nombre');
             $registro ->link = \Input::get('link');
-            $registro ->icono = \Input::get('icono');
             $registro ->save();
 
             return \Redirect::route('adminRedes')

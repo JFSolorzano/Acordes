@@ -1,9 +1,11 @@
 <?php namespace Acordes;
 
 use Illuminate\Database\Eloquent\Model;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class Cargos extends Model {
 
+    use EntrustUserTrait;
     /**
      * The database table used by the model.
      *
@@ -17,10 +19,11 @@ class Cargos extends Model {
      * @var array
      */
     protected $fillable = ['nombre', 'descripcion' ];
+    public function scopeBuscar($return, $parametros){
 
-    public function empleados()
-    {
-        return $this->hasMany('Acordes\Empleados','cargo','id');
+        if(trim($parametros)!="")
+        {
+            $return->where(\DB::raw("CONCAT(nombre,' ',descripcion)"),"LIKE","%$parametros%");
+        }
     }
-
 }

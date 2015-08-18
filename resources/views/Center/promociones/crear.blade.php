@@ -33,18 +33,18 @@
                     <br />
                     {!! Form::textarea('descripcion', null, array('size' => '30x5', 'placeholder'=>'Descripcion', 'class'=>'text-center form-control')) !!}
                     <br />
-                    <div class="form-group pull-right">
+                    <div class="form-group text-center">
                         {!! Form::label('seleccionarImage', 'Selecciona la imagen de la promocion'); !!}
                         {!! Form::file('imagen',null, array('class'=>'text-center')); !!}
                     </div>
                     <br />
                     <br />
-                    <div class="form-group">
+                    <div class="form-group text-center" >
                         {!! Form::label('fechaInicioLabel', 'Fecha de Inicio'); !!}
                         {!! Form::date('inicio',\Carbon\Carbon::now(), array('class'=>'text-center form-control')) !!}
                     </div>
                     <br />
-                    <div class="form-group">
+                    <div class="form-group text-center">
                         {!! Form::label('fechaFinLabel', 'Fecha de Fin'); !!}
                         {!! Form::date('fin',\Carbon\Carbon::now(),array('class'=>'text-center form-control')) !!}
                     </div>

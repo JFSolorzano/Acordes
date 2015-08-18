@@ -15,25 +15,20 @@
             <div class="container">
                 <div class="row">
                     <div class = "col-md-4" > </div >
-                    <div class = "col-md-4" ><h3 class="text-center">Servicios!</h3></div >
+                    <div class = "col-md-4" ><h3 class="text-center">Servicios</h3></div >
                     <div class = "col-md-4" ></div >
                 </div>
                 <div class="row">
                     <div class = "col-md-4" >
-                        {!! Form::open([ 'route'=>'adminServicios','method'=>'GET', 'class'=> 'navbar-form navbar-left','role'=>'search']) !!}
-                        <button type="submit" class="btn btn-default">Buscar</button>
-                        <div class="form-group">
-                            {!! Form::text('variable',null,['class'=>'form-control','placeholder'=>'Busqueda' ]) !!}
-                        </div>
-                        {!! Form::close() !!}
+                        <a href = "{{ route('adminServiciosCrear') }}" class="btn btn-primary pull-left">Nuevo<span class="glyphicon glyphicon-plus" aria-hidden="true"></a >
                     </div >
                     <div class = "col-md-4" ></div >
-                    <div class = "col-md-4 " >
-                        <div class="row">
-                            <div class="col-md-5"></div>
-                            <div class="col-md-4">
-                                <a href = "{{ route('adminServiciosCrear') }}" class="btn btn-primary pull-right">Nuevo</a >
-                            </div>
+                    <div class = "col-md-4" >
+                        <div class="pull-right">
+                            {!! Form::open([ 'route'=>'adminServicios','method'=>'GET', 'class'=> 'navbar-form navbar-left','role'=>'search']) !!}
+                            <button type="submit" class="btn btn-default fa fa-search"></button>
+                            {!! Form::text('parametros',null,['class'=>'form-control','placeholder'=>'Busqueda' ]) !!}
+                            {!! Form::close() !!}
                         </div>
                     </div >
                 </div>
@@ -43,7 +38,6 @@
                 <thead>
                 <th>Titulo</th>
                 <th>Descripcion</th>
-                <th>Estado</th>
                 <th class="foo">Acciones</th>
                 </thead>
                 <tbody>
@@ -51,11 +45,6 @@
                     <tr>
                         <td>{{$registro->nombre}}</td>
                         <td>{{$registro->descripcion}}</td>
-                        @if(($registro->estado)==0)
-                            <td>No disponible</td>
-                        @else
-                            <td>Disponible</td>
-                        @endif
                         <td>
                             <div class="btn-group-sm">
                                 <a href = "{{url('servicios/'.$registro->id.'/editar')}}" class="btn btn-warning"><i class="fa fa-edit"></i></a >

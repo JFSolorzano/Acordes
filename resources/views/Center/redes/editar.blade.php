@@ -35,8 +35,6 @@
                     <br />
                     {!! Form::text('link', $registro['link'], array('placeholder'=>'Enlace', 'class'=>'text-center form-control')) !!}
                     <br />
-                    {!! Form::text('icono', $registro['icono'], array('placeholder'=>'Icono', 'class'=>'text-center form-control')) !!}
-                    <br />
                     {!! Form::submit('CREAR!',array('class'=>'text-center form-control btn btn-primary')) !!}
                 </fieldset>
                 {!! Form::close() !!}

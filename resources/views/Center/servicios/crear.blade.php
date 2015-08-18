@@ -32,7 +32,10 @@
                     <br />
                     {!! Form::textarea('descripcion', null, array('size' => '30x5','placeholder'=>'Descripcion', 'class'=>'text-center form-control')) !!}
                     <br />
-                    {!! Form::text('estado', null, array('size' => '30x5','placeholder'=>'Estado', 'class'=>'text-center form-control')) !!}
+                    <select class="text-center form-control" name="cargo" >
+                        <option value="1">Disponible</option>
+                        <option value="1"></option>
+                    </select>
                     <br />
                     <div class="form-group pull-right">
                         {!! Form::label('seleccionarImage', 'Selecciona la imagen del servicio.'); !!}

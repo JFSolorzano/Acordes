@@ -94,7 +94,7 @@ class ServiciosCtrl extends Controller {
         try {
 
             $rules = array(
-                'nombre' => array( 'required', 'string', 'min:5'),
+                'nombre' => array( 'required', 'string', 'min:5','unique:servicios,nombre,'. $id),
                 'descripcion' => array( 'required', 'string', 'min:10')
             );
             $this->validate( $request,$rules );

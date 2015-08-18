@@ -20,7 +20,7 @@
             <div style="background:transparent !important" class = "jumbotron" >
                 <h1 class="text-center">
                     Nueva Red Social
-                    <i class="fa fa-facebook"></i>
+                    <i class="fa fa-Facebook"></i>
                     <i class="fa fa-twitter"></i>
                     <i class="fa fa-google"></i>...
                 </h1>
@@ -34,8 +34,6 @@
                     {!! Form::text('nombre', null, array('placeholder'=>'Nombre de la red social', 'class'=>'text-center form-control')) !!}
                     <br />
                     {!! Form::text('link', null, array('placeholder'=>'Enlace', 'class'=>'text-center form-control')) !!}
-                    <br />
-                    {!! Form::text('icono', null, array('placeholder'=>'Icono', 'class'=>'text-center form-control')) !!}
                     <br />
                     {!! Form::submit('CREAR!',array('class'=>'text-center form-control btn btn-primary')) !!}
                 </fieldset>

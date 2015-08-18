@@ -15,19 +15,19 @@
             <div class="container">
                 <div class="row">
                     <div class = "col-md-4" > </div >
-                    <div class = "col-md-4" ><h3 class="text-center">Empleados!</h3></div >
+                    <div class = "col-md-4" ><h3 class="text-center">Empleados</h3></div >
                     <div class = "col-md-4" ></div >
                 </div>
                 <div class="row">
                     <div class = "col-md-4" >
-                        <a href = "{{ route('adminEmpleadosCrear') }}" class="btn btn-primary pull-left">Nuevo</a >
+                        <a href = "{{ route('adminEmpleadosCrear') }}" class="btn btn-primary pull-left">Nuevo<span class="glyphicon glyphicon-plus" aria-hidden="true"></a >
                     </div >
                     <div class = "col-md-4" ></div >
                     <div class = "col-md-4" >
                         <div class="pull-right">
                             {!! Form::open([ 'route'=>'adminEmpleados','method'=>'GET', 'class'=> 'navbar-form navbar-left','role'=>'search']) !!}
+                            <button type="submit" class="btn btn-default fa fa-search"></button>
                             {!! Form::text('parametros',null,['class'=>'form-control','placeholder'=>'Busqueda' ]) !!}
-                            {!! Form::submit('BUSCAR',array('class'=>'text-center btn btn-default')) !!}
                             {!! Form::close() !!}
                         </div>
                     </div >
@@ -46,7 +46,7 @@
                 @foreach($registros as $registro)
                     <tr>
                         <td>{{$registro->nombres}}</td>
-                        <td>{{$registro->cargo}}</td>
+                        @foreach($cargos as $c) @if( $c->id == $registro->cargo)<td>{{$c->nombre}} </td>@endif @endforeach
                         <td>{{$registro->biografia}}</td>
                         <td><img src = "{{asset('img/'.$registro->foto)}}" width="70" height="70" alt = "{{$registro->foto}}" /></td>
                         <td>

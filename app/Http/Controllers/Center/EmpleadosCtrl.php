@@ -1,5 +1,6 @@
 <?php namespace Acordes\Http\Controllers\Center;
 
+use Acordes\Cargos;
 use Acordes\Http\Requests;
 use Acordes\Http\Controllers\Controller;
 use Acordes\Empleados;
@@ -47,9 +48,10 @@ class EmpleadosCtrl extends Controller {
             $registros = Empleados::buscar($request->get('parametros'))
                 ->orderBy('nombres','desc')
                 ->paginate(6);
-
+            $cargos = Cargos::all(['id','nombre','descripcion']);
             return view('Center.empleados.ver')
-                ->with('registros',$registros);
+                ->with('registros',$registros)
+                ->with('cargos',$cargos);
 
         }
 
@@ -58,9 +60,10 @@ class EmpleadosCtrl extends Controller {
     /**
      * Funcion que retorna la vista de creacion de nuevas promociones
      */
-    public function crear(){
-
-        return view('Center.empleados.crear');//el punto equivale a usar pleca
+    public function crear(Request $request){
+        $cargos = Cargos::all(['id','nombre','descripcion']);
+        return view('Center.empleados.crear')
+            ->with('cargos',$cargos);//el punto equivale a usar pleca
     }
 
     public function insertar(){
@@ -104,8 +107,9 @@ class EmpleadosCtrl extends Controller {
     public function editar($id){
 
         $registro = Empleados::find($id);
-
+        $cargos = Cargos::all(['id','nombre','descripcion']);
         return view('Center.empleados.editar')
+            ->with('cargos',$cargos)
             ->with('registro',$registro);
 
     }
@@ -122,9 +126,8 @@ class EmpleadosCtrl extends Controller {
             $rules = array(
                 'nombres' => array( 'required', 'string', 'min:10' ),
                 'apellidos' => array( 'required', 'string', 'min:10' ),
-                'cargo' => array( 'required', 'string', 'min:1'),
-                'biografia' => array( 'required', 'string', 'min:500'),
-                'foto' => array('image','image_size:>=600,>=300')
+                'biografia' => array( 'required', 'string', 'min:50'),
+                'foto' => array('image','image_size:>=300,>=300')
             );
             $this->validate( $request,$rules );
 

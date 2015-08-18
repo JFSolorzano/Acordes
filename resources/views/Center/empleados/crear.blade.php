@@ -32,7 +32,11 @@
                     <br />
                     {!! Form::text('apellidos', null, array( 'placeholder'=>'Apellidos', 'class'=>'text-center form-control')) !!}
                     <br />
-                    {!! Form::text('cargo', null, array( 'placeholder'=>'Cargo', 'class'=>'text-center form-control')) !!}
+                    <select class="text-center form-control" name="cargo" >
+                        @foreach($cargos as $c)
+                        <option value="{{$c->id}}">{{$c->nombre}}</option>
+                        @endforeach
+                    </select>
                     <br />
                     {!! Form::textarea('biografia', null, array('size' => '30x5', 'placeholder'=>'Biografia', 'class'=>'text-center form-control')) !!}
                     <br />

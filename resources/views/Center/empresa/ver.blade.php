@@ -16,7 +16,7 @@
             <div class="container">
                 <div class="row">
                     <div class = "col-md-4" > </div >
-                    <div class = "col-md-4" ><h3 class="text-center">Informacion Empresarial!</h3></div >
+                    <div class = "col-md-4" ><h3 class="text-center">Informacion empresarial</h3></div >
                     <div class = "col-md-4" ></div >
                 </div>
                 <div class="row">

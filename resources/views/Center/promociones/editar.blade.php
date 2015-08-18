@@ -32,20 +32,20 @@
                     <br />
                     {!! Form::textarea('descripcion', $registro['descripcion'], array('size' => '30x5','placeholder'=>'Descripcion', 'class'=>'text-center form-control')) !!}
                     <br />
-                    <div class="form-group pull-right">
+                    <div class="form-group text-center">
                         {!! Form::label('seleccionarImage', 'Selecciona la imagen de la promocion'); !!}
                         {!! Form::file('imagen',null, array('class'=>'text-center')); !!}
                     </div>
                     <br />
                     <br />
-                    <div class="form-group">
-                        {!! Form::label('fechaInicioLabel', 'Fecha de Inicio'); !!}
-                        {!! Form::date('inicio',$registro['inicio']) !!}
+                    <div class="form-group text-center">
+                        <label>Fecha de Inicio : {{$registro->inicio}}</label>
+                        {!! Form::date('inicio',$registro['inicio'],array('class'=>'text-center form-control')) !!}
                     </div>
                     <br />
-                    <div class="form-group">
-                        {!! Form::label('fechaFinLabel', 'Fecha de Fin'); !!}
-                        {!! Form::date('fin',$registro['fin']) !!}
+                    <div class="form-group text-center">
+                        <label>Fecha de Fin : {{$registro->fin}}</label>
+                        {!! Form::date('fin',$registro['fin'],array('class'=>'text-center form-control')) !!}
                     </div>
                     <br />
                     {!! Form::submit('Actualizar!',array('class'=>'text-center form-control btn btn-primary')) !!}

@@ -62,7 +62,6 @@ class PromocionesCtrl extends Controller {
             $foto = BRequest::file('imagen');
             $extension = $foto->getClientOriginalExtension();
             Storage::disk('image')->put($foto->getFilename().'.'.$extension,  File::get($foto));
-
             $registro ->imagen = $foto->getFilename().'.'.$extension;
             $registro ->inicio = \Input::get('inicio');
             $registro ->fin = \Input::get('fin');
@@ -95,24 +94,27 @@ class PromocionesCtrl extends Controller {
         try {
 
             $rules = array(
-                'nombre' => array( 'required', 'string', 'min:5'),
+                'nombre' => array( 'required', 'string', 'min:5','unique:promociones,nombre'. $id),
                 'descripcion' => array( 'required', 'string', 'min:30'),
-                'imagen' => array( 'required', 'image', 'image_size:>=300,>=600'),
-                'inicio' => array('required','date'),
-                'fin' => array('required','date','after: inicio')
+                'imagen' => array(  'image', 'image_size:>=300,>=300'),
+                'inicio' => array('date'),
+                'fin' => array('date','after: inicio')
             );
             $this->validate( $request,$rules );
 
             $registro = Promociones::find($id);
             $registro ->nombre = \Input::get('nombre');
             $registro ->descripcion = \Input::get('descripcion');
-            $foto = BRequest::file('imagen');
-            $extension = $foto->getClientOriginalExtension();
-            Storage::disk('image')->put($foto->getFilename().'.'.$extension,  File::get($foto));
-
-            $registro ->imagen = $foto->getFilename().'.'.$extension;
-            $registro ->inicio = \Input::get('inicio');
-            $registro ->fin = \Input::get('fin');
+            if($archivo = BRequest::file('foto')) {
+                $foto = BRequest::file('imagen');
+                $extension = $foto->getClientOriginalExtension();
+                Storage::disk('image')->put($foto->getFilename().'.'.$extension,  File::get($foto));
+                $registro ->imagen = $foto->getFilename().'.'.$extension;
+            }
+            if($inicio = \Input::get('inicio')){
+            $registro ->inicio = \Input::get('inicio');}
+            if($inicio = \Input::get('fin')) {
+            $registro ->fin = \Input::get('fin');}
             $registro ->save();
 
             return \Redirect::route('adminPromociones')

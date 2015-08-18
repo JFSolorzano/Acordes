@@ -19,7 +19,6 @@ class Redes extends Migration {
             $table->increments('id')->unsigned();
             $table->string('nombre',50);
             $table->string('link',300);
-            $table->string('icono',50);
             $table->timestamps();
         });
     }

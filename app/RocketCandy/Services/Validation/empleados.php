@@ -10,9 +10,8 @@ class empleados extends Validation {
     public $rules = array(
         'nombres' => array( 'required', 'string', 'min:10' ),
         'apellidos' => array( 'required', 'string', 'min:10' ),
-        'cargo' => array( 'required', 'string', 'min:1'),
-        'biografia' => array( 'required', 'string', 'min:500'),
-        'foto' => array('required','image','image_size:>=600,>=300')
+        'biografia' => array( 'required', 'string', 'min:50'),
+        'foto' => array('required','image','image_size:>=300,>=300')
     );
 
 }   //end of class

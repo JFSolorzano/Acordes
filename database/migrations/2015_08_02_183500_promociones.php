@@ -20,9 +20,8 @@ class Promociones extends Migration {
             $table->string('nombre',150);
             $table->string('descripcion',8000);
             $table->string('imagen',500);
-            $table->dateTime('inicio');
-            $table->dateTime('fin');
-            $table->tinyInteger('estado')->unsigned();
+            $table->date('inicio');
+            $table->date('fin');
             $table->timestamps();
         });
     }

@@ -32,7 +32,14 @@
                     <br />
                     {!! Form::text('apellidos', $registro['apellidos'], array( 'placeholder'=>'Apellidos', 'class'=>'text-center form-control')) !!}
                     <br />
-                    {!! Form::text('cargo', $registro['cargo'], array( 'placeholder'=>'Cargo', 'class'=>'text-center form-control')) !!}
+                    <select class="text-center form-control" name="cargo" >
+                        @foreach($cargos as $c)
+                            @if($registro->cargo==$c->id)
+                            <option value="{{$c->id}}" selected="selected">{{$c->nombre}}</option>
+                            @else<option value="{{$c->id}}">{{$c->nombre}}</option>
+                        @endif
+                        @endforeach
+                    </select>
                     <br />
                     {!! Form::textarea('biografia', $registro['biografia'], array('id'=>'biografia','size' => '30x5', 'placeholder'=>'Biografia', 'class'=>'text-center form-control')) !!}
                     <br />

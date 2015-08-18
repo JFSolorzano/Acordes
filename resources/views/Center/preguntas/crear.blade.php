@@ -19,7 +19,7 @@
         <div class = "container" >
             <div style="background:transparent !important" class = "jumbotron" >
                 <h1 class="text-center">
-                    Nueva Pregunta
+                    Nueva pregunta
                 </h1>
             </div >
         </div >

@@ -15,12 +15,12 @@
             <div class="container">
                 <div class="row">
                     <div class = "col-md-4" > </div >
-                    <div class = "col-md-4" ><h3 class="text-center">Sucursales!</h3></div >
+                    <div class = "col-md-4" ><h3 class="text-center">Sucursales</h3></div >
                     <div class = "col-md-4" ></div >
                 </div>
                 <div class="row">
                     <div class = "col-md-4" >
-                        <a href = "{{ url('sucursales/nuevo-registro') }}" class="btn btn-primary pull-left">Nuevo</a >
+                        <a href = "{{ url('sucursales/nuevo-registro') }}" class="btn btn-primary pull-left">Nuevo<span class="glyphicon glyphicon-plus" aria-hidden="true"></a >
                     </div >
                     <div class = "col-md-4" ></div >
                     <div class = "col-md-4" >
