@@ -1,6 +1,77 @@
 @extends('Club.app')
 
 @section('contenido')
+
+		<!-- Start wrapper -->
+<div class = "wrapper" >
+
+	<!-- Start main-header -->
+	<header class = "main-header" id = "top" >
+		<div class = "logo-container light-shark-bg align-center" >
+			<a href = "#" class = "logo" >
+				<img src = "img/logo/logo.png" alt = "Marine Food Logo" >
+			</a >
+		</div >
+		<!-- /logo-container -->
+		<div class = "header-bottom-bar" >
+			<div class = "container" >
+				<div class = "row" >
+					<div class = "col-md-12" >
+						<div class = "contact-info align-right" >
+							<ul >
+								<li ><a href = "#" >OLVIDE MI CONTRASENA!</a ></li >
+								<li >Necesitas Ayuda? Llamanos: 7168 5165</li >
+								<li ><a href = "#" >E-mail</a ></li >
+							</ul >
+						</div >
+						<!-- /contact-info -->
+					</div >
+					<!-- /col-md-12 -->
+				</div >
+				<!-- /row -->
+			</div >
+			<!-- /container -->
+		</div >
+		<!-- /header-bottom-bar -->
+	</header >
+	<!-- End main-header -->
+
+	<section class = "store-checkout" >
+		<div class = "container wow fadeInDown" >
+			<div class = "row" >
+				<div class = "col-md-12" >
+					<div class = "container" >
+						<div class = "row" >
+							<div class = "col-md-6 col-md-offset-3 wow fadeInDown" >
+								<div class = "contact-form-contaienr" >
+									<div class = "section-title" >
+										<h1 ><span >Inicia Sesion</span ></h1 >
+									</div >
+									<form id = "contact-form" method = "post" class = "text-center" >
+										<input type = "text" id = "name" name = "name" placeholder = "E-mail*"
+											   required >
+										<input type = "email" id = "email" name = "email" placeholder = "Contrasena*"
+											   required >
+										<button type = "submit" >Ingresar</button >
+									</form >
+									<div id = "form-messages" ></div >
+								</div >
+								<!-- /contact-form-container -->
+							</div >
+							<!-- /col-md-6 -->
+						</div >
+						<!-- /row -->
+					</div >
+					<!-- /container -->
+				</div >
+				<!-- /col-md-12 -->
+			</div >
+			<!-- /row -->
+		</div >
+		<!-- /container -->
+	</section >
+</div >
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">

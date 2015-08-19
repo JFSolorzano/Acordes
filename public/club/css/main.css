@@ -2020,7 +2020,7 @@ form button:hover{
 }
 .blog-single-page .blog-post article .comment-form-container .contact-form button:hover{
     border-color: #23323a;
-    color: #7c7f80;
+    color: #bf622c;
 }
 
 @media (max-width: 991px){
@@ -2998,6 +2998,7 @@ form.cart-items table .cart-item-count{
 .store-checkout{
     font-size: 14px;
     color: #19242a;
+    text-align: center;
 }
 .login-form-container{
     margin-bottom: 30px;
