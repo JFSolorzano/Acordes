@@ -34,17 +34,17 @@
                     <ul class="nav navbar-nav">
                         {{--<li><a href="{{ url('reservaciones') }}">Reservaciones</a></li>--}}
                         <li class="divider"></li>
-                        @if(Entrust::can('crud-menu'))
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu<span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{ route('adminMenuB') }}">Bebidas</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="{{ route('adminMenuR') }}">Comida</a></li>
-                                </ul>
-                            </li>
-                            <li class="divider"></li>
-                        @endif
+                        {{--@if(Entrust::can('crud-menu'))--}}
+                            {{--<li class="dropdown">--}}
+                                {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu<span class="caret"></span></a>--}}
+                                {{--<ul class="dropdown-menu" role="menu">--}}
+                                    {{--<li><a href="{{ route('adminMenuBar') }}">Bebidas</a></li>--}}
+                                    {{--<li class="divider"></li>--}}
+                                    {{--<li><a href="{{ route('adminMenuRestaurante') }}">Comida</a></li>--}}
+                                {{--</ul>--}}
+                            {{--</li>--}}
+                            {{--<li class="divider"></li>--}}
+                        {{--@endif--}}
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Control de Contenido<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
@@ -64,7 +64,7 @@
                                     <li><a href="{{ route('adminRedes') }}">Redes Sociales</a></li>
                                     <li class="divider"></li>
                                 @endif
-                                @if(Entrust::can('crud-empresa'))
+                                @if(Entrust::can('crud-datos'))
                                     <li><a href="{{ route('adminEmpresa') }}">Empresa</a></li>
                                 @endif
                             </ul>
@@ -78,7 +78,7 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     @if (Auth::guest())
-                        <li><a href="{{ route('ingresar') }}">Iniciar Sesion</a></li>
+                        <li><a href="{{ route('adminIngresar') }}">Iniciar Sesion</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>

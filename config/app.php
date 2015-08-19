@@ -139,6 +139,8 @@ return [
         'Zizaco\Entrust\EntrustServiceProvider',
         'Collective\Html\HtmlServiceProvider',
         'Cviebrock\ImageValidator\ImageValidatorServiceProvider',
+		'Vinkla\Hashids\HashidsServiceProvider',
+        'Mews\Captcha\CaptchaServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -199,7 +201,9 @@ return [
 
         'Entrust' => 'Zizaco\Entrust\EntrustFacade',
         'Form' => 'Collective\Html\FormFacade',
-        'Html' => 'Collective\Html\HtmlFacade'
+        'Html' => 'Collective\Html\HtmlFacade',
+        'Hashids' => 'Vinkla\Hashids\Facades\Hashids',
+        'Captcha' => 'Mews\Captcha\Facades\Captcha',
 
 	],
 

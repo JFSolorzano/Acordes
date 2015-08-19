@@ -28,7 +28,7 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label">E-mail</label>
 							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
+								<input type="email" class="form-control" name="email" autocomplete="off" value="{{ old('email') }}">
 							</div>
 						</div>
 

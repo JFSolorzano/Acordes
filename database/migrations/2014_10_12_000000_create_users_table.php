@@ -17,12 +17,12 @@ class CreateUsersTable extends Migration {
             $table->engine = 'InnoDB';
 
 			$table->increments('id')->unsigned();
-			$table->string('username')->unique();
 			$table->string('email')->unique();
 			$table->string('password', 60);
 			$table->tinyInteger('type')->unsigned();
 			$table->rememberToken();
             $table->dateTime('lastLogin');
+            $table->tinyInteger('logeado')->unsigned();
 			$table->timestamps();
 		});
 	}

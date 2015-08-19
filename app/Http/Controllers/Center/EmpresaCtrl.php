@@ -6,6 +6,7 @@ use Acordes\Http\Requests;
 use Illuminate\Http\Request;
 use RocketCandy\Exceptions\ValidationException;
 use RocketCandy\Services\Validation\empresa as validador;
+use Vinkla\Hashids\Facades\Hashids;
 
 class EmpresaCtrl extends Controller
 {
@@ -35,7 +36,7 @@ class EmpresaCtrl extends Controller
     public function inicio(Request $request)
     {
 
-        if (!\Entrust::can('crud-empresa')) {
+        if (!\Entrust::can('crud-datos')) {
             return \Redirect::to('/');
 
         } else {
@@ -56,7 +57,9 @@ class EmpresaCtrl extends Controller
     public function editar($id)
     {
 
-        $registro = Datos::find($id);
+        $record = Hashids::decode($id);
+        $registro = Datos::find($record[0]);
+
 
         return view('Center.empresa.editar')->with('registro', $registro);
 

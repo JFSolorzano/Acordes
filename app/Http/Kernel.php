@@ -16,6 +16,7 @@ class Kernel extends HttpKernel {
 		'Illuminate\Session\Middleware\StartSession',
 		'Illuminate\View\Middleware\ShareErrorsFromSession',
 		'Acordes\Http\Middleware\VerifyCsrfToken',
+		'Acordes\Http\Middleware\XSSProtection'
 	];
 
 	/**
@@ -25,6 +26,7 @@ class Kernel extends HttpKernel {
 	 */
 	protected $routeMiddleware = [
 		'auth' => 'Acordes\Http\Middleware\Authenticate',
+		'xss' => 'Acordes\Http\Middleware\XSSProtection',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'Acordes\Http\Middleware\RedirectIfAuthenticated',
 	];

@@ -118,7 +118,7 @@ Route::group(array('domain' => 'restauranteacordes.com', 'namespace' => 'Club'),
 |--------------------------------------------------------------------------
 |
 */
-Route::group(array('domain' => 'restauranteacordes.net', 'namespace' => 'Center'), function () {
+Route::group(array('domain' => 'restauranteacordes.net', 'namespace' => 'Center', 'middleware' => 'xss'), function () {
 
     //------------------------------------------AUTENTICACION
 
@@ -444,3 +444,4 @@ Route::group(array('domain' => 'restauranteacordes.net', 'namespace' => 'Center'
 //    'as' => 'salir' ,
 //    'uses' => 'Auth\AuthController@getLogout'
 //] );
+

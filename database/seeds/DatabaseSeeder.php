@@ -135,42 +135,42 @@ class RegistrosIniciales extends Seeder {
 //-------------------------------------------USUARIOS
 
         $user = User::create( [
-            'username' => 'luis' ,
+//            'username' => 'luis' ,
             'email' => 'luis@restauranteacordes.com' ,
             'password' => Hash::make('luis'),
             'type' => 0,
         ] );
 
         $user2 = User::create( [
-            'username' => 'rene' ,
+//            'username' => 'rene' ,
             'email' => 'rene@restauranteacordes.com' ,
             'password' => Hash::make('rene'),
             'type' => 0,
         ] );
 
         $user3 = User::create( [
-            'username' => 'isaac' ,
+//            'username' => 'isaac' ,
             'email' => 'isaac@restauranteacordes.com' ,
             'password' => Hash::make('isaac'),
             'type' => 0,
         ] );
 
         $user4 = User::create( [
-            'username' => 'nathaly' ,
+//            'username' => 'nathaly' ,
             'email' => 'nathaly@restauranteacordes.com' ,
             'password' => Hash::make('nathaly'),
             'type' => 0,
         ] );
 
         $user5 = User::create( [
-            'username' => 'nestor' ,
+//            'username' => 'nestor' ,
             'email' => 'nestor@restauranteacordes.com' ,
             'password' => Hash::make('nestor'),
             'type' => 0,
         ] );
 
         $user6 = User::create( [
-            'username' => 'juan' ,
+//            'username' => 'juan' ,
             'email' => 'juan@gmail.com' ,
             'password' => Hash::make('juan'),
             'type' => 1,
