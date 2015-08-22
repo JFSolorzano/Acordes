@@ -57,14 +57,15 @@ class ServiciosCtrl extends Controller {
 
             $registro = new Servicios;
 
-            $registro ->nombre = \Input::get('nombre');
-            $registro ->descripcion = \Input::get('descripcion');
             $imagen = BRequest::file('imagen');
             $extension = $imagen->getClientOriginalExtension();
             Storage::disk('image')->put($imagen->getFilename().'.'.$extension,  File::get($imagen));
 
+            $registro ->nombre = \Input::get('nombre');
+            $registro ->descripcion = \Input::get('descripcion');
             $registro ->imagen = $imagen->getFilename().'.'.$extension;
-            $registro ->estado = \Input::get('estado');
+            if(\Input::get ('est') == 'Disponible')
+            {$registro ->estado = 1;}else{$registro ->estado = 0;}
             $registro ->save();
 
             return \Redirect::route('adminServicios')
@@ -95,19 +96,20 @@ class ServiciosCtrl extends Controller {
 
             $rules = array(
                 'nombre' => array( 'required', 'string', 'min:5','unique:servicios,nombre,'. $id),
-                'descripcion' => array( 'required', 'string', 'min:10')
+                'descripcion' => array( 'required', 'string', 'min:10'),
+                'imagen' => array( 'image','image_size:>=300,>=300')
             );
             $this->validate( $request,$rules );
 
             $registro = Servicios::find($id);
             $registro ->nombre = \Input::get('nombre');
             $registro ->descripcion = \Input::get('descripcion');
-            $imagen = BRequest::file('imagen');
-            $extension = $imagen->getClientOriginalExtension();
-            Storage::disk('image')->put($imagen->getFilename().'.'.$extension,  File::get($imagen));
-
-            $registro ->imagen = $imagen->getFilename().'.'.$extension;
-            $registro ->estado = \Input::get('estado');
+            if($imagen = BRequest::file('imagen')) {
+                $extension = $imagen->getClientOriginalExtension();
+                Storage::disk('image')->put($imagen->getFilename() . '.' . $extension, File::get($imagen));
+                $registro ->imagen = $imagen->getFilename().'.'.$extension;
+            }
+            $registro ->estado = \Input::get ('est');
             $registro ->save();
 
             return \Redirect::route('adminServicios')

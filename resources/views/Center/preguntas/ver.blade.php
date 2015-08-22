@@ -45,7 +45,6 @@
                     <tr>
                         <td>{{$registro->pregunta}}</td>
                         <td>{{$registro->respuesta}}</td>
-                        <td></td>
                         <td>
                             <div class="btn-group-sm">
                                 <a href = "{{url('preguntas-frecuentes/'.$registro->id.'/editar')}}" class="btn btn-warning"><i class="fa fa-edit"></i></a >

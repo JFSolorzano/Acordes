@@ -19,7 +19,7 @@
         <div class = "container" >
             <div style="background:transparent !important" class = "jumbotron" >
                 <h1 class="text-center">
-                    Nuevo Servicio
+                    Nuevo servicio
                 </h1>
             </div >
         </div >
@@ -32,12 +32,12 @@
                     <br />
                     {!! Form::textarea('descripcion', null, array('size' => '30x5','placeholder'=>'Descripcion', 'class'=>'text-center form-control')) !!}
                     <br />
-                    <select class="text-center form-control" name="cargo" >
+                    <select class="text-center form-control" name="est" >
                         <option value="1">Disponible</option>
-                        <option value="1"></option>
+                        <option value="0">No disponible</option>
                     </select>
                     <br />
-                    <div class="form-group pull-right">
+                    <div class="form-group ">
                         {!! Form::label('seleccionarImage', 'Selecciona la imagen del servicio.'); !!}
                         {!! Form::file('imagen',null, array('class'=>'text-center')); !!}
                     </div>

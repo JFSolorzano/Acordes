@@ -21,12 +21,13 @@
                 </div>
                 <div class="row">
                     <div class = "col-md-4 col-md-offset-8" >
-                        <div class="pull-right">
+                        </br>
+                        <!--<div class="pull-right">
                             {!! Form::open([ 'route'=>'adminEmpresa','method'=>'GET', 'class'=> 'navbar-form navbar-left','role'=>'search']) !!}
+                            <button type="submit" class="btn btn-default fa fa-search"></button>
                             {!! Form::text('parametros',null,['class'=>'form-control','placeholder'=>'Busqueda' ]) !!}
-                            {!! Form::submit('Buscar',array('class'=>'text-center btn btn-default')) !!}
                             {!! Form::close() !!}
-                        </div>
+                        </div>-->
                     </div >
                 </div>
             </div>

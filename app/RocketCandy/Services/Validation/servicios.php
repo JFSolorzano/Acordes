@@ -9,7 +9,8 @@ class servicios extends Validation {
      */
     public $rules = array(
         'nombre' => array( 'required', 'string', 'min:3','unique:servicios,nombre' ),
-        'descripcion' => array( 'required', 'string', 'min:15')
+        'descripcion' => array( 'required', 'string', 'min:15'),
+        'imagen' => array('required', 'image','image_size:>=300,>=300')
     );
 
 }   //end of class

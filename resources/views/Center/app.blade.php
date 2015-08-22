@@ -4,7 +4,10 @@
     <link href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.4/paper/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{ asset("/css/center.css") }}" rel="stylesheet">
-
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/metisMenu.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/sb-admin-2.css') }}" rel="stylesheet">
+    
     <title>@yield('titulo')</title>
 
     <!--[if lt IE 9]>
@@ -13,88 +16,99 @@
     <![endif]-->
 </head>
 <body>
-    {{--<div class="content">--}}
-        {{--<div class="title">Center</div>--}}
-        {{--<div class="quote">{{ Inspiring::quote() }}</div>--}}
-    {{--</div>--}}
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Cambiar Navegacion</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{{ route('adminInicio') }}">Panel de Administracion</a>
-            </div>
-
-            <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
-                @unless(Auth::guest())
-                    <ul class="nav navbar-nav">
-                        {{--<li><a href="{{ url('reservaciones') }}">Reservaciones</a></li>--}}
-                        <li class="divider"></li>
-                        {{--@if(Entrust::can('crud-menu'))--}}
-                            {{--<li class="dropdown">--}}
-                                {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu<span class="caret"></span></a>--}}
-                                {{--<ul class="dropdown-menu" role="menu">--}}
-                                    {{--<li><a href="{{ route('adminMenuBar') }}">Bebidas</a></li>--}}
-                                    {{--<li class="divider"></li>--}}
-                                    {{--<li><a href="{{ route('adminMenuRestaurante') }}">Comida</a></li>--}}
-                                {{--</ul>--}}
-                            {{--</li>--}}
-                            {{--<li class="divider"></li>--}}
-                        {{--@endif--}}
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Control de Contenido<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                @if(Entrust::can('crud-promociones'))
-                                    <li><a href="{{ route('adminPromociones') }}">Promociones</a></li>
-                                    <li class="divider"></li>
-                                @endif
-                                @if(Entrust::can('crud-empleados'))
-                                    <li><a href="{{ route('adminEmpleados') }}">Equipo</a></li>
-                                    <li class="divider"></li>
-                                @endif
-                                @if(Entrust::can('crud-servicios'))
-                                    <li><a href="{{ route('adminServicios') }}">Servicios</a></li>
-                                    <li class="divider"></li>
-                                @endif
-                                @if(Entrust::can('crud-redes'))
-                                    <li><a href="{{ route('adminRedes') }}">Redes Sociales</a></li>
-                                    <li class="divider"></li>
-                                @endif
-                                @if(Entrust::can('crud-datos'))
-                                    <li><a href="{{ route('adminEmpresa') }}">Empresa</a></li>
-                                @endif
-                            </ul>
-                        </li>
-                        @if(Entrust::can('crud-preguntas'))
-                            <li class="divider"></li>
-                            <li><a href="{{ route('adminPreguntas') }}">Preguntas Frecuentes</a></li>
+@unless(Auth::guest())
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Cambiar navegación</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="" data-toggle="dropdown" class="navbar-brand" href="{{ route('adminInicio') }}">Panel de administración<span class="fa fa-fw"></span></a>
+            <ul class="dropdown-menu" id="">
+                <li>
+                    <a href="{{ route('adminInicio') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                </li>
+                @if(Entrust::can('crud-menu'))
+                    <li>
+                        <a href="#"><i class="fa fa-table fa-fw"></i> Menú<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="{{ url('menu-bar') }}">Bar</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('menu-restaurante') }}">Restaurante</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                @endif
+                <li>
+                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Control de contenido<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        @if(Entrust::can('crud-promociones'))
+                            <li>
+                                <a href="{{ route('adminPromociones') }}">Promociones</a>
+                            </li>
+                        @endif
+                        @if(Entrust::can('crud-empleados'))
+                            <li>
+                                <a href="{{ route('adminEmpleados') }}">Empleados</a>
+                            </li>
+                        @endif
+                        @if(Entrust::can('crud-servicios'))
+                            <li>
+                                <a href="{{ route('adminServicios') }}">Servicios</a>
+                            </li>
                         @endif
                     </ul>
-                @endunless
-
-                <ul class="nav navbar-nav navbar-right">
-                    @if (Auth::guest())
-                        <li><a href="{{ route('adminIngresar') }}">Iniciar Sesion</a></li>
-                    @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                @if(Entrust::can('crud-usuarios'))
-                                    <li><a href="{{ url('/auth/register') }}">Registrar Usuario</a></li>
-                                    <li class="divider"></li>
-                                @endif
-                                <li><a href="{{ url('/auth/logout') }}">Cerrar Sesion</a></li>
-                            </ul>
-                        </li>
-                    @endif
-                </ul>
-            </div>
+                    <!-- /.nav-second-level -->
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        @if(Entrust::can('crud-redes'))
+                            <li><a href="{{ route('adminRedes') }}">Redes Sociales</a></li>
+                        @endif
+                        @if(Entrust::can('crud-datos'))
+                            <li><a href="{{ route('adminEmpresa') }}">Empresa</a></li>
+                        @endif
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+                @if(Entrust::can('crud-preguntas'))
+                    <li><a href="{{ route('adminPreguntas') }}"><i class="fa fa-files-o fa-fw"></i>Preguntas frecuentes</a></li>
+                @endif
+            </ul>
         </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right">
+            <!-- /.dropdown -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href=""><i class="fa fa-user fa-fw"></i>{{ Auth::user()->name }}<br>{{ Auth::user()->email}}</a>
+                    </li>
+                    @if(Entrust::can('crud-usuarios'))
+                        <li><a href="{{ url('/auth/register') }}"><i class="fa fa-gear fa-fw"></i> Usuarios</a>
+                        </li>@endif
+                    <li class="divider"></li>
+                    <li><a href="{{ url('/auth/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Cerrar sesión</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
     </nav>
+
+@endunless
+
+
 
     @yield('contenido')
 

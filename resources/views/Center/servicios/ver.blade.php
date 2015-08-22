@@ -38,6 +38,8 @@
                 <thead>
                 <th>Titulo</th>
                 <th>Descripcion</th>
+                <th>Estado</th>
+                <th>Imagen</th>
                 <th class="foo">Acciones</th>
                 </thead>
                 <tbody>
@@ -45,6 +47,9 @@
                     <tr>
                         <td>{{$registro->nombre}}</td>
                         <td>{{$registro->descripcion}}</td>
+                        @if($registro->estado == 1)<td> Disponible</td> @endif
+                        @if($registro->estado == 0)<td> No disponible</td> @endif
+                        <td><img src = "{{asset('img/'.$registro->imagen)}}" width="70" height="70" alt = "{{$registro->foto}}" /></td>
                         <td>
                             <div class="btn-group-sm">
                                 <a href = "{{url('servicios/'.$registro->id.'/editar')}}" class="btn btn-warning"><i class="fa fa-edit"></i></a >
