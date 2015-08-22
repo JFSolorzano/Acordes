@@ -9,7 +9,7 @@
 				<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
+							<strong>Whoops!</strong> Hay problemas con los datos ingresados<br><br>
 							<ul>
 								@foreach ($errors->all() as $error)
 									<li>{{ $error }}</li>
@@ -22,14 +22,14 @@
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
+							<label class="col-md-4 control-label">Correo electronico</label>
 							<div class="col-md-6">
 								<input type="email" class="form-control" autocomplete="off" name="email" value="{{ old('email') }}">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
+							<label class="col-md-4 control-label">Contraseña</label>
 							<div class="col-md-6">
 								<input type="password" class="form-control" name="password">
 							</div>
@@ -39,7 +39,7 @@
 							<div class="col-md-6 col-md-offset-4">
 								<div class="checkbox">
 									<label>
-										<input type="checkbox" name="remember"> Remember Me
+										<input type="checkbox" name="remember"> Recordarme
 									</label>
 								</div>
 							</div>
@@ -51,7 +51,7 @@
 									Login
 								</button>
 
-								<a href="#">Forgot Your Password?</a>
+								<a href="#">Olvidaste tu contraseña?</a>
 							</div>
 						</div>
 					</form>
