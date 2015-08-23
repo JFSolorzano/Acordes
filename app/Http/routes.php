@@ -6,7 +6,7 @@
 |--------------------------------------------------------------------------
 |
 */
-Route::group(array('domain' => 'restauranteacordes.com', 'namespace' => 'Club'), function () {
+Route::group(array('domain' => 'www.restauranteacordes.com', 'namespace' => 'Club'), function () {
 
 //------------------------------------------AUTENTICACION
 
@@ -15,6 +15,7 @@ Route::group(array('domain' => 'restauranteacordes.com', 'namespace' => 'Club'),
         'password' => 'Auth\PasswordController',
     ]);
 
+    //Registrar
     Route::get('/registrar', [
         'as' => 'clubRegistrar',
         'uses' => 'Auth\AuthController@getRegister'
@@ -25,6 +26,7 @@ Route::group(array('domain' => 'restauranteacordes.com', 'namespace' => 'Club'),
         'uses' => 'Auth\AuthController@postRegister'
     ]);
 
+    //Ingresar
     Route::get('/ingresar', [
         'as' => 'clubIngresar',
         'uses' => 'Auth\AuthController@getLogin'
@@ -40,6 +42,46 @@ Route::group(array('domain' => 'restauranteacordes.com', 'namespace' => 'Club'),
         'uses' => 'Auth\AuthController@getLogout'
     ]);
 
+    //Olvide Contrasena
+    Route::get('/olvide-mi-contrasena', [
+        'as' => 'clubOlvide',
+        'uses' => 'Auth\PasswordController@getEmail'
+    ]);
+
+    Route::post('/olvide-mi-contrasena', [
+        'as' => 'clubPostOlvide',
+        'uses' => 'Auth\PasswordController@postEmail'
+    ]);
+
+    //Restablecer Contrasena
+    Route::get('/restablecer-contrasena/{token}', [
+        'as' => 'clubRestablecer',
+        'uses' => 'Auth\PasswordController@getReset'
+    ]);
+
+    Route::post('/restablecer-contrasena/{token}', [
+        'as' => 'clubPostRestablecer',
+        'uses' => 'Auth\PasswordController@postReset'
+    ]);
+
+    // Social Auth
+    Route::get('facebook',[
+        'as' => 'clubFacebookAuth',
+        'uses' => 'Auth\SocialController@fbRedirect'
+    ]);
+
+    Route::get('cuenta/facebook', [
+        'as' => 'clubFacebookAuthCallBack',
+        'uses' => 'Auth\SocialController@fb'
+    ]);
+
+//-------------------------------------------CUENTA
+
+    Route::get('/mi-cuenta', [
+        'as' => 'publicCuenta',
+        'uses' => 'CuentaCtrl@dashboard'
+    ]);
+
 //-------------------------------------------INICIO
 
     Route::get('/', [
@@ -53,7 +95,7 @@ Route::group(array('domain' => 'restauranteacordes.com', 'namespace' => 'Club'),
     ]);
 
     Route::get('/menu/{id}', [
-        'as' => 'publicMenu',
+        'as' => 'publicMenuEspecifico',
         'uses' => 'MenuCtrl@inicio'
     ]);
 
@@ -110,6 +152,22 @@ Route::group(array('domain' => 'restauranteacordes.com', 'namespace' => 'Club'),
 
     Route::get('/mis-reservaciones/{id}/eliminar', 'ReservacionCtrl@eliminar');
 
+    //---------------------------------------------------PREGUNTAS
+
+    Route::get('/preguntas-frecuentes', [
+        'as' => 'publicPreguntas',
+        'uses' => 'PreguntasCtrl@inicio'
+    ]);
+
+    //----------------------------------------------------MENU
+
+    Route::get('/menu/opcion/{slug}', [
+        'as' => 'publicMenuOpcion',
+        'uses' => 'MenuCtrl@opcion'
+    ]);
+
+
+
 });
 
 /*
@@ -118,7 +176,7 @@ Route::group(array('domain' => 'restauranteacordes.com', 'namespace' => 'Club'),
 |--------------------------------------------------------------------------
 |
 */
-Route::group(array('domain' => 'restauranteacordes.net', 'namespace' => 'Center', 'middleware' => 'xss'), function () {
+Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Center', 'middleware' => 'xss'), function () {
 
     //------------------------------------------AUTENTICACION
 

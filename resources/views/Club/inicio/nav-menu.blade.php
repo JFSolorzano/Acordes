@@ -16,18 +16,30 @@
 <div class="main-nav-container dark">
     <div class="main-nav-inner">
         <div class="logo-container">
-            <a href="#">
+            <a href="{{ route('publicInicio') }}">
                 <img src="{{ asset('club/img/logo/150x150p.png') }}" alt="Acordes - Restaurante, Bar, Club">
             </a>
         </div><!-- /logo-container -->
         <nav class="main-nav">
             <ul>
-                <li class="active"><a href="{{ route('publicInicio') }}">Inicio</a></li>
                 <li><a href="{{ route('publicMenu') }}">Menu</a></li>
-                <li><a href="{{ route('publicPromociones') }}">Promociones</a></li>
+                {{--<li><a href="{{ route('publicPromociones') }}">Promociones</a></li>--}}
                 <li><a href="{{ route('publicServicios') }}">Servicios</a></li>
                 <li><a href="{{ route('publicReservacion') }}">Reservacion</a></li>
                 <li><a href="{{ route('publicInformacionEmpresarial') }}">Informacion Empresarial</a></li>
+                <li><a href="{{ route('publicPreguntas') }}">Preguntas Frecuentes</a></li>
+                <li><a href="{{ route('publicPreguntas') }}">Preguntas Frecuentes</a></li>
+            </ul>
+        </nav>
+        <nav class="main-nav">
+            <ul>
+                @if (Auth::guest())
+                    <li><a href="{{ route('clubIngresar') }}">Inicia Sesion</a></li>
+                    <li><a href="{{ route('clubRegistrar') }}">Crea tu Cuenta</a></li>
+                @else
+                    <li><a href="{{ route('publicCuenta') }}">Mi Cuenta</a></li>
+                    <li><a href="{{ route('clubSalir') }}">Cerrar Sesion</a></li>
+                @endif
             </ul>
         </nav>
         <div class="tweets-container">

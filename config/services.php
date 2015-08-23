@@ -33,5 +33,10 @@ return [
 		'model'  => 'User',
 		'secret' => '',
 	],
+    'facebook' => [
+        'client_id' => '467232153438758',
+        'client_secret' => '20e37a2977212d3dbba587dea3224075',
+        'redirect' => 'http://www.restauranteacordes.com/cuenta/facebook',
+    ],
 
 ];

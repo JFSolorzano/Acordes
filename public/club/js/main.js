@@ -114,14 +114,12 @@
     /*-----------------------------------------
      GALLERY INIT
      ------------------------------------------*/
-    $('.gallery').mixItUp({
-        load: {
-            filter: '.PlatosFuertes'
-        }
-    });
 
     if ($('.gallery').length) {
         $('.gallery-items-container').find('ul').mixItUp({
+            load: {
+                filter: '.PlatosFuertes'
+            },
             animation: {
                 duration: 550,
                 effects: 'fade stagger(20ms) translateZ(-300px)',
@@ -193,55 +191,55 @@
     /*-----------------------------------------
      CONTACT FORM INIT
      ------------------------------------------*/
-    function contactForm() {
-
-        var form = $('#contact-form');
-        var formMessages = $('#form-messages');
-        $(formMessages).slideUp();
-
-        $(form).submit(function (event) {
-            event.preventDefault();
-            var formData = $(form).serialize();
-
-            if (!$('#name').val() || !$('#email').val() || !$('#message').val()) {
-                $('#form-messages').text('Please Complete All inputs');
-            } else {
-                $('#form-messages').text('Sending your message. Please wait...').slideDown();
-            }
-            ;
-
-            $(formMessages).removeClass('error').removeClass('success');
-
-            $.ajax({
-                type: 'POST',
-                url: $(form).attr('action'),
-                data: formData
-            })
-                .done(function (response) {
-                    $(formMessages).removeClass('error').delay(2000).slideUp();
-                    $(formMessages).addClass('success').delay(2000).slideUp();
-
-                    $(formMessages).text(response);
-
-                    $('#name').val('');
-                    $('#email').val('');
-                    $('#message').val('');
-                })
-                .fail(function (data) {
-                    // Make sure that the formMessages div has the 'error' class.
-                    $(formMessages).removeClass('success').delay(2000).slideUp();
-                    $(formMessages).addClass('error').delay(2000).slideUp();
-
-                    // Set the message text.
-                    if (data.responseText !== '') {
-                        $(formMessages).text(data.responseText);
-                    } else {
-                        $(formMessages).text('Oops! An error occured and your message could not be sent.');
-                    }
-                });
-        });
-    };
-    contactForm();
+    //function contactForm() {
+    //
+    //    var form = $('#contact-form');
+    //    var formMessages = $('#form-messages');
+    //    $(formMessages).slideUp();
+    //
+    //    $(form).submit(function (event) {
+    //        event.preventDefault();
+    //        var formData = $(form).serialize();
+    //
+    //        if (!$('#name').val() || !$('#email').val() || !$('#message').val()) {
+    //            $('#form-messages').text('Please Complete All inputs');
+    //        } else {
+    //            $('#form-messages').text('Sending your message. Please wait...').slideDown();
+    //        }
+    //        ;
+    //
+    //        $(formMessages).removeClass('error').removeClass('success');
+    //
+    //        $.ajax({
+    //            type: 'POST',
+    //            url: $(form).attr('action'),
+    //            data: formData
+    //        })
+    //            .done(function (response) {
+    //                $(formMessages).removeClass('error').delay(2000).slideUp();
+    //                $(formMessages).addClass('success').delay(2000).slideUp();
+    //
+    //                $(formMessages).text(response);
+    //
+    //                $('#name').val('');
+    //                $('#email').val('');
+    //                $('#message').val('');
+    //            })
+    //            .fail(function (data) {
+    //                // Make sure that the formMessages div has the 'error' class.
+    //                $(formMessages).removeClass('success').delay(2000).slideUp();
+    //                $(formMessages).addClass('error').delay(2000).slideUp();
+    //
+    //                // Set the message text.
+    //                if (data.responseText !== '') {
+    //                    $(formMessages).text(data.responseText);
+    //                } else {
+    //                    $(formMessages).text('Oops! An error occured and your message could not be sent.');
+    //                }
+    //            });
+    //    });
+    //};
+    //contactForm();
 
     /*-----------------------------------------
      HEADER BANNER FADE EFFECT

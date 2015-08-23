@@ -140,7 +140,9 @@ return [
         'Collective\Html\HtmlServiceProvider',
         'Cviebrock\ImageValidator\ImageValidatorServiceProvider',
 		'Vinkla\Hashids\HashidsServiceProvider',
-        'Mews\Captcha\CaptchaServiceProvider',
+		'Laravel\Socialite\SocialiteServiceProvider',
+        'Greggilbert\Recaptcha\RecaptchaServiceProvider',
+		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -203,7 +205,8 @@ return [
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
         'Hashids' => 'Vinkla\Hashids\Facades\Hashids',
-        'Captcha' => 'Mews\Captcha\Facades\Captcha',
+        'Socialize' => 'Laravel\Socialite\Facades\Socialite',
+        'Recaptcha' => 'Greggilbert\Recaptcha\Facades\Recaptcha'
 
 	],
 

@@ -18,9 +18,10 @@ class Reservaciones extends Migration {
 
 			$table->increments('id')->unsigned();
 			$table->integer('cliente')->unsigned();
-			$table->integer('servicio')->unsigned();
+			$table->integer('personas')->unsigned();
+			$table->tinyInteger('precocinado')->unsigned();
             $table->text('mensaje');
-            $table->integer('telefono')->unsigned();
+            $table->decimal('costoEstimado',7,2);
             $table->dateTime('inicio');
             $table->dateTime('fin');
 			$table->timestamps();
@@ -28,12 +29,6 @@ class Reservaciones extends Migration {
             $table->foreign('cliente')
                 ->references('id')
                 ->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('restrict');
-
-            $table->foreign('servicio')
-                ->references('id')
-                ->on('servicios')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
 		});

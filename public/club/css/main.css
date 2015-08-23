@@ -786,8 +786,8 @@ form button:hover{
     position: relative;
 }
 .main-header .logo-container{
-    padding-top: 26px;
-    padding-bottom: 32px;
+    padding-top: 6px;
+    padding-bottom: 2px;
 }
 .main-header .main-header-slider{
     width:100%;
@@ -1264,6 +1264,10 @@ form button:hover{
 .menus .menu .food .food-desc .dots{
     background: url(../img/template-assets/dots.png) left 14px repeat-x;
 }
+
+.menus .menu .food .food-name .food-price .dots{
+    background: url(../img/template-assets/dots.png) left 14px repeat-x;
+}
 .menus-full{
     padding-top: 0;
     padding-bottom: 0;
@@ -1432,7 +1436,7 @@ form button:hover{
     .menus-full .right-section{
         width: 100%;
         position: relative;
-        top: auti;
+        top: auto;
         right: auto;
         display: none;
     }
@@ -3602,6 +3606,20 @@ table.order-table tbody td.total{
     }
 }
 
+/* ==========================================================================
+   Account
+   ========================================================================== */
+
+.circular-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 150px;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
 
 /* ==========================================================================
    Helper classes

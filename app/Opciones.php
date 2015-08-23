@@ -1,9 +1,17 @@
 <?php namespace Acordes;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
 
-class Opciones extends Model {
+class Opciones extends Model implements SluggableInterface{
 
+    use SluggableTrait;
+
+    protected $sluggable = [
+        'build_from' => 'nombre',
+        'save_to'    => 'slug',
+    ];
     /**
      * The database table used by the model.
      *
@@ -16,7 +24,7 @@ class Opciones extends Model {
      *
      * @var array
      */
-    protected $fillable = ['nombre', 'extra', 'descripcion', 'costo', 'imagen', 'menu'];
+    protected $fillable = ['nombre', 'extra', 'descripcion', 'costo', 'imagen', 'menu', 'slug'];
 
     public function menu()
     {

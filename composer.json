@@ -14,7 +14,9 @@
     "laravelcollective/html": "~5.0",
     "cviebrock/image-validator": "2.0.*@beta",
     "vinkla/hashids": "^2.0",
-    "mews/captcha": "^2.0"
+    "laravel/socialite": "~2.0",
+    "greggilbert/recaptcha": "2.0.2",
+    "cviebrock/eloquent-sluggable": "^3.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0",

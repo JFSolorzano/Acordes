@@ -20,6 +20,8 @@ class PasswordController extends Controller {
 
 	use ResetsPasswords;
 
+    private $redirectTo = '/ingresar';
+
 	/**
 	 * Create a new password controller instance.
 	 *
@@ -34,5 +36,20 @@ class PasswordController extends Controller {
 
 		$this->middleware('guest');
 	}
+
+	public function getEmail()
+	{
+		return view('Club.auth.password');
+	}
+
+    public function getReset($token = null)
+    {
+        if (is_null($token))
+        {
+            throw new NotFoundHttpException;
+        }
+
+        return view('Club.auth.reset')->with('token', $token);
+    }
 
 }

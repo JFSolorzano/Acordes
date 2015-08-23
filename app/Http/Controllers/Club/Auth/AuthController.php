@@ -5,6 +5,7 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -70,5 +71,26 @@ class AuthController extends Controller
             ->withErrors([
                 'email' => $this->getFailedLoginMessage(),
             ]);
+    }
+
+    public function postRegister(Request $request)
+    {
+        $validator = $this->registrar->validator($request->all());
+
+        if ($validator->fails())
+        {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        $inputs = $request->all();
+        $registrar = array_merge($inputs, ['type' => 1]);
+
+//        dd($inputs,$registrar);
+
+        $this->auth->login($this->registrar->create($registrar));
+
+        return redirect($this->redirectPath());
     }
 }
