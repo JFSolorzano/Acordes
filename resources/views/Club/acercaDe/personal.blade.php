@@ -21,13 +21,6 @@
                     </figure>
                 </div>
             </div><!-- /member -->
-            <div class="member">
-                <div  class="member-image">
-                    <figure>
-                        <img src="{{ asset('club/img/team/member2.jpg') }}" alt="Marine Food Member">
-                    </figure>
-                </div>
-            </div><!-- /member -->
         </div><!-- /members-images-con -->
     </div><!-- /row -->
 </section><!-- /team -->
