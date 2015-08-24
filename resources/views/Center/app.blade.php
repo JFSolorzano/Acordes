@@ -35,10 +35,10 @@
                         <a href="#"><i class="fa fa-table fa-fw"></i> Menú<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{{ url('menu-bar') }}">Bar</a>
+                                <a href="{{ url('menu/bebidas') }}">Bebidas</a>
                             </li>
                             <li>
-                                <a href="{{ url('menu-restaurante') }}">Restaurante</a>
+                                <a href="{{ url('menu/comidas') }}">Comidas</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->

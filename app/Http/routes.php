@@ -365,52 +365,28 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
 //================================================MENU
 
         //Restaurante
-        Route::get('/menu-restaurante', [
-            'as' => 'adminMenuRestaurante',
-            'uses' => 'MenuCtrl@inicioRestaurante',
+        Route::get('/menu/{tipo}', [
+            'as' => 'adminMenu',
+            'uses' => 'MenuCtrl@inicioMenu',
             //'middleware' => 'restaurante'
         ]);
 
-        Route::get('/menu-restaurante/nuevo-registro', [
-            'as' => 'adminMenuRestauranteNuevo',
-            'uses' => 'MenuCtrl@nuevoRestaurante',
+        Route::get('/menu/{tipo}/nuevo-registro', [
+            'as' => 'adminMenusNuevo',
+            'uses' => 'MenuCtrl@nuevaOpcion',
             //'middleware' => 'restaurante'
         ]);
 
-        Route::post('/menu-restaurante/nuevo-registro', 'MenuCtrl@crearRestaurante');
+        Route::post('/menu-restaurante/nuevo-registro', 'MenuCtrl@crearOpcion');
 
-        Route::get('/menu-restaurante/{id}/editar', [
-            'as' => 'adminMenuRestauranteEditar',
-            'uses' => 'MenuCtrl@editarRestaurante'
+        Route::get('/menu/{tipo}/{id}/editar', [
+            'as' => 'adminMenusEditar',
+            'uses' => 'MenuCtrl@editarOpcion'
         ]);
 
-        Route::post('/menu-restaurante/{id}/actualizar', 'MenuCtrl@actualizarRestaurante');
+        Route::post('/menu/{tipo}/{id}/actualizar', 'MenuCtrl@actualizarOpcion');
 
-        Route::get('/menu-restaurante/{id}/eliminar', 'MenuCtrl@eliminarRestaurante');
-
-        //Bar
-        Route::get('/menu-bar', [
-            'as' => 'adminMenuBar',
-            'uses' => 'MenuCtrl@inicioBar',
-            //'middleware' => 'restaurante'
-        ]);
-
-        Route::get('/menu-bar/nuevo-registro', [
-            'as' => 'adminMenuBarNuevo',
-            'uses' => 'MenuCtrl@nuevoBar',
-            //'middleware' => 'restaurante'
-        ]);
-
-        Route::post('/menu-bar/nuevo-registro', 'MenuCtrl@crearBar');
-
-        Route::get('/menu-bar/{id}/editar', [
-            'as' => 'adminMenuBarEditar',
-            'uses' => 'MenuCtrl@editarBar'
-        ]);
-
-        Route::post('/menu-bar/{id}/actualizar', 'MenuCtrl@actualizarBar');
-
-        Route::get('/menu-bar/{id}/eliminar', 'MenuCtrl@eliminarBar');
+        Route::get('/menu/{tipo}/{id}/eliminar', 'MenuCtrl@eliminarOpcion');
 
 //================================================SUCURSALES
 
