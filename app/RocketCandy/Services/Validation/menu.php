@@ -9,10 +9,10 @@ class menu extends Validation {
      */
     public $rules = array(
         'nombre' => array( 'required', 'string', 'min:10','unique:menu_opciones,nombre' ),
-        'contenidoExtra' => array( 'required', 'string', 'min:5'),
+        'contenidoExtra' => array(  'string', 'min:5'),
         'descripcionCompleta' => array( 'required', 'string', 'min:50'),
         'costo' => array( 'required', 'numeric', 'min:1','max:1000'),
-        //'imagen' => array('required','image','image_size:>=600,>=300')
+        'imagen' => array('required','image','image_size:>=300,>=300')
 
     );
 

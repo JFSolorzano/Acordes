@@ -23,4 +23,13 @@ class Menus extends Model {
         return $this->hasMany('Acordes\Opciones','menu','id');
     }
 
+    public function scopeBuscar($return, $parametros){
+
+        if(trim($parametros)!="")
+        {
+            $return->where(\DB::raw("tipo"),"=","%$parametros%");
+        }
+
+    }
+
 }
