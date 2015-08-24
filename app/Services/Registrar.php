@@ -18,6 +18,7 @@ class Registrar implements RegistrarContract {
 //			'name' => 'required|max:255|unique:users',
 			'email' => 'required|email|max:255|unique:users',
 			'password' => 'required|confirmed|min:6|different:email|regex:/^.*(?=.{6,15})(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).*$/',
+			'g-recaptcha-response' => 'required|recaptcha',
 		]);
 	}
 
@@ -32,6 +33,7 @@ class Registrar implements RegistrarContract {
 		return User::create([
 			'name' => $data['name'],
 			'email' => $data['email'],
+			'type' => $data['type'],
 			'password' => bcrypt($data['password']),
 		]);
 	}

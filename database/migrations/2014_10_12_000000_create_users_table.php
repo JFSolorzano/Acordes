@@ -16,15 +16,19 @@ class CreateUsersTable extends Migration {
 		{
             $table->engine = 'InnoDB';
 
-			$table->increments('id')->unsigned();
-			$table->string('email')->unique();
-			$table->string('password', 60);
-			$table->tinyInteger('type')->unsigned();
-			$table->rememberToken();
+            $table->increments('id');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password', 60)->nullable();
+            $table->string('avatar')->nullable();
+            $table->integer('facebook_id')->unique()->nullable();
+            $table->tinyInteger('type')->unsigned();
             $table->dateTime('lastLogin');
             $table->tinyInteger('logeado')->unsigned();
-			$table->timestamps();
+            $table->rememberToken();
+            $table->timestamps();
 		});
+        DB::statement('ALTER TABLE users ADD location POINT');
 	}
 	/**
 	 * Reverse the migrations.

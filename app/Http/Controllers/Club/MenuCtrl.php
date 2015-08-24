@@ -2,83 +2,37 @@
 
 use Acordes\Http\Requests;
 use Acordes\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
+use Acordes\Menus;
+use Acordes\Opciones;
 
 class MenuCtrl extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
+	public function inicio(){
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
+        $menus = Menus::with('opciones')->get();
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
+        return view('Club.menu.completo')
+            ->with('menus',$menus);
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
+    }
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
+    public function opcion($slug){
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
+        $opcion = \DB::table('Opciones')
+            ->join('Menus', 'Opciones.menu', '=', 'Menus.id')
+            ->where('Opciones.slug','=',$slug)
+            ->select('Opciones.id', 'Opciones.nombre', 'Opciones.extra', 'Opciones.descripcion', 'Opciones.costo',
+                    'Opciones.imagen','Menus.nombre AS menu')
+            ->get();
+
+//        $opcion = Opciones::findBySlug($slug);
+
+        $opcion = array_values($opcion)[0];
+
+        return view('Club.menu.detalle')
+            ->with('opcion',$opcion);
+
+    }
 
 }
