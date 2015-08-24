@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2015-08-23T22:23:12 -->
+<!-- 2015-08-24T09:49:20 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="menues" pageWidth="612" pageHeight="792" columnWidth="556" leftMargin="28" rightMargin="28" topMargin="28" bottomMargin="28" uuid="6335e00d-dfc3-45fd-95bc-3f8397b5017b">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="menues"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -72,7 +72,7 @@
 				</staticText>
 				<image>
 					<reportElement x="0" y="0" width="220" height="92" uuid="c0a0d685-c9b5-42e3-8322-a71bf25037dd"/>
-					<imageExpression><![CDATA["C:/xampp/htdocs/Acordes/public/club/img/logo/150x150p.png"]]></imageExpression>
+					<imageExpression><![CDATA["/club/img/logo/150x150p.png"]]></imageExpression>
 				</image>
 				<textField>
 					<reportElement x="390" y="66" width="155" height="26" forecolor="#FFFFFF" uuid="8ccb0fb0-5b88-451d-bc12-e1f504a04122"/>
