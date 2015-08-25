@@ -230,6 +230,10 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
             'as' => 'adminEmpresaEditar',
             'uses' => 'EmpresaCtrl@editar'
         ]);
+        Route::get('/empresa/{id}/ver', [
+            'as' => 'adminEmpresaVer',
+            'uses' => 'EmpresaCtrl@ver'
+        ]);
 
         Route::post('/empresa/{id}/actualizar', [
             'as' => 'adminEmpresaActualizar',

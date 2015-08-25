@@ -45,7 +45,8 @@
                         <td>{{ $registro->contenido }}</td>
                         <td width="50px">
                             <div class="btn-group-sm">
-                                <a href = "{{ url('empresa/'.Hashids::encode($registro->id).'/editar') }}" class="btn btn-warning"><i class="fa fa-edit"></i></a >
+                                <a href = "{{url('empresa/'.Hashids::encode($registro->id).'/ver') }}" class="btn btn-primary"><i class="glyphicon glyphicon-list"></i></a >
+                                <a href = "{{url('empresa/'.Hashids::encode($registro->id).'/editar') }}" class="btn btn-warning"><i class="fa fa-edit"></i></a >
                             </div>
                             <br />
                             <small class="text-info"><i>Ultima actualizacion:</i> {{$registro->updated_at}}</small>

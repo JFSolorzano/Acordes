@@ -64,6 +64,16 @@ class EmpresaCtrl extends Controller
         return view('Center.empresa.editar')->with('registro', $registro);
 
     }
+    public function ver($id)
+    {
+
+        $record = Hashids::decode($id);
+        $registro = Datos::find($record[0]);
+
+
+        return view('Center.empresa.ver')->with('registro', $registro);
+
+    }
 
     /**
      * Funcion que hace el proceso de reingreso de captura y guardado de datos,

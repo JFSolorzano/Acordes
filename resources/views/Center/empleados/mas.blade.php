@@ -26,26 +26,20 @@
             <div class = "col-md-8" >
                 {!! Form::open(['url'=>'empleados/'.$registro['id'].'/actualizar','autocomplete'=>'off', 'files'=>'true']) !!}
                 <fieldset >
-                    {!! Form::label('nombres', $registro['nombres'], array( 'placeholder'=>'Nombres', 'class'=>'text-center form-control')) !!}
-                    {!! Form::label('apellidos', $registro['apellidos'], array( 'placeholder'=>'Apellidos', 'class'=>'text-center form-control')) !!}
+                    {!! Form::label('nombres', $registro['nombres'], array( 'placeholder'=>'Nombres', 'class'=>'text-center ')) !!}
                     <br />
-                    <select class="text-center form-control" name="cargo" >
+                    {!! Form::label('apellidos', $registro['apellidos'], array( 'placeholder'=>'Apellidos', 'class'=>'text-center ')) !!}
+                    <br />
                         @foreach($cargos as $c)
-                            @if($registro->cargo==$c->id)
-                            <option value="{{$c->id}}" selected="selected">{{$c->nombre}}</option>
-                            @else<option value="{{$c->id}}">{{$c->nombre}}</option>
-                        @endif
+                            @if($c->id==$registro->cargo)
+                            <label>{{$c->nombre}}</label><br />
+                            @endif
                         @endforeach
-                    </select>
+                    {!! Form::label('biografia', $registro['biografia'], array('id'=>'biografia','size' => '30x5', 'placeholder'=>'Biografia', 'class'=>'text-center ')) !!}
                     <br />
-                    {!! Form::textarea('biografia', $registro['biografia'], array('id'=>'biografia','size' => '30x5', 'placeholder'=>'Biografia', 'class'=>'text-center form-control')) !!}
-                    <br />
-                    <div class="form-group pull-right">
-                        {!! Form::label('seleccionarImage', 'Selecciona la foto del integrante'); !!}
-                        {!! Form::file('foto',null, array('class'=>'text-center')); !!}
+                    <div class="form-group text-center">
+                        <img src = "{{asset('img/'.$registro->foto)}}" width="120" height="120" alt = "{{$registro->foto}}" /></td>
                     </div>
-                    <br />
-                    {!! Form::submit('ACTUALIZAR!',array('class'=>'text-center form-control btn btn-primary')) !!}
                 </fieldset>
                 {!! Form::close() !!}
             </div >
