@@ -114,6 +114,16 @@ class EmpleadosCtrl extends Controller {
 
     }
 
+    public function ver($id){
+
+        $registro = Empleados::find($id);
+        $cargos = Cargos::all(['id','nombre','descripcion']);
+        return view('Center.empleados.editar')
+            ->with('cargos',$cargos)
+            ->with('registro',$registro);
+
+    }
+
     /**
      * Funcion que hace el proceso de reingreso de captura y guardado de datos, una vez finalizado redirije a la vista del inicio,
      * enviando un mensaje de alerta

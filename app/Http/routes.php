@@ -257,6 +257,11 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
             'uses' => 'EmpleadosCtrl@editar'
         ]);
 
+        Route::get('/empleados/{id}/ver', [
+            'as' => 'adminEmpleadosVer',
+            'uses' => 'EmpleadosCtrl@ver'
+        ]);
+
         Route::post('/empleados/{id}/actualizar', 'EmpleadosCtrl@actualizar');
 
         Route::get('/empleados/{id}/eliminar', 'EmpleadosCtrl@eliminar');
