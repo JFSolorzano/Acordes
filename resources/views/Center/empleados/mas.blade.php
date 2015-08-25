@@ -18,9 +18,7 @@
     <div class="row-fluid">
         <div class = "container" >
             <div style="background:transparent !important" class = "jumbotron" >
-                <h1 class="text-center">
-                    Editar Integrante
-                </h1>
+                <h1 class="text-center">Integrante</h1>
             </div >
         </div >
         <div class="container">
@@ -28,9 +26,8 @@
             <div class = "col-md-8" >
                 {!! Form::open(['url'=>'empleados/'.$registro['id'].'/actualizar','autocomplete'=>'off', 'files'=>'true']) !!}
                 <fieldset >
-                    {!! Form::text('nombres', $registro['nombres'], array( 'placeholder'=>'Nombres', 'class'=>'text-center form-control')) !!}
-                    <br />
-                    {!! Form::text('apellidos', $registro['apellidos'], array( 'placeholder'=>'Apellidos', 'class'=>'text-center form-control')) !!}
+                    {!! Form::label('nombres', $registro['nombres'], array( 'placeholder'=>'Nombres', 'class'=>'text-center form-control')) !!}
+                    {!! Form::label('apellidos', $registro['apellidos'], array( 'placeholder'=>'Apellidos', 'class'=>'text-center form-control')) !!}
                     <br />
                     <select class="text-center form-control" name="cargo" >
                         @foreach($cargos as $c)

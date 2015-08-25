@@ -118,7 +118,7 @@ class EmpleadosCtrl extends Controller {
 
         $registro = Empleados::find($id);
         $cargos = Cargos::all(['id','nombre','descripcion']);
-        return view('Center.empleados.editar')
+        return view('Center.empleados.mas')
             ->with('cargos',$cargos)
             ->with('registro',$registro);
 
