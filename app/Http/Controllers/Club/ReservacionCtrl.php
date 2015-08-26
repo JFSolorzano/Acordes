@@ -4,6 +4,7 @@ use Acordes\Http\Requests;
 use Acordes\Http\Controllers\Controller;
 use Acordes\Servicios;
 use Acordes\Reservaciones;
+use Acordes\Opciones;
 
 use Illuminate\Http\Request;
 use RocketCandy\Services\Validation\reservaciones as validador;
@@ -24,7 +25,35 @@ class ReservacionCtrl extends Controller {
 
         $servicios = Servicios::lists('nombre','id');
 
-        return view('Club.reservacion.crear')->with('servicios',$servicios);
+        $platos = Opciones::all();
+        $bebidas = Opciones::all();
+
+        $horas = [
+            '4:00',
+            '4:30',
+            '5:00',
+            '5:30',
+            '6:00',
+            '6:30',
+            '7:00',
+            '7:30',
+            '8:00',
+            '8:30',
+            '9:00',
+            '9:30',
+            '10:00',
+            '10:30',
+            '11:00',
+            '11:30',
+            '12:00',
+        ];
+
+        return view('Club.reservacion.crear')->with([
+            'servicios'=>$servicios,
+            'horas'=>$horas,
+            'platos'=>$platos,
+            'bebidas'=>$bebidas,
+        ]);
 
     }
 

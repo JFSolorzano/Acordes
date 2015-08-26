@@ -12,4 +12,53 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+#    RewriteCond %{SERVER_PORT} 80
+#    RewriteRule ^(.*)$ https://www.restauranteacordes.com/$1 [R,L]
+#
+#    AddDefaultCharset utf-8
+#
+#    RewriteCond %{HTTP_REFERER} !^http://www.restauranteacordes.com*/.*$ [NC]
+#    RewriteCond %{HTTP_REFERER} !^http://www.restauranteacordes.com*$ [NC]
+#    RewriteCond %{HTTP_REFERER} !^https://www.restauranteacordes.com*/.*$ [NC]
+#    RewriteCond %{HTTP_REFERER} !^https://www.restauranteacordes.com*$ [NC]
+#
+#    RewriteCond %{HTTP_REFERER} !^http://www.restauranteacordes.net*/.*$ [NC]
+#    RewriteCond %{HTTP_REFERER} !^http://www.restauranteacordes.net*$ [NC]
+#    RewriteCond %{HTTP_REFERER} !^https://www.restauranteacordes.net*/.*$ [NC]
+#    RewriteCond %{HTTP_REFERER} !^https://www.restauranteacordes.net*$ [NC]
+#
+#    RewriteRule .*\.(jpg|jpeg|gif|png|bmp|zip)$ - [F,NC]
+#
+#    RewriteCond %{REQUEST_FILENAME} !-d
+#    RewriteCond %{REQUEST_FILENAME}.php -f
+#    RewriteRule ^(.*)$ $1.php
+#
+#    RewriteCond %{HTTP_USER_AGENT} ^BlackWidow [OR]
+#    RewriteCond %{HTTP_USER_AGENT} ^Bot\ mailto:craftbot@yahoo.com [OR]
+#    RewriteCond %{HTTP_USER_AGENT} ^ChinaClaw [OR]
+#    RewriteCond %{HTTP_USER_AGENT} ^Custo [OR]
+#    RewriteCond %{HTTP_USER_AGENT} ^DISCo [OR]
+#    RewriteCond %{HTTP_USER_AGENT} ^Download\ Demon [OR]
+#    RewriteCond %{HTTP_USER_AGENT} ^eCatch [OR]
+#    RewriteCond %{HTTP_USER_AGENT} ^EirGrabber [OR]
+#    RewriteCond %{HTTP_USER_AGENT} ^EmailSiphon [OR]
+#    RewriteCond %{HTTP_USER_AGENT} ^EmailWolf [OR]
+#    RewriteCond %{HTTP_USER_AGENT} ^Express\ WebPictures [OR]
+#    RewriteCond %{HTTP_USER_AGENT} ^ExtractorPro [OR]
+#    RewriteCond %{HTTP_USER_AGENT} ^EyeNetIE [OR]
+#    RewriteCond %{HTTP_USER_AGENT} ^FlashGet [OR]
+#    RewriteCond %{HTTP_USER_AGENT} ^GetRight [OR]
+#    RewriteCond %{HTTP_USER_AGENT} ^GetWeb! [OR]
+#    RewriteCond %{HTTP_USER_AGENT} ^Go!Zilla [OR]
+#    RewriteCond %{HTTP_USER_AGENT} ^Go-Ahead-Got-It [OR]
+#    RewriteCond %{HTTP_USER_AGENT} ^GrabNet [OR]
+#    RewriteCond %{HTTP_USER_AGENT} ^Grafula [OR]
+#    RewriteCond %{HTTP_USER_AGENT} ^HMView [OR]
+#    RewriteCond %{HTTP_USER_AGENT} HTTrack [NC,OR]
+#    RewriteCond %{HTTP_USER_AGENT} ^Image\ Stripper [OR]
+#    RewriteCond %{HTTP_USER_AGENT} ^Image\ Sucker [OR]
+#    RewriteCond %{HTTP_USER_AGENT} Indy\ Library [NC,OR]
+#    RewriteCond %{HTTP_USER_AGENT} ^InterGET [OR]
+
 </IfModule>

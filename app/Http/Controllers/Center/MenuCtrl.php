@@ -3,7 +3,6 @@
 use Acordes\Http\Requests;
 use Acordes\Http\Controllers\Controller;
 use Acordes\Menus;
-use Acordes\Opciones;
 
 use RocketCandy\Exceptions\ValidationException;
 use RocketCandy\Services\Validation\menu as validador;
@@ -139,6 +138,25 @@ class MenuCtrl extends Controller {
 
         return \Redirect::route('adminPromociones')
             ->with('alerta','La promocion ha sido eliminada con exito!');
+
+    }
+
+    public function botellas(){
+
+        $menu = Menus::With(['opciones' => function($query)
+        {
+            $query->where('menu', '=', 6);
+
+        }])->where('nombre','=','Botellas')->get();
+
+        $menu = $menu[0];
+
+//        dd($menu);
+
+        $view =  \View::make('Center.reportes.menu', compact('menu'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('menu');
 
     }
 

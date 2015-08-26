@@ -51,12 +51,11 @@
                         <td><img src = "{{asset('img/'.$registro->foto)}}" width="70" height="70" alt = "{{$registro->foto}}" /></td>
                         <td>
                             <div class="btn-group-sm">
-                                <a href = "{{url('empleados/'.$registro->id.'/ver')}}" class="btn btn-primary"><i class="glyphicon glyphicon-list"></i></a >
                                 <a href = "{{url('empleados/'.$registro->id.'/editar')}}" class="btn btn-warning"><i class="fa fa-edit"></i></a >
                                 <a href = "{{url('empleados/'.$registro->id.'/eliminar')}}" onclick="return confirm('Esta seguro que desea eliminar este dato')" class="btn btn-danger"><i class="fa fa-trash"></i></a >
                             </div>
                             <br />
-                            <small class="text-info"><i>Ultima actualización:</i> {{$registro->updated_at}}</small>
+                            <small class="text-info"><i>Ultima actualizacion:</i> {{$registro->updated_at}}</small>
                         </td>
                     </tr>
                 @endforeach

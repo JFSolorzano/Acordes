@@ -2,6 +2,18 @@
     'use strict';
 
     /*-----------------------------------------
+     add dropdown
+     ------------------------------------------*/
+    $(document).on('click','button[id^=mas-platillos] ',function(){
+        var parentDiv = $(this).closest("div[id^=platillos]");
+
+        $.ajax('hello world').done(function(html) {
+            parentDiv.after(html);
+        });
+
+    });
+
+    /*-----------------------------------------
      BACKGROUND PARALLAX INIT
      ------------------------------------------*/
     if ($('.parallax').length) {
@@ -126,7 +138,8 @@
                 easing: 'cubic-bezier(0.645, 0.045, 0.355, 1)'
             }
         });
-    };
+    }
+    ;
     /*-----------------------------------------
      POPUP INIT
      ------------------------------------------*/
@@ -489,38 +502,39 @@
      ------------------------------------------*/
     $(".elipsis").dotdotdot({
         /*	The text to add as ellipsis. */
-        ellipsis	: '... ',
+        ellipsis: '... ',
 
         /*	How to cut off the text/html: 'word'/'letter'/'children' */
-        wrap		: 'word',
+        wrap: 'word',
 
         /*	Wrap-option fallback to 'letter' for long words */
         fallbackToLetter: true,
 
         /*	jQuery-selector for the element to keep and put after the ellipsis. */
-        after		: null,
+        after: null,
 
         /*	Whether to update the ellipsis: true/'window' */
-        watch		: false,
+        watch: false,
 
         /*	Optionally set a max-height, if null, the height will be measured. */
-        height		: 100,
+        height: 100,
 
         /*	Deviation for the height-option. */
-        tolerance	: 0,
+        tolerance: 0,
 
         /*	Callback function that is fired after the ellipsis is added,
          receives two parameters: isTruncated(boolean), orgContent(string). */
-        callback	: function( isTruncated, orgContent ) {},
+        callback: function (isTruncated, orgContent) {
+        },
 
-        lastCharacter	: {
+        lastCharacter: {
 
             /*	Remove these characters from the end of the truncated text. */
-            remove		: [ ' ', ',', ';', '.', '!', '?' ],
+            remove: [' ', ',', ';', '.', '!', '?'],
 
             /*	Don't add an ellipsis if this array contains
              the last character of the truncated text. */
-            noEllipsis	: []
+            noEllipsis: []
         }
     });
 

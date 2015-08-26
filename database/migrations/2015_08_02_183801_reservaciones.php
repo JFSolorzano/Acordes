@@ -23,7 +23,7 @@ class Reservaciones extends Migration {
             $table->text('mensaje');
             $table->decimal('costoEstimado',7,2);
             $table->dateTime('inicio');
-            $table->dateTime('fin');
+            $table->time('duracion');
 			$table->timestamps();
 
             $table->foreign('cliente')

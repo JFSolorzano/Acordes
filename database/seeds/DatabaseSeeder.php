@@ -210,6 +210,24 @@ class RegistrosIniciales extends Seeder {
         $bartender->attachPermission($promo);
 
 //----------------------------------------REGISTROS INICIALES
+
+        //Promociones
+        $promocion1 = Promociones::create([
+            'nombre' => 'Pilsener al 2x1',
+            'descripcion' => 'Todas las cervezas pilsener de todo tamano estaran en promocion al dos por el precio de una',
+            'imagen' => 'pilsener2x1.jpg',
+            'inicio' => '31-08-2014',
+            'fin' => '31-09-2014'
+        ]);
+
+        $promocion1 = Promociones::create([
+            'nombre' => 'All u can eat & Drink',
+            'descripcion' => 'Por 50 dolares tienes puedes disfrutar de todo lo que quieras comer y beber!',
+            'imagen' => 'eatdrink.jpg',
+            'inicio' => '31-08-2014',
+            'fin' => '31-09-2014'
+        ]);
+
         //Datos
         $valores = Datos::create( [
             'nombre' => 'Valores' ,

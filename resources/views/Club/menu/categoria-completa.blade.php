@@ -8,7 +8,7 @@
         <!-- /col-md-8 -->
         @unless($menu->opciones->isEmpty())
 
-            @foreach($menu->opciones->chunk(ceil($menu->opciones->count() / 1))  as $chunk)
+            @foreach($menu->opciones->chunk(ceil($menu->opciones->count() / 2))  as $chunk)
                 <div class = "col-md-6" >
                     @foreach($chunk as $opcion)
                         @include('Club.menu.opcion',[

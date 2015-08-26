@@ -176,7 +176,11 @@ Route::group(array('domain' => 'www.restauranteacordes.com', 'namespace' => 'Clu
 |--------------------------------------------------------------------------
 |
 */
-Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Center', 'middleware' => 'xss'), function () {
+Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Center'), function () {
+
+    //------------------------------------------REPORTES
+
+    Route::get('botellas-report', ['uses' =>'MenuCtrl@botellas', 'as' => 'BotellasReport']);
 
     //------------------------------------------AUTENTICACION
 
@@ -230,10 +234,6 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
             'as' => 'adminEmpresaEditar',
             'uses' => 'EmpresaCtrl@editar'
         ]);
-        Route::get('/empresa/{id}/ver', [
-            'as' => 'adminEmpresaVer',
-            'uses' => 'EmpresaCtrl@ver'
-        ]);
 
         Route::post('/empresa/{id}/actualizar', [
             'as' => 'adminEmpresaActualizar',
@@ -259,11 +259,6 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
         Route::get('/empleados/{id}/editar', [
             'as' => 'adminEmpleadosEditar',
             'uses' => 'EmpleadosCtrl@editar'
-        ]);
-
-        Route::get('/empleados/{id}/ver', [
-            'as' => 'adminEmpleadosVer',
-            'uses' => 'EmpleadosCtrl@ver'
         ]);
 
         Route::post('/empleados/{id}/actualizar', 'EmpleadosCtrl@actualizar');
@@ -374,28 +369,42 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
 //================================================MENU
 
         //Restaurante
-        Route::get('/menu/{tipo}', [
+        Route::get('/menu', [
             'as' => 'adminMenu',
-            'uses' => 'MenuCtrl@inicioMenu',
-            //'middleware' => 'restaurante'
+            'uses' => 'MenuCtrl@inicio'
         ]);
 
-        Route::get('/menu/{tipo}/nuevo-registro', [
-            'as' => 'adminMenusNuevo',
-            'uses' => 'MenuCtrl@nuevaOpcion',
-            //'middleware' => 'restaurante'
+        //Comidas
+        Route::get('/menu/comidas', [
+            'as' => 'adminMenuComidas',
+            'uses' => 'MenuCtrl@inicioComidas'
         ]);
 
-        Route::post('/menu-restaurante/nuevo-registro', 'MenuCtrl@crearOpcion');
-
-        Route::get('/menu/{tipo}/{id}/editar', [
-            'as' => 'adminMenusEditar',
-            'uses' => 'MenuCtrl@editarOpcion'
+        Route::get('/menu/comidas/para-picar', [
+            'as' => 'adminMenuComidasParaPicar',
+            'uses' => 'MenuCtrl@inicioParaPicar'
         ]);
 
-        Route::post('/menu/{tipo}/{id}/actualizar', 'MenuCtrl@actualizarOpcion');
+        Route::get('/menu/comidas/para-picar/{slug}', [
+            'as' => 'adminMenuComidasParaPicarOpcion',
+            'uses' => 'MenuCtrl@opcionParaPicar'
+        ]);
 
-        Route::get('/menu/{tipo}/{id}/eliminar', 'MenuCtrl@eliminarOpcion');
+        Route::get('/menu/comidas/platos-fuertes', [
+            'as' => 'adminMenuComidasPlatosFuertes',
+            'uses' => 'MenuCtrl@inicioPlatosFuertes'
+        ]);
+
+        //Bebidas
+        Route::get('/menu/bebidas', [
+            'as' => 'adminMenuBebidas',
+            'uses' => 'MenuCtrl@inicioBebidas'
+        ]);
+
+        Route::get('/menu/bebidas/sin-alcohol', [
+            'as' => 'adminMenuBebidasSinAlcohol',
+            'uses' => 'MenuCtrl@inicioSinAlcohol'
+        ]);
 
 //================================================SUCURSALES
 
@@ -455,36 +464,4 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
     });
 
 });
-
-//===================================================AUTENTICACION
-
-//Route::controllers([
-//    'auth' => 'Auth\AuthController',
-//    'password' => 'Auth\PasswordController',
-//]);
-//
-//Route::get( '/registrar' , [
-//    'as' => 'registrar' ,
-//    'uses' => 'Auth\AuthController@getRegister'
-//] );
-//
-//Route::post( '/registrar' , [
-//    'as' => 'post.registrar' ,
-//    'uses' => 'Auth\AuthController@postRegister'
-//] );
-//
-//Route::get( '/ingresar' , [
-//    'as' => 'ingresar' ,
-//    'uses' => 'Auth\AuthController@getLogin'
-//] );
-//
-//Route::post( '/ingresar' , [
-//    'as' => 'post.ingresar' ,
-//    'uses' => 'Auth\AuthController@postLogin'
-//] );
-//
-//Route::get( '/salir' , [
-//    'as' => 'salir' ,
-//    'uses' => 'Auth\AuthController@getLogout'
-//] );
 

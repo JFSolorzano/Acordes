@@ -80,7 +80,7 @@ return [
 	|
 	*/
 
-	'username' => 'jsolorzano.personal@gmail.com',
+	'username' => 'soporte.restauranteacordes@gmail.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
 	|
 	*/
 
-	'password' => 'Proto7Konstant9',
+	'password' => 'Expo2015',
 
 	/*
 	|--------------------------------------------------------------------------

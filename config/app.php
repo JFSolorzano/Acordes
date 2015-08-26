@@ -143,6 +143,8 @@ return [
 		'Laravel\Socialite\SocialiteServiceProvider',
         'Greggilbert\Recaptcha\RecaptchaServiceProvider',
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
+        'Nitmedia\Wkhtml2pdf\L5Wkhtml2pdfServiceProvider',
+		'Barryvdh\DomPDF\ServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -206,7 +208,8 @@ return [
         'Html' => 'Collective\Html\HtmlFacade',
         'Hashids' => 'Vinkla\Hashids\Facades\Hashids',
         'Socialize' => 'Laravel\Socialite\Facades\Socialite',
-        'Recaptcha' => 'Greggilbert\Recaptcha\Facades\Recaptcha'
+        'Recaptcha' => 'Greggilbert\Recaptcha\Facades\Recaptcha',
+		'PDF' => 'Barryvdh\DomPDF\Facade',
 
 	],
 
