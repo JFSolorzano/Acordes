@@ -1,19 +1,8 @@
 (function () {
     'use strict';
 
-    /*-----------------------------------------
-     add dropdown
-     ------------------------------------------*/
-    $(document).on('click','button[id^=mas-platillos] ',function(){
-        var parentDiv = $(this).closest("div[id^=platillos]");
 
-        $.ajax('hello world').done(function(html) {
-            parentDiv.after(html);
-        });
-
-    });
-
-    /*-----------------------------------------
+     /*-----------------------------------------
      BACKGROUND PARALLAX INIT
      ------------------------------------------*/
     if ($('.parallax').length) {

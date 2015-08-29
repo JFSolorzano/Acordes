@@ -9,12 +9,10 @@
 
     @include('Club.reservacion.crear.terminos')
 
-    @include('Club.reservacion.crear.formulario',[
+    @include('Club.reservacion.crear.formulario-uno',[
         'platos' => $platos,
         'bebidas' => $bebidas
     ])
-
-    {{--@include('Club.reservacion.crear.video')--}}
 
     @include('Club.contacto.mapa')
 

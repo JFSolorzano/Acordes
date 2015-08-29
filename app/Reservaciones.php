@@ -16,6 +16,6 @@ class Reservaciones extends Model {
      *
      * @var array
      */
-    protected $fillable = ['cliente', 'servicio', 'mensaje', 'telefono', 'inicio', 'fin'];
+    protected $fillable = ['cliente', 'personas', 'precocinado', 'mensaje', 'costoEstimado', 'inicio', 'fin'];
 
 }

@@ -28,7 +28,6 @@
                 <li><a href="{{ route('publicReservacion') }}">Reservacion</a></li>
                 <li><a href="{{ route('publicInformacionEmpresarial') }}">Informacion Empresarial</a></li>
                 <li><a href="{{ route('publicPreguntas') }}">Preguntas Frecuentes</a></li>
-                <li><a href="{{ route('publicPreguntas') }}">Preguntas Frecuentes</a></li>
             </ul>
         </nav>
         <nav class="main-nav">

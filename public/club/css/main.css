@@ -85,6 +85,26 @@ textarea {
 }
 
 /* ==========================================================================
+   comidas carousel
+   ========================================================================== */
+
+#comidas .item,
+#bebidas .item {
+    display: block;
+    cursor: default;
+    margin: 3px;
+}
+#comidas .item:hover,
+#bebidas .item:hover{
+    background: rgba(242, 130, 13, 0.27);
+}
+
+.selected-option {
+
+    border:4px solid #fe6700;
+}
+
+   /* ==========================================================================
    Browse Happy prompt
    ========================================================================== */
 

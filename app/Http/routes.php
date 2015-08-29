@@ -121,19 +121,25 @@ Route::group(array('domain' => 'www.restauranteacordes.com', 'namespace' => 'Clu
         'uses' => 'ReservacionCtrl@inicio'
     ]);
 
-    Route::get('/reservacion/ingresar', [
-        'as' => 'publicReservacionIngresar',
-        'uses' => 'ReservacionCtrl@ingresar'
-    ]);
-
     Route::get('/mis-reservaciones', [
         'as' => 'publicMisReservacion',
         'uses' => 'ReservacionCtrl@misReservaciones'
     ]);
 
-    Route::get('/nueva-reservacion', [
-        'as' => 'publicReservacionCrear',
-        'uses' => 'ReservacionCtrl@crear'
+    //Formulario
+    Route::get('/reservacion/paso-uno', [
+        'as' => 'publicReservacionPasoUno',
+        'uses' => 'ReservacionCtrl@pasouno'
+    ]);
+
+    Route::post('/reservacion/paso-dos', [
+        'as' => 'publicReservacionPasoDos',
+        'uses' => 'ReservacionCtrl@pasodos'
+    ]);
+
+    Route::post('/reservacion/paso-dos/enviar', [
+        'as' => 'publicPostReservacionPasoDos',
+        'uses' => 'ReservacionCtrl@pasodosPost'
     ]);
 
     Route::post('/nueva-reservacion', 'ReservacionCtrl@insertar');
@@ -151,6 +157,20 @@ Route::group(array('domain' => 'www.restauranteacordes.com', 'namespace' => 'Clu
     Route::post('/mis-reservaciones/{id}/modificar', 'ReservacionCtrl@actualizar');
 
     Route::get('/mis-reservaciones/{id}/eliminar', 'ReservacionCtrl@eliminar');
+
+    //---------------------------------------------------SERVICIOS
+
+    Route::get('/solicitar-servicio',[
+        'as' => 'publicSolicitarServicio',
+        'uses' => 'ServiciosCtrl@solicitud',
+        'middleware' => 'auth'
+    ]);
+
+    Route::post('/solicitar-servicio',[
+        'as' => 'publicPostSolicitarServicio',
+        'uses' => 'ServiciosCtrl@solicitar',
+        'middleware' => 'auth'
+    ]);
 
     //---------------------------------------------------PREGUNTAS
 

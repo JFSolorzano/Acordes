@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration {
             $table->string('email')->unique();
             $table->string('password', 60)->nullable();
             $table->string('avatar')->nullable();
+            $table->string('feedback')->nullable();
             $table->integer('facebook_id')->unique()->nullable();
             $table->tinyInteger('type')->unsigned();
             $table->dateTime('lastLogin');
@@ -28,7 +29,6 @@ class CreateUsersTable extends Migration {
             $table->rememberToken();
             $table->timestamps();
 		});
-        DB::statement('ALTER TABLE users ADD location POINT');
 	}
 	/**
 	 * Reverse the migrations.

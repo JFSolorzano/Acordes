@@ -10,11 +10,12 @@
         <meta name="description" content="Food And Restaurant HTML Template">
         <meta name="viewport" content="width=device-width, initial-scale=1">        
         <meta name="theme-color" content="#23292c"> <!-- Android 5.0 Tab Color -->
+        <meta name="_token" content="{!! csrf_token() !!}"/>
         <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
 
         <!-- Web Fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700,300,400' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+        {{--<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700,300,400' rel='stylesheet' type='text/css'>--}}
+        {{--<link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>--}}
 
         <!-- Icon Fonts -->
         <link rel="stylesheet" type="text/css" href="{{ asset('club/css/font-awesome.min.css') }}">
@@ -24,6 +25,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('club/css/rev-slider-settings.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('club/css/animate.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('club/css/owl.carousel.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('club/css/owl.theme.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('club/css/magnific-popup.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('club/css/mediaelementplayer.css') }}">
 
@@ -37,7 +39,7 @@
 
         <!-- Head JS Libraries -->
         <script src="{{ asset('club/js/vendor/modernizr-2.6.2.min.js') }}"></script>
-        <script src="http://maps.google.com/maps/api/js"></script><!-- REQUIRED FOR GOOGLE MAP -->
+        {{--<script src="http://maps.google.com/maps/api/js"></script><!-- REQUIRED FOR GOOGLE MAP -->--}}
     </head>
     <body>
     <script>
@@ -77,13 +79,15 @@
         <script src="{{ asset('club/js/jquery.stellar.min.js') }}"></script>
         <script src="{{ asset('club/js/jquery.nicescroll.min.js') }}"></script>
         <script src="{{ asset('club/js/jquery.nav.js') }}"></script>
-        <script src="{{ asset('club/js/cd-google-map.js') }}"></script>
+        {{--<script src="{{ asset('club/js/cd-google-map.js') }}"></script>--}}
         <script src="{{ asset('club/js/wow.min.js') }}"></script>
         <script src="{{ asset('club/js/mediaelement-and-player.min.js') }}"></script>
         <script src="{{ asset('club/js/tweetie.min.js') }}"></script>
         <script src="{{ asset('club/js/jquery.scrollme.min.js') }}"></script>
         <script src="{{ asset('club/js/jquery.dotdotdot.min.js') }}"></script>
         <script src="{{ asset('club/js/plugins.js') }}"></script>
+
+        <script src="{{ asset('club/js/ajax.js') }}"></script>
         <script src="{{ asset('club/js/main.js') }}"></script>
         <script type="text/javascript">
             jQuery(document).ready(function() {
@@ -99,7 +103,9 @@
                     parallaxLevels:[100,-80]
                 });
             });
+
         </script>
 
     </body>
 </html>
+
