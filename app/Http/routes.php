@@ -204,6 +204,12 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
     Route::get('sin_alcohol-report', ['uses' =>'MenuCtrl@bebidas_sin_alc', 'as' => 'BebidasSinAlcReport']);
     Route::get('cervezas-report', ['uses' =>'MenuCtrl@cervezas', 'as' => 'CervezasReport']);
     Route::get('con_alcohol-report', ['uses' =>'MenuCtrl@bebidas_con_alc', 'as' => 'BebidasConAlcReport']);
+    Route::get('calientes-report', ['uses' =>'MenuCtrl@bebidas_calientes', 'as' => 'CalientesReport']);
+    Route::get('especiales-report', ['uses' =>'MenuCtrl@bebidas_especiales', 'as' => 'EspecialesReport']);
+    Route::get('picar-report', ['uses' =>'MenuCtrl@picar', 'as' => 'PicarReport']);
+    Route::get('fuertes-report', ['uses' =>'MenuCtrl@platos_fuertes', 'as' => 'FuertesReport']);
+    Route::get('bocas-report', ['uses' =>'MenuCtrl@bocas', 'as' => 'BocasReport']);
+    Route::get('paninis-report', ['uses' =>'MenuCtrl@paninis', 'as' => 'PaninisReport']);
     //------------------------------------------AUTENTICACION
 
     Route::controllers([

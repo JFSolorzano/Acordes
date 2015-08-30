@@ -214,6 +214,107 @@ class MenuCtrl extends Controller {
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('menu');
+    }
+    public function bebidas_calientes(){
 
+        $menu = Menus::With(['opciones' => function($query)
+        {
+            $query->where('menu', '=', 4);
+
+        }])->where('nombre','=','Bebidas Calientes')->get();
+
+        $menu = $menu[0];
+
+//        dd($menu);
+
+        $view =  \View::make('Center.reportes.calientes', compact('menu'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('menu');
+    }
+    public function bebidas_especiales(){
+
+        $menu = Menus::With(['opciones' => function($query)
+        {
+            $query->where('menu', '=', 5);
+
+        }])->where('nombre','=','Bebidas Especiales')->get();
+
+        $menu = $menu[0];
+
+//        dd($menu);
+
+        $view =  \View::make('Center.reportes.especiales', compact('menu'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('menu');
+    }
+    public function picar(){
+
+        $menu = Menus::With(['opciones' => function($query)
+        {
+            $query->where('menu', '=', 7);
+
+        }])->where('nombre','=','Para Picar')->get();
+
+        $menu = $menu[0];
+
+//        dd($menu);
+
+        $view =  \View::make('Center.reportes.picar', compact('menu'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('menu');
+    }
+    public function platos_fuertes(){
+
+        $menu = Menus::With(['opciones' => function($query)
+        {
+            $query->where('menu', '=', 8);
+
+        }])->where('nombre','=','Platos Fuertes')->get();
+
+        $menu = $menu[0];
+
+//        dd($menu);
+
+        $view =  \View::make('Center.reportes.fuertes', compact('menu'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('menu');
+    }
+    public function bocas(){
+
+        $menu = Menus::With(['opciones' => function($query)
+        {
+            $query->where('menu', '=', 9);
+
+        }])->where('nombre','=','Bocas')->get();
+
+        $menu = $menu[0];
+
+//        dd($menu);
+
+        $view =  \View::make('Center.reportes.bocas', compact('menu'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('menu');
+    }
+    public function paninis(){
+
+        $menu = Menus::With(['opciones' => function($query)
+        {
+            $query->where('menu', '=', 10);
+
+        }])->where('nombre','=','Paninis')->get();
+
+        $menu = $menu[0];
+
+//        dd($menu);
+
+        $view =  \View::make('Center.reportes.paninis', compact('menu'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('menu');
     }
 }
