@@ -44,7 +44,7 @@
                         <!-- /overlay-details -->
                         <div class = "buttons-container" >
                             <a href = "{{ route('publicMenuOpcion', ['slug' => $item['slug']]) }}" class = "button-link" ></a >
-                            <a href = "{{ asset('club/img/gallery/gallery1.jpg') }}"
+                            <a href = "{{ asset('img/menus/'.$item['imagen']) }}" alt = "{{ $item['nombre'] }}"
                                class = "button-zoom popup-trigger" ></a >
                         </div >
                         <!-- /buttons-container -->

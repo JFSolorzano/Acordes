@@ -14,7 +14,7 @@
                     <label for = "comidas" >Seleccione los platillos que desea reservar</label >
                     <br ><br ><br >
 
-                    <div id = "comidas" class = "owl-carousel owl-theme" >
+                    <div id = "comidas" class = "owl-carousel owl-theme " >
 
                         @foreach($platos as $plato)
                             <a class = "item opcion comida" >

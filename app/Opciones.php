@@ -24,7 +24,7 @@ class Opciones extends Model implements SluggableInterface{
      *
      * @var array
      */
-    protected $fillable = ['nombre', 'extra', 'descripcion', 'costo', 'imagen', 'menu', 'slug'];
+    protected $fillable = ['nombre', 'extra', 'descripcion', 'costo', 'imagen', 'menu'];
 
     public function menu()
     {

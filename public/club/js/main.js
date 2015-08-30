@@ -33,6 +33,17 @@
         ]
     });
 
+    month.setDate(month.getDate() + 90);
+    jQuery('#datetimepicker-ser').datetimepicker({
+        inline: true,
+        lang: 'es',
+        format:'DD.MM.YYYY h:mm a',
+        formatTime:'h:mm a',
+        formatDate:'DD.MM.YYYY',
+        minDate: now,
+        maxDate: month
+    });
+
      /*-----------------------------------------
      BACKGROUND PARALLAX INIT
      ------------------------------------------*/

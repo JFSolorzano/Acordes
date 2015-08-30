@@ -926,7 +926,7 @@ class RegistrosIniciales extends Seeder {
         $banqueteria = Servicios::create( [
             'nombre' => 'Banqueteria' ,
             'descripcion' => 'Ofrecemos el servicio banqueteria para todos aquellos eventos donde necesites personal para servir comida, cocineros...',
-            'imagen' => 'banqueteria.png',
+            'imagen' => 'banqueteria.jpg',
             'estado' => 1
         ] );
 

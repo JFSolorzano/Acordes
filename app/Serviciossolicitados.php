@@ -2,20 +2,19 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Reservaciones extends Model {
+class Serviciossolicitados extends Model {
 
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'reservaciones';
+    protected $table = 'serviciossolicitados';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['cliente', 'personas', 'precocinado', 'mensaje', 'costoEstimado', 'inicio', 'fin'];
-
+    protected $fillable = ['servicio', 'solicitud'];
 }

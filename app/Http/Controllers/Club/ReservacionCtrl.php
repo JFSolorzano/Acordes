@@ -100,13 +100,14 @@ class ReservacionCtrl extends Controller
 
             $registro = new Reservaciones;
 
-//            dd($request->all());
+            $fecha = date_create_from_format('j.m.Y h:i a',$request->get('fecha'));
+            $fecha = $fecha->format('Y-m-j H:i:s');
 
             $registro->cliente = Auth::user()->id;
             $registro->personas = $request->get('personas');
             $registro->mensaje = $request->get('mensaje');
             $registro->precocinado = $request->get('precocinado');
-            $registro->inicio = $request->get('fecha');
+            $registro->inicio = $fecha;
             $registro->duracion = $durara;
             $registro->save();
 
@@ -120,9 +121,9 @@ class ReservacionCtrl extends Controller
                 $or->save();
             }
 
-            dd('Exito!');
-            return \Redirect::route('publicInicio')
-                ->with('alerta', 'La pregunta ha sido agregada con exito!');
+            dd('yeh');
+            return \Redirect::route('publicCuenta')
+                ->with('alerta', 'Tu reservacion!');
 
         } catch (ValidationException $e) {
 

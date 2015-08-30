@@ -1,86 +1,58 @@
 <section class = "reservation" >
     <div class = "container" >
         <div class = "row" >
-            <div class = "col-md-6 wow fadeInLeft" >
-                <header class = "section-title" >
-                    <h2 ><span >Formulario</span > de Solicitud</h2 >
+            <div class = "col-md-12 wow fadeInLeft" >
+                <header class = " section-title" >
+                    <h2 ><span >Formulario</span > online</h2 >
                 </header >
-                {!! Form::open(['url'=>'solicitar-servicio','autocomplete'=>'on']) !!}
-                <fieldset >
-                    <div class = "input-container  col-md-12" >
-                        <div class = "form-group" >
-                            {!! Form::label('fechareservacion', 'Fecha ',['for' => 'fechaInicio']) !!}
-                            {!! Form::date('fechaInicio',\Carbon\Carbon::now(), array('class'=>'text-center')) !!}
-                            <?php echo Form::select('horaInicio', $horas, null) ?>
-                            {!! Form::label('PM', 'PM',['style' => 'display: inline-block']) !!}
-                        </div >
-                    </div >
-                    <div class = "input-container col-md-12" >
-                        {!! Form::label('numPersonas', 'Numero De Personas ',['for' => 'personas']) !!}
-                        <?php echo Form::selectRange('personas', 1, 50); ?>
-                    </div >
-                    <div id="platillos" class = "input-container col-md-12" >
-                        {!! Form::label('numPlatillos', 'Platillos',['for' => 'plato','style' => 'width: 100%']) !!}
-                        <?php echo Form::select('plato', $platos, null); ?>
-                    </div >
-                    <button id="mas-platillos">MAS</button>
-                    <div class = "input-container col-md-12" >
-                        {!! Form::label('numBebidas', 'Bebidas',['for' => 'bebida','style' => 'width: 100%']) !!}
-                        <?php echo Form::select('bebida', $bebidas, null); ?>
-                    </div >
-                    <div class = "input-container col-md-12" >
-                        {!! Form::textarea('detalles', null, ['size' => '30x5', 'placeholder'=>'Mensaje', 'rows'=>'5']) !!}
-                    </div >
-                    <!-- /input-container -->
-                    <div class = "input-container col-md-12" >
-                        {!! Form::text('telefono', null, ['placeholder'=>'Telefono']) !!}
-                    </div >
-                    <!-- /input-container -->
-                    <div class = "input-container col-md-12 " >
-                        <button type = "submit" class = "custom-button button-style1 text-center" ><i ></i >Enviar
-                        </button >
-                    </div >
-                    <!-- /input-container -->
-                </fieldset >
-                {!! Form::close() !!}
+                <br ><br >
+                {!! Form::open(array('route'=>'publicPostSolicitarServicio','method'=>'POST', 'id'=>'reservar')) !!}
 
-
-            </div >
-            <!-- /col-md-6 -->
-            <div class = "col-md-6 wow fadeInRight" >
-                <div class = "reservation-by-phone" >
-                    <header class = "section-title" >
-                        <h2 ><span >Por</span > Telefono</h2 >
+                <div class = "servicios col-md-7" >
+                    <header class = " section-title" >
+                        <h3 ><span >Servicios</span ></h3 >
                     </header >
-                    <div class = "contact-info" >
-                        {{--<figure><img src="img/template-assets/icon-phone.png" alt="Marine Food Calling Info"></figure>--}}
-                        <div class = "info-container" >
-                            <h3 class = "phone-number" >(503) <span >7923 8323</span ></h3 >
-
-                            <p class = "call-time" >entre las 10am-6pm, Lues a Viernes.</p >
+                    @foreach($servicios as $servicio)
+                        <div class = "thumb text-center col-md-4" >
+                            <label for = "{{ $servicio->id }}" ><img class = "img"
+                                                                     src = "{{ asset('img/servicios/'.$servicio->imagen) }}" /></label >
+                            <span >{{ $servicio->nombre }}</span >
+                            <input type = "checkbox" class = "chk " checked = "checked" id = "{{ $servicio->id }}"
+                                   name = "servicios[]"
+                                   value = "{{ $servicio->id }}" />
                         </div >
-                        <!-- /info-container -->
-                    </div >
-                    <!-- /call-info -->
-                    <address class = "contact-info" >
-                        {{--<figure><img src="img/template-assets/icon-map-pin.png" alt="Marine Food Calling Info"></figure>--}}
-                        <div class = "info-container" >
-                            <p >Acordes.</p >
+                    @endforeach
 
-                            <p >Primera calle oriente y primera avenida norte </p >
-
-                            <p >Frente a Plaza de la Cultura</p >
-
-                            <p >Paseo El Carmen, Santa Tecla</p >
-                        </div >
-                        <!-- /info-container -->
-                    </address >
                 </div >
-                <!-- /reservation-by-phone -->
+                <div class = "col-md-5 text-center" >
+                    <header class = " section-title" >
+                        <h3 ><span >Fecha</span ></h3 >
+                    </header >
+                    <input id = "datetimepicker-ser" name = "fecha" type = "text">
+                </div >
+
+                <div class = "col-md-12" >
+                    <br ><br ><br >
+                    <header class = "section-title" >
+                        <h3 ><span >Mensaje</span ></h3 >
+                    </header >
+                    {!! Form::textarea('mensaje',null,['size' => '150x20', 'placeholder' => 'Escribe aqui tu mensaje...']) !!}
+                </div >
+
+                <div class = "col-md-12 text-center" >
+                    <div class = "col-md-8 col-md-offset-5" >
+                        {!! Form::submit('Enviar', ['id'=>'enviar']) !!}
+                    </div >
+                </div >
+                {!! Form::close() !!}
+                <br ><br ><br >
+                <!-- /input-container -->
             </div >
-            <!-- /col-md-6 -->
         </div >
-        <!-- /row -->
+        <!-- /col-md-6 -->
+    </div >
+    <!-- /row -->
     </div >
     <!-- /container -->
 </section >
+

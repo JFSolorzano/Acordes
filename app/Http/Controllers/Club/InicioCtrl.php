@@ -22,7 +22,7 @@ class InicioCtrl extends Controller {
 
         $opcionesMenu = Opciones::with('menu')->get();
 
-        $promociones = Promociones::all(['nombre','imagen','inicio']);
+        $promociones = Promociones::all(['nombre','imagen','inicio','slug']);
 
         $array = array_merge($opcionesMenu->toArray(), $promociones->toArray());
         shuffle($array);

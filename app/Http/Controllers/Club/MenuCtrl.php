@@ -24,11 +24,7 @@ class MenuCtrl extends Controller {
             ->where('Opciones.slug','=',$slug)
             ->select('Opciones.id', 'Opciones.nombre', 'Opciones.extra', 'Opciones.descripcion', 'Opciones.costo',
                     'Opciones.imagen','Menus.nombre AS menu')
-            ->get();
-
-//        $opcion = Opciones::findBySlug($slug);
-
-        $opcion = array_values($opcion)[0];
+            ->first();
 
         return view('Club.menu.detalle')
             ->with('opcion',$opcion);

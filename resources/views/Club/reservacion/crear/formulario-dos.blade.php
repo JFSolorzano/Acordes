@@ -12,12 +12,12 @@
                     @if($comidas)
                         <div class = "col-md-12" >
                             <header class = " section-title" >
-                                <h2 ><span >Comidas</span ></h2 >
+                                <h3 ><span >Comidas</span ></h3 >
                             </header >
-                            <div class="col-md-8 col-md-offset-2 text-center">
+                            <div class = "col-md-8 col-md-offset-2 text-center" >
                                 <label for = "precocinado" >Tener comida preparada</label >
                                 {!! Form::checkbox('precocinado', 1, ['class' => 'checkbox', 'id' => 'precocinado', 'style' => 'display: inline-block']) !!}
-                            </div>
+                            </div >
                             <br ><br >
                             <??>
                             @foreach($comidas as $comida)
@@ -30,7 +30,7 @@
                                                  alt = "{{ $datos->nombre }}" >
                                         </div >
                                         <div class = "contenido col-md-8 text-center" >
-                                            <div>
+                                            <div >
                                                 <h4 class = "review-author" ><span >{{ $datos->nombre }}</span >
                                                 </h4 >
                                             </div >
@@ -42,9 +42,9 @@
                                             </div >
                                             <!-- /review-text -->
                                         </div >
-                                        <div class="costo">
-                                            <p class="comida-costo hidden">{{ $datos->costo }}</p>
-                                        </div>
+                                        <div class = "costo" >
+                                            <p class = "comida-costo hidden" >{{ $datos->costo }}</p >
+                                        </div >
                                         <!-- /review-contents -->
                                     </div >
                                 @endforeach
@@ -53,77 +53,78 @@
                     @endif
 
                     @if($bebidas)
-                            <div class = "col-md-12" >
-                                <header class = " section-title" >
-                                    <h2 ><span >Bebidas</span ></h2 >
-                                </header >
-                                @foreach($bebidas as $bebida)
-                                    @foreach($bebida as $datos)
-                                        <?php $costo_total += $datos->costo; ?>
-                                            <div class = "bebida-seleccionada col-md-12" >
-                                                <div class = "col-md-4" >
-                                                    <img class = "circular-image"
-                                                         src = "{{ asset('img/menus/'.$datos -> imagen) }}"
-                                                         alt = "{{ $datos->nombre }}" >
-                                                </div >
-                                                <div class = "contenido col-md-8 text-center" >
-                                                    <div>
-                                                        <h4 class = "review-author" ><span >{{ $datos->nombre }}</span >
-                                                        </h4 >
-                                                    </div >
-                                                    <!-- /review-header -->
-                                                    <div class = "cantidad-a-reservar" >
-                                                        {!! Form::number('opciones[]', $datos->id, ['class'=>'hidden']) !!}
-                                                        <label for = "cantidades" ></label >
-                                                        {!! Form::number('cantidades[]',1,['class' => 'precio-bebida']) !!}
-                                                    </div >
-                                                    <!-- /review-text -->
-                                                </div >
-                                                <div class="costo">
-                                                    <p class="bebida-costo hidden">{{ $datos->costo }}</p>
-                                                </div>
-                                                <!-- /review-contents -->
+                        <div class = "col-md-12" >
+                            <header class = " section-title" >
+                                <h3 ><span >Bebidas</span ></h3 >
+                            </header >
+                            @foreach($bebidas as $bebida)
+                                @foreach($bebida as $datos)
+                                    <?php $costo_total += $datos->costo; ?>
+                                    <div class = "bebida-seleccionada col-md-12" >
+                                        <div class = "col-md-4" >
+                                            <img class = "circular-image"
+                                                 src = "{{ asset('img/menus/'.$datos -> imagen) }}"
+                                                 alt = "{{ $datos->nombre }}" >
+                                        </div >
+                                        <div class = "contenido col-md-8 text-center" >
+                                            <div >
+                                                <h4 class = "review-author" ><span >{{ $datos->nombre }}</span >
+                                                </h4 >
                                             </div >
-                                        <br ><br ><br ><br >
-                                    @endforeach
+                                            <!-- /review-header -->
+                                            <div class = "cantidad-a-reservar" >
+                                                {!! Form::number('opciones[]', $datos->id, ['class'=>'hidden']) !!}
+                                                <label for = "cantidades" ></label >
+                                                {!! Form::number('cantidades[]',1,['class' => 'precio-bebida']) !!}
+                                            </div >
+                                            <!-- /review-text -->
+                                        </div >
+                                        <div class = "costo" >
+                                            <p class = "bebida-costo hidden" >{{ $datos->costo }}</p >
+                                        </div >
+                                        <!-- /review-contents -->
+                                    </div >
+                                    <br ><br ><br ><br >
                                 @endforeach
-                            </div >
+                            @endforeach
+                        </div >
                     @endif
                 </div >
-                <div class="col-md-6 text-center">
+                <div class = "col-md-6 text-center" >
                     <header class = "section-title" >
-                        <h2 ><span >Fecha</span ></h2 >
+                        <h3 ><span >Fecha</span ></h3 >
                     </header >
                     <div class = "col-md-8" >
                         <input id = "datetimepicker" name = "fecha" type = "text" >
                     </div >
-                    <div class="col-md-4">
+                    <div class = "col-md-4" >
                         <br ><br ><br ><br >
                         <label for = "duracion" >Duracion</label >
                         {!! Form::select('duracion',$duraciones) !!}
-                    </div>
-                    <div class="col-md-12">
+                    </div >
+                    <div class = "col-md-12" >
                         <br ><br ><br >
                         <header class = "section-title" >
-                            <h2 ><span >Cuenta</span ></h2 >
+                            <h1 ><span >Cuenta</span ></h1 >
                         </header >
                         <br ><br >
-                        <p id="cuenta-total">${{ $costo_total }}</p>
-                    </div>
-                </div>
 
-                <div class="col-md-12">
+                        <p id = "cuenta-total" >${{ $costo_total }}</p >
+                    </div >
+                </div >
+
+                <div class = "col-md-12" >
                     <br ><br ><br >
                     <header class = "section-title" >
-                        <h2 ><span >Mensaje</span ></h2 >
+                        <h3 ><span >Mensaje</span ></h3 >
                     </header >
                     {!! Form::textarea('mensaje',null,['size' => '150x20', 'placeholder' => 'Escribe aqui tu mensaje...']) !!}
-                </div>
-                <div class="col-md-12 text-center">
-                    <div class="col-md-8 col-md-offset-5">
+                </div >
+                <div class = "col-md-12 text-center" >
+                    <div class = "col-md-8 col-md-offset-5" >
                         {!! Form::submit('Enviar', ['id'=>'enviar']) !!}
-                    </div>
-                </div>
+                    </div >
+                </div >
             </div >
         </div >
     </div >

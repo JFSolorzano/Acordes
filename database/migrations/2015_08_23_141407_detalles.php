@@ -54,6 +54,28 @@ class Detalles extends Migration {
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
 		});
+
+
+        Schema::create('serviciossolicitados', function(Blueprint $table)
+        {
+            $table->engine = 'InnoDB';
+
+            $table->integer('solicitud')->unsigned();
+            $table->integer('servicio')->unsigned();
+            $table->timestamps();
+
+            $table->foreign('solicitud')
+                ->references('id')
+                ->on('solicitudes')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreign('servicio')
+                ->references('id')
+                ->on('servicios')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
+        });
 	}
 
 	/**
@@ -65,6 +87,7 @@ class Detalles extends Migration {
 	{
 		Schema::drop('mesasreservadas');
 		Schema::drop('platosreservados');
+		Schema::drop('serviciossolicitados');
 	}
 
 }

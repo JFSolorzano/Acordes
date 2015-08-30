@@ -2,11 +2,19 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
 
-class Promociones extends Model {
+class Promociones extends Model implements SluggableInterface{
 
     use EntrustUserTrait;
 
+    use SluggableTrait;
+
+    protected $sluggable = [
+        'build_from' => 'nombre',
+        'save_to'    => 'slug',
+    ];
     /**
      * The database table used by the model.
      *
