@@ -146,17 +146,35 @@ class MenuCtrl extends Controller {
 
     public function botellas(){
 
+    $menu = Menus::With(['opciones' => function($query)
+    {
+        $query->where('menu', '=', 6);
+
+    }])->where('nombre','=','Botellas')->get();
+
+    $menu = $menu[0];
+
+//        dd($menu);
+
+    $view =  \View::make('Center.reportes.menu', compact('menu'))->render();
+    $pdf = \App::make('dompdf.wrapper');
+    $pdf->loadHTML($view);
+    return $pdf->stream('menu');
+
+}
+    public function bebidas_sin_alc(){
+
         $menu = Menus::With(['opciones' => function($query)
         {
-            $query->where('menu', '=', 6);
+            $query->where('menu', '=', 1);
 
-        }])->where('nombre','=','Botellas')->get();
+        }])->where('nombre','=','Bebidas Sin Alcohol')->get();
 
         $menu = $menu[0];
 
 //        dd($menu);
 
-        $view =  \View::make('Center.reportes.menu', compact('menu'))->render();
+        $view =  \View::make('Center.reportes.sinalcohol', compact('menu'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('menu');
