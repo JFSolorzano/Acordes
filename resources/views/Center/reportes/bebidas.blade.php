@@ -250,19 +250,19 @@
 </header >
 <main >
     <?php $contador = 0 ?>
-    @foreach($menu->chunk(8) as $chunk)
+    @foreach($menu->menus->chunk(8) as $chunk)
         <table border = "0" cellspacing = "0" cellpadding = "0" >
             <thead >
             <tr >
-                <th class = "desc" >NOMBRE Y DESCRIPCIÓN</th >
+                <th class = "desc" >NOMBRE Y DESCRIPCION</th >
             </tr >
             </thead >
             <tbody >
 
-            @foreach($chunk as $comidas)
+            @foreach($chunk as $bebidas)
                 {{--@if($contador < 4 )--}}
                 <tr >
-                    <td class = "desc" ><h3 >{{ $comidas->nombre }}</h3 >{{ $comidas->descripcion }}</td >
+                    <td class = "desc" ><h3 >{{ $bebidas->nombre }}</h3 >{{ $bebidas->descripcion }}</td >
                 </tr >
                 {{--@endif--}}
             @endforeach

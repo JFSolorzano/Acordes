@@ -250,11 +250,11 @@
 </header >
 <main >
     <?php $contador = 0 ?>
-    @foreach($menu->chunk(8) as $chunk)
+    @foreach($menu->menus->chunk(8) as $chunk)
         <table border = "0" cellspacing = "0" cellpadding = "0" >
             <thead >
             <tr >
-                <th class = "desc" >NOMBRE Y DESCRIPCIÓN</th >
+                <th class = "desc" >NOMBRE Y DESCRIPCION</th >
             </tr >
             </thead >
             <tbody >

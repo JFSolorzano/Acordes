@@ -338,14 +338,13 @@ class MenuCtrl extends Controller {
         $menu = Menus::With(['menus' => function($query)
         {
             $query->where('tipo', '=', 0);
-
         }])->get();
 
         $menu = $menu[0];
 
 //        dd($menu);
 
-        $view =  \View::make('Center.reportes.comidas', compact('menu'))->render();
+        $view =  \View::make('Center.reportes.bebidas', compact('menu'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('menu');

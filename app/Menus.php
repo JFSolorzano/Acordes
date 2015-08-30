@@ -24,7 +24,7 @@ class Menus extends Model {
     }
     public function menus()
     {
-        return $this->hasMany('Acordes\Menus','tipo','id');
+        return $this->hasMany('Acordes\Menus','tipo');
     }
 
     public function scopeBuscar($return, $parametros){
