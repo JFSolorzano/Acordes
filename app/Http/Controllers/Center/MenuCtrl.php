@@ -317,4 +317,37 @@ class MenuCtrl extends Controller {
         $pdf->loadHTML($view);
         return $pdf->stream('menu');
     }
+    public function comidas(){
+
+        $menu = Menus::With(['menus' => function($query)
+        {
+            $query->where('tipo', '=', 1);
+        }])->get();
+
+        $menu = $menu[0];
+
+//        dd($menu);
+
+        $view =  \View::make('Center.reportes.comidas', compact('menu'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('menu');
+    }
+    public function bebidas(){
+
+        $menu = Menus::With(['menus' => function($query)
+        {
+            $query->where('tipo', '=', 0);
+
+        }])->get();
+
+        $menu = $menu[0];
+
+//        dd($menu);
+
+        $view =  \View::make('Center.reportes.comidas', compact('menu'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('menu');
+    }
 }

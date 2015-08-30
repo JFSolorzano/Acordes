@@ -22,6 +22,10 @@ class Menus extends Model {
     {
         return $this->hasMany('Acordes\Opciones','menu','id');
     }
+    public function menus()
+    {
+        return $this->hasMany('Acordes\Menus','tipo','id');
+    }
 
     public function scopeBuscar($return, $parametros){
 
