@@ -202,7 +202,8 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
 
     Route::get('botellas-report', ['uses' =>'MenuCtrl@botellas', 'as' => 'BotellasReport']);
     Route::get('sin_alcohol-report', ['uses' =>'MenuCtrl@bebidas_sin_alc', 'as' => 'BebidasSinAlcReport']);
-
+    Route::get('cervezas-report', ['uses' =>'MenuCtrl@cervezas', 'as' => 'CervezasReport']);
+    Route::get('con_alcohol-report', ['uses' =>'MenuCtrl@bebidas_con_alc', 'as' => 'BebidasConAlcReport']);
     //------------------------------------------AUTENTICACION
 
     Route::controllers([

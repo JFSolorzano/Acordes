@@ -180,5 +180,40 @@ class MenuCtrl extends Controller {
         return $pdf->stream('menu');
 
     }
+    public function cervezas(){
 
+        $menu = Menus::With(['opciones' => function($query)
+        {
+            $query->where('menu', '=', 2);
+
+        }])->where('nombre','=','Cervezas')->get();
+
+        $menu = $menu[0];
+
+//        dd($menu);
+
+        $view =  \View::make('Center.reportes.cervezas', compact('menu'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('menu');
+
+    }
+    public function bebidas_con_alc(){
+
+        $menu = Menus::With(['opciones' => function($query)
+        {
+            $query->where('menu', '=', 3);
+
+        }])->where('nombre','=','Bebidas Con Alcohol')->get();
+
+        $menu = $menu[0];
+
+//        dd($menu);
+
+        $view =  \View::make('Center.reportes.conalcohol', compact('menu'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('menu');
+
+    }
 }
