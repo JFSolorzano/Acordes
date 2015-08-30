@@ -56,14 +56,17 @@ class MenuCtrl extends Controller {
 
             $this->_validador->validate( $inputs );
 
-            $registro = new Promociones;
-
-            $registro ->nombre = \Input::get('nombre');
-            $registro ->descripcion = \Input::get('descripcion');
             $foto = BRequest::file('imagen');
             $extension = $foto->getClientOriginalExtension();
-            Storage::disk('image')->put($foto->getFilename().'.'.$extension,  File::get($foto));
-            $registro ->imagen = $foto->getFilename().'.'.$extension;
+            $imagen = \Input::get('nombre').'.'.$extension;
+
+            Storage::disk('image')->put($imagen,  File::get($foto));
+
+
+            $registro = new Promociones;
+            $registro ->nombre = \Input::get('nombre');
+            $registro ->descripcion = \Input::get('descripcion');
+            $registro ->imagen = preg_replace('/\s+/', '', $imagen);
             $registro ->inicio = \Input::get('inicio');
             $registro ->fin = \Input::get('fin');
             $registro ->save();

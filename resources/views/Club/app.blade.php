@@ -10,7 +10,6 @@
         <meta name="description" content="Food And Restaurant HTML Template">
         <meta name="viewport" content="width=device-width, initial-scale=1">        
         <meta name="theme-color" content="#23292c"> <!-- Android 5.0 Tab Color -->
-        <meta name="_token" content="{!! csrf_token() !!}"/>
         <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
 
         <!-- Web Fonts -->
@@ -28,6 +27,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('club/css/owl.theme.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('club/css/magnific-popup.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('club/css/mediaelementplayer.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('club/css/jquery.datetimepicker.css') }}">
 
         <!-- Template CSS -->
         <link rel="stylesheet" type="text/css" href="{{ asset('club/css/bootstrap.min.css') }}">
@@ -85,6 +85,8 @@
         <script src="{{ asset('club/js/tweetie.min.js') }}"></script>
         <script src="{{ asset('club/js/jquery.scrollme.min.js') }}"></script>
         <script src="{{ asset('club/js/jquery.dotdotdot.min.js') }}"></script>
+        <script src="{{ asset('club/js/jquery.datetimepicker.js') }}"></script>
+        <script src="{{ asset('club/js/moment.min.js') }}"></script>
         <script src="{{ asset('club/js/plugins.js') }}"></script>
 
         <script src="{{ asset('club/js/ajax.js') }}"></script>

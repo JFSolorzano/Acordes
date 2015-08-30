@@ -18,6 +18,7 @@ class Detalles extends Migration {
 
 			$table->integer('reservacion')->unsigned();
 			$table->integer('mesa')->unsigned();
+            $table->timestamps();
 
             $table->foreign('reservacion')
                 ->references('id')
@@ -32,12 +33,14 @@ class Detalles extends Migration {
                 ->onDelete('restrict');
 		});
 
-		Schema::create('platosreservados', function(Blueprint $table)
+		Schema::create('opcionesreservadas', function(Blueprint $table)
 		{
 			$table->engine = 'InnoDB';
 
             $table->integer('reservacion')->unsigned();
-            $table->integer('plato')->unsigned();
+            $table->integer('opcion')->unsigned();
+            $table->integer('cantidad')->unsigned();
+            $table->timestamps();
 
             $table->foreign('reservacion')
                 ->references('id')
@@ -45,7 +48,7 @@ class Detalles extends Migration {
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->foreign('plato')
+            $table->foreign('opcion')
                 ->references('id')
                 ->on('Opciones')
                 ->onUpdate('cascade')

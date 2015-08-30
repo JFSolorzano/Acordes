@@ -2,6 +2,37 @@
     'use strict';
 
 
+    //$('#datetimepicker').datetimepicker({
+    //    format:'d.m.Y H:i',
+    //    inline:true
+    //    //lang:'es',
+    //    //minDate: Date.now()
+    //});
+
+    var now = new Date();
+    now.setDate(now.getDate());
+    var month = new Date();
+    month.setDate(month.getDate() + 30);
+
+    jQuery('#datetimepicker').datetimepicker({
+        inline: true,
+        lang: 'es',
+        format:'DD.MM.YYYY h:mm a',
+        formatTime:'h:mm a',
+        formatDate:'DD.MM.YYYY',
+        minDate: now,
+        maxDate: month,
+        allowTimes:[
+            '17:00',
+            '18:00',
+            '19:00',
+            '20:00',
+            '21:00',
+            '22:00',
+            '23:00'
+        ]
+    });
+
      /*-----------------------------------------
      BACKGROUND PARALLAX INIT
      ------------------------------------------*/

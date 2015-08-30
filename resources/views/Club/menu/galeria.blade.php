@@ -33,7 +33,7 @@
             @foreach($galeria as $item)
                 <li class = "overlay-container mix
                 {{ (array_key_exists('menu', $item) ? preg_replace('/\s+/', '', $item['menu']['nombre']) : 'promocion' ) }}" >
-                    <img src = "{{ asset('club/img/gallery/gallery1.jpg') }}" alt = "{{ $item['nombre'] }}" >
+                    <img src = "{{ asset('img/menus/'.$item['imagen']) }}" alt = "{{ $item['nombre'] }}" >
 
                     <div class = "overlay" >
                         <div class = "overlay-details" >

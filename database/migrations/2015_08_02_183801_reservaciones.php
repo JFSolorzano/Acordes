@@ -19,7 +19,7 @@ class Reservaciones extends Migration {
 			$table->increments('id')->unsigned();
 			$table->integer('cliente')->unsigned();
 			$table->integer('personas')->unsigned();
-			$table->tinyInteger('precocinado')->unsigned();
+			$table->tinyInteger('precocinado')->unsigned()->nullable();
             $table->text('mensaje');
             $table->decimal('costoEstimado',7,2);
             $table->dateTime('inicio');

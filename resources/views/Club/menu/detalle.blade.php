@@ -42,7 +42,7 @@
                         <div class="col-md-6 wow fadeInLeft">
                             <div class="item-slideshow">
                                 <div class="main-image">
-                                    <figure><img src="{{ asset('club/img/gallery/gallery24.jpg') }}" alt="{{ $opcion -> nombre }}"></figure>
+                                    <figure><img src="{{ asset('img/menus/'.$opcion->imagen) }}" alt="{{ $opcion -> nombre }}"></figure>
                                 </div><!-- /main-image -->
                             </div><!-- /item-slideshow -->
                         </div><!-- /col-md-6 -->

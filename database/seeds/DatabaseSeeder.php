@@ -340,7 +340,7 @@ class RegistrosIniciales extends Seeder {
             'nombre' => 'Limonada' ,
             'extra' => '' ,
             'descripcion' => 'Vacio',
-            'imagen' => 'limanda.jpg',
+            'imagen' => 'limonada.jpg',
             'costo' => 2,
             'menu' => 1
         ] );

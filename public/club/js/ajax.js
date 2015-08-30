@@ -36,92 +36,47 @@
             var bebidas = $('.clicked.bebida').map(function () {
                 var $this = $(this);
                 var bebida = {};
-                bebida.id = $this.find('p.hidden').text();
+                bebida.id = $this.find('p.hidden.id').text();
+                bebida.imagen = $this.find('p.hidden.imagen').text();
+                bebida.nombre = $this.find('p.hidden.nombre').text();
+                bebida.costo = $this.find('p.hidden.costo').text();
                 return {bebida: bebida};
             }).get();
 
             var comidas = $('.clicked.comida').map(function () {
                 var $this = $(this);
                 var comida = {};
-                comida.id = $this.find('p.hidden').text();
+                comida.id = $this.find('p.hidden.id').text();
+                comida.imagen = $this.find('p.hidden.imagen').text();
+                comida.nombre = $this.find('p.hidden.nombre').text();
+                comida.costo = $this.find('p.hidden.costo').text();
                 return {comida: comida};
             }).get();
 
             var bebidas_json = JSON.stringify(bebidas);
             var comidas_json = JSON.stringify(comidas);
 
-            console.log(bebidas_json, comidas_json)
-
             $('input[name="json_comidas"]').val(comidas_json);
             $('input[name="json_bebidas"]').val(bebidas_json);
 
-            console.log('Valores');
-            console.log($('#json_comidas').val());
+        });
 
+        $(".precio-comida").bind('keyup mouseup', function () {
+            var $this = $(this);
+            var costo_actual = parseFloat($('#cuenta-total').text().replace('$',''));
+            var agregar = parseFloat($this.parents('.comida-seleccionada').find('p.comida-costo').text());
+            var nuevo_costo = costo_actual + agregar;
+            $('#cuenta-total').text('$'+nuevo_costo);
+        });
 
-            //var request = $.ajax({
-            //    url: '/reservacion/paso-uno/enviar',
-            //    method: 'post',
-            //    data: { 'bebidas': bebidas_json, 'comidas': comidas_json, '_token': $('input[name=_token]').val()},
-            //    success: function(data){
-            //        console.log(data);
-            //    }
-            //});
-
-            //var form = $('#reservacion-paso-uno');
-            //var url = form.attr('action').replace(':opciones',bebidas_json);
-            //var data = form.serialize();
-            //
-            //$.post(url,data,function(result){
-            //    alert(result);
-            //});
-
-            //$.ajax({
-            //    method: form.attr('method'),
-            //    url: form.attr('action'),
-            //    data: {nombre: 'JOHN'},
-            //    dataType: "json"
-            //})
-            //    .done(function(data,statusText,xhr){
-            //        if(xhr.status == 301){
-            //            window.location = data;
-            //        }
-            //    })
-            //    .fail(function(data){
-            //        console.log('Fallo');
-            //        console.log(data);
-            //    });
-
+        $(".precio-bebida").bind('keyup mouseup', function () {
+            var $this = $(this);
+            var costo_actual = parseFloat($('#cuenta-total').text().replace('$',''));
+            var agregar = parseFloat($this.parents('.bebida-seleccionada').find('p.bebida-costo').text());
+            var nuevo_costo = costo_actual + agregar;
+            $('#cuenta-total').text('$'+nuevo_costo);
         });
 
     });
-    //
-    //$(document).on('submit','#reservacion-paso-uno',function(e){
-    //
-    //    e.preventDefault();
-    //
-    //    console.log("entrooooo");
-    //
-    //    var form = $(this);
-    //
-    //    console.log(form.attr('action'), form.attr('method'));
-    //
-    //    $.ajax({
-    //        method: form.attr('method'),
-    //        url: form.attr('action'),
-    //        data: {nombre: 'JOHN'},
-    //        dataType: "json"
-    //    })
-    //        .done(function(data,statusText,xhr){
-    //            if(xhr.status == 301){
-    //                window.location = data;
-    //            }
-    //        })
-    //        .fail(function(data){
-    //            console.log('Fallo');
-    //            console.log(data);
-    //        });
-    //
-    //});
 
 }());

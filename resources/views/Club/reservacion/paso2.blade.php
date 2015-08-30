@@ -10,6 +10,8 @@
     @include('Club.reservacion.crear.formulario-dos',[
         'bebidas' => $bebidas,
         'comidas' => $comidas,
+        'personas' => $personas,
+        'duraciones' => $duraciones
     ])
 
 @endsection
