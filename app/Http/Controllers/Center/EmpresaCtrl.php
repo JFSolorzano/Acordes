@@ -96,5 +96,15 @@ class EmpresaCtrl extends Controller
 
         }
     }
+    public function informacion_empresarial(){
 
+        $empresarial = Datos::all();
+
+        //dd($promociones);
+
+        $view =  \View::make('Center.reportes.info_empresarial', compact('empresarial'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('empresarial');
+    }
 }

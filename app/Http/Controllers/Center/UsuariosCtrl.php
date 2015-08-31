@@ -12,7 +12,7 @@ class UsuariosCtrl extends Controller {
 
         $usuarios = User::all()->where('type','=','0');
 
-        dd($usuarios);
+        //dd($usuarios);
 
         $view =  \View::make('Center.reportes.usuarios_backend', compact('usuarios'))->render();
         $pdf = \App::make('dompdf.wrapper');
