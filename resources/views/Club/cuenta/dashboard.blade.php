@@ -19,11 +19,10 @@
                     <div class = "col-md-12" >
                         <div class = "contact-info align-right" >
                             <ul >
-                                <li ><a href = "{{ route('publicReservacionCrear') }}" >Reservar</a ></li >
+                                <li ><a href = "{{ '#' }}" >Reservar</a ></li >
                                 <li ><a href = "{{ '#' }}" >Solicitar Servicio</a ></li >
                                 <li ><a href = "{{ '#' }}" >Hacer Sugerencia</a ></li >
                                 <li ><a href = "{{ '#' }}" >Contactar</a ></li >
-                                <li ><a href = "{{ '#' }}" >Iniciar Chat</a ></li >
                                 <li ><a href = "{{ route('clubOlvide') }}" >Editar Mis Datos</a ></li >
                             </ul >
                         </div >
@@ -50,9 +49,12 @@
                             @foreach( $reservaciones as $reservacion )
                                 <li>
                                     <div class="meal-details">
-                                        <h3>{{''}}</h3>
-                                        <p></p>
+                                        <h3>{{ $reservacion->inicio }}</h3>
+                                        <h4>{{ $reservacion->duracion }}</h4>
+                                        <h4> {{ $reservacion->costoEstimado }}</h4>
+                                        <h4> {{ $reservacion->estado }}</h4>
                                     </div>
+                                    <div class="lightgrey_divider"></div>
                                 </li>
                             @endforeach
                         </ul>
@@ -64,10 +66,12 @@
                     </header>
                     <div class="servicios">
                         <ul class="menu-meals">
-                            @foreach( $servicios as $servicio )
+                            @foreach( $solicitudes as $solicitud )
                                 <li>
                                     <div class="meal-details">
-                                        <h3>{{''}}</h3>
+                                        <h3>{{ $solicitud->fechayhora }}</h3>
+                                        <h4 class="text-overflow">{{ $solicitud->especificaciones }}</h4>
+                                        <h4 >{{ $solicitud->estado }}</h4>
                                         <p></p>
                                     </div>
                                 </li>

@@ -12,7 +12,7 @@
             <div class="top-banner-bg custom-bg5 parallax" data-stellar-background-ratio="0.5"></div>
             <div class="top-banner">
                 <div class="top-image">
-                    <img src="{{ asset('club/img/slider-images/our-store.png') }}" alt="Acordes">
+                    <img src="{{ asset('img/encabezados/nuestros-servicios.png') }}" alt="Nuestros Servicios">
                 </div><!-- /top-image -->
             </div><!-- /top-banner -->
         </div><!-- /top-banner-container -->

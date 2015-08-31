@@ -31,6 +31,11 @@ class Opciones extends Model implements SluggableInterface{
         return $this->belongsTo('Acordes\Menus','menu','id')->select(['id', 'nombre']);
     }
 
+    public function opcionesreservadas()
+    {
+        return $this->hasMany('Acordes\Opcionesreservadas','opcion','id')->select(['id', 'nombre']);
+    }
+
     public function scopeBuscar($return, $parametros){
 
         if(trim($parametros)!="")

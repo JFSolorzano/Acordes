@@ -2,8 +2,9 @@
 
 use Acordes\Http\Controllers\Controller;
 use Acordes\Http\Requests;
-use Acordes\Reservaciones;
+use Acordes\Opciones;
 use Acordes\Opcionesreservadas;
+use Acordes\Reservaciones;
 use Auth;
 use Illuminate\Http\Request;
 use RocketCandy\Services\Validation\reservaciones as validador;
@@ -75,11 +76,17 @@ class ReservacionCtrl extends Controller
             '5 horas'
         ];
 
-        return view('Club.reservacion.paso2')->with(['comidas' => $comidas, 'bebidas' => $bebidas, 'personas' => $personas, 'duraciones' => $duraciones]);
+        return view('Club.reservacion.paso2')->with([
+            'comidas' => $comidas,
+            'bebidas' => $bebidas,
+            'personas' => $personas,
+            'duraciones' => $duraciones
+        ]);
 
     }
 
-    function pasoDosPost(Request $request){
+    function pasoDosPost(Request $request)
+    {
 
         $inputs = \Input::all();
         try {
@@ -88,19 +95,32 @@ class ReservacionCtrl extends Controller
 
             $duracion = \Input::get('duracion');
 
-            switch($duracion){
-                case 0: $durara = '00:30:00'; break;
-                case 1: $durara = '01:00:00'; break;
-                case 2: $durara = '02:00:00'; break;
-                case 3: $durara = '03:00:00'; break;
-                case 4: $durara = '04:00:00'; break;
-                case 5: $durara = '05:00:00'; break;
-                default: $durara = '00:00:00';
+            switch ($duracion) {
+                case 0:
+                    $durara = '00:30:00';
+                    break;
+                case 1:
+                    $durara = '01:00:00';
+                    break;
+                case 2:
+                    $durara = '02:00:00';
+                    break;
+                case 3:
+                    $durara = '03:00:00';
+                    break;
+                case 4:
+                    $durara = '04:00:00';
+                    break;
+                case 5:
+                    $durara = '05:00:00';
+                    break;
+                default:
+                    $durara = '00:00:00';
             }
 
             $registro = new Reservaciones;
 
-            $fecha = date_create_from_format('j.m.Y h:i a',$request->get('fecha'));
+            $fecha = date_create_from_format('j.m.Y h:i a', $request->get('fecha'));
             $fecha = $fecha->format('Y-m-j H:i:s');
 
             $registro->cliente = Auth::user()->id;
@@ -112,8 +132,8 @@ class ReservacionCtrl extends Controller
             $registro->save();
 
 
-            $combinacion = array_combine($request->get('opciones'),$request->get('cantidades'));
-            foreach($combinacion as $op => $cantidad){
+            $combinacion = array_combine($request->get('opciones'), $request->get('cantidades'));
+            foreach ($combinacion as $op => $cantidad) {
                 $or = new Opcionesreservadas;
                 $or->reservacion = $registro->id;
                 $or->opcion = $op;
@@ -121,9 +141,13 @@ class ReservacionCtrl extends Controller
                 $or->save();
             }
 
-            dd('yeh');
-            return \Redirect::route('publicCuenta')
-                ->with('alerta', 'Tu reservacion!');
+            $opciones = Opciones::whereIn('id', $request->get('opciones'))->get(['nombre'])->toArray();
+
+            return view('Club.reservacion.resumen')->with([
+                'datos' => $request->all(),
+                'opciones' => $opciones,
+                'cantidades' => $request->get('cantidades')
+            ]);
 
         } catch (ValidationException $e) {
 

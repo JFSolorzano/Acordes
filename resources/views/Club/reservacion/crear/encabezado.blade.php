@@ -4,11 +4,8 @@
         <div class="top-banner-bg custom-bg8 parallax" data-stellar-background-ratio="0.5"></div>
         <div class="top-banner">
             <div class="top-image">
-                <img src="{{ asset('club/img/slider-images/reservation.png') }}" alt="Reservacion">
+                <img src="{{ asset('img/encabezados/reservaciones.png') }}" alt="Reservaciones">
             </div><!-- /top-image -->
-            <div class="bottom-image">
-                <img src="{{ asset('club/img/slider-images/cooking-since2001.png') }}" alt="Cocinando desde">
-            </div><!-- /bottom-image -->
         </div><!-- /top-banner -->
     </div><!-- /top-banner-container -->
 </header>

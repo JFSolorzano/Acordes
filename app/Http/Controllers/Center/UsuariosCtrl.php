@@ -10,14 +10,9 @@ class UsuariosCtrl extends Controller {
 
     public function usuarios_backend(){
 
-        $usuarios = User::With(['usuarios' => function($query)
-        {
-            $query->where('type', '=', 0);
-        }])->get();
+        $usuarios = User::all()->where('type','=','0');
 
-        $usuarios = $usuarios[0];
-
-//        dd($menu);
+        dd($usuarios);
 
         $view =  \View::make('Center.reportes.usuarios_backend', compact('usuarios'))->render();
         $pdf = \App::make('dompdf.wrapper');
@@ -27,14 +22,7 @@ class UsuariosCtrl extends Controller {
 
     public function usuarios_clientes(){
 
-        $usuarios = User::With(['usuarios' => function($query)
-        {
-            $query->where('type', '=', 1);
-        }])->get();
-
-        $usuarios = $usuarios[0];
-
-//        dd($menu);
+        $usuarios = User::all()->where('type','=','1');
 
         $view =  \View::make('Center.reportes.usuarios_clientes', compact('usuarios'))->render();
         $pdf = \App::make('dompdf.wrapper');

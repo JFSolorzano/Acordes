@@ -142,9 +142,7 @@ class PromocionesCtrl extends Controller {
 
     public function promociones(){
 
-        $promociones = Promociones::all()->toArray();
-
-        $promociones= $promociones[0];
+        $promociones = Promociones::all();
 
         //dd($promociones);
 

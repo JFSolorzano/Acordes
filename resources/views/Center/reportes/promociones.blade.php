@@ -250,7 +250,7 @@
 </header >
 <main >
     <?php $contador = 0 ?>
-    @foreach($promociones->promociones->chunk(8) as $chunk)
+    @foreach($promociones->chunk(8) as $chunk)
         <table border = "0" cellspacing = "0" cellpadding = "0" >
             <thead >
             <tr >

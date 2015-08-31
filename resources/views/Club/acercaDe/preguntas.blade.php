@@ -10,13 +10,9 @@
             <div class = "top-banner-bg custom-bg2 parallax" data-stellar-background-ratio = "0.5" ></div >
             <div class = "top-banner" >
                 <div class = "top-image" >
-                    {{--<img src = "{{ asset('club/img/slider-images/who-we-are.png') }}" alt = "Acordes" >--}}
+                    <img src = "{{ asset('img/encabezados/preguntas-frecuentes.png') }}" alt = "Preguntas Frecuentes" >
                 </div >
                 <!-- /top-image -->
-                <div class = "bottom-image" >
-                    {{--<img src = "{{ asset('club/img/slider-images/cooking-since2001.png') }}" alt = "Acordes" >--}}
-                </div >
-                <!-- /bottom-image -->
             </div >
             <!-- /top-banner -->
         </div >

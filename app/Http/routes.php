@@ -137,12 +137,10 @@ Route::group(array('domain' => 'www.restauranteacordes.com', 'namespace' => 'Clu
         'uses' => 'ReservacionCtrl@pasodos'
     ]);
 
-    Route::post('/reservacion/paso-dos/enviar', [
+    Route::post('/reservacion/resumen', [
         'as' => 'publicPostReservacionPasoDos',
         'uses' => 'ReservacionCtrl@pasodosPost'
     ]);
-
-    Route::post('/nueva-reservacion', 'ReservacionCtrl@insertar');
 
     Route::get('/mis-reservaciones/{id}', [
         'as' => 'publicReservacionDetalle',
