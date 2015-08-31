@@ -198,22 +198,22 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
 
     //------------------------------------------REPORTES
 
-    Route::get('botellas-report', ['uses' =>'MenuCtrl@botellas', 'as' => 'BotellasReport']);
-    Route::get('sin_alcohol-report', ['uses' =>'MenuCtrl@bebidas_sin_alc', 'as' => 'BebidasSinAlcReport']);
-    Route::get('cervezas-report', ['uses' =>'MenuCtrl@cervezas', 'as' => 'CervezasReport']);
-    Route::get('con_alcohol-report', ['uses' =>'MenuCtrl@bebidas_con_alc', 'as' => 'BebidasConAlcReport']);
-    Route::get('calientes-report', ['uses' =>'MenuCtrl@bebidas_calientes', 'as' => 'CalientesReport']);
-    Route::get('especiales-report', ['uses' =>'MenuCtrl@bebidas_especiales', 'as' => 'EspecialesReport']);
-    Route::get('picar-report', ['uses' =>'MenuCtrl@picar', 'as' => 'PicarReport']);
-    Route::get('fuertes-report', ['uses' =>'MenuCtrl@platos_fuertes', 'as' => 'FuertesReport']);
-    Route::get('bocas-report', ['uses' =>'MenuCtrl@bocas', 'as' => 'BocasReport']);
-    Route::get('paninis-report', ['uses' =>'MenuCtrl@paninis', 'as' => 'PaninisReport']);
-    Route::get('comidas-report', ['uses' =>'MenuCtrl@comidas', 'as' => 'ComidasReport']);
-    Route::get('bebidas-report', ['uses' =>'MenuCtrl@bebidas', 'as' => 'BebidasReport']);
-    Route::get('servicios-report', ['uses' =>'ServiciosCtrl@servicios', 'as' => 'ServiciosReport']);
-    Route::get('promociones-report', ['uses' =>'PromocionesCtrl@promociones', 'as' => 'PromocionesReport']);
-    Route::get('usuarios_backend-report', ['uses' =>'UsuariosCtrl@usuarios_backend', 'as' => 'UsuariosReport']);
-    Route::get('usuarios_clientes-report', ['uses' =>'UsuariosCtrl@usuarios_clientes', 'as' => 'ClientesReport']);
+    Route::get('reporte-de-botellas', ['uses' =>'MenuCtrl@botellas', 'as' => 'BotellasReport']);
+    Route::get('reporte-sin-alcohol', ['uses' =>'MenuCtrl@bebidas_sin_alc', 'as' => 'BebidasSinAlcReport']);
+    Route::get('reporte-de-cervezas', ['uses' =>'MenuCtrl@cervezas', 'as' => 'CervezasReport']);
+    Route::get('reporte-con-alcohol', ['uses' =>'MenuCtrl@bebidas_con_alc', 'as' => 'BebidasConAlcReport']);
+    Route::get('reporte-de-bebidas-calientes', ['uses' =>'MenuCtrl@bebidas_calientes', 'as' => 'CalientesReport']);
+    Route::get('reporte-de-especiales', ['uses' =>'MenuCtrl@bebidas_especiales', 'as' => 'EspecialesReport']);
+    Route::get('reporte-de-para-picar', ['uses' =>'MenuCtrl@picar', 'as' => 'PicarReport']);
+    Route::get('reporte-de-fuertes', ['uses' =>'MenuCtrl@platos_fuertes', 'as' => 'FuertesReport']);
+    Route::get('reporte-de-bocas', ['uses' =>'MenuCtrl@bocas', 'as' => 'BocasReport']);
+    Route::get('reporte-de-paninis', ['uses' =>'MenuCtrl@paninis', 'as' => 'PaninisReport']);
+    Route::get('reporte-de-comidas', ['uses' =>'MenuCtrl@comidas', 'as' => 'ComidasReport']);
+    Route::get('reporte-de-bebidas', ['uses' =>'MenuCtrl@bebidas', 'as' => 'BebidasReport']);
+    Route::get('reporte-de-servicios', ['uses' =>'ServiciosCtrl@servicios', 'as' => 'ServiciosReport']);
+    Route::get('reporte-de-promociones', ['uses' =>'PromocionesCtrl@promociones', 'as' => 'PromocionesReport']);
+    Route::get('reporte-de-usuarios', ['uses' =>'UsuariosCtrl@usuarios_backend', 'as' => 'UsuariosReport']);
+    Route::get('reporte-de-clientes', ['uses' =>'UsuariosCtrl@usuarios_clientes', 'as' => 'ClientesReport']);
     //------------------------------------------AUTENTICACION
 
     Route::controllers([
