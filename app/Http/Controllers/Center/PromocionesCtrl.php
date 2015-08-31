@@ -112,9 +112,9 @@ class PromocionesCtrl extends Controller {
                 $registro ->imagen = $foto->getFilename().'.'.$extension;
             }
             if($inicio = \Input::get('inicio')){
-            $registro ->inicio = \Input::get('inicio');}
+                $registro ->inicio = \Input::get('inicio');}
             if($inicio = \Input::get('fin')) {
-            $registro ->fin = \Input::get('fin');}
+                $registro ->fin = \Input::get('fin');}
             $registro ->save();
 
             return \Redirect::route('adminPromociones')
@@ -146,7 +146,7 @@ class PromocionesCtrl extends Controller {
 
         $promociones= $promociones[0];
 
-       //dd($promociones);
+        //dd($promociones);
 
         $view =  \View::make('Center.reportes.promociones', compact('promociones'))->render();
         $pdf = \App::make('dompdf.wrapper');
