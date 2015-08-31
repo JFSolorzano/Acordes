@@ -26,7 +26,7 @@
     }
 
     a {
-        color: #0087C3;
+        color: #fe6700;
         text-decoration: none;
     }
 
@@ -65,7 +65,7 @@
 
     #client {
         padding-left: 6px;
-        border-left: 6px solid #0087C3;
+        border-left: 6px solid #fe6700;
         float: left;
         display:inline-block
     }
@@ -101,7 +101,7 @@
     }
 
     #invoice h1 {
-        color: #0087C3;
+        color: #fe6700;
         font-size: 2.4em;
         line-height: 1em;
         font-weight: normal;
@@ -140,7 +140,7 @@
     }
 
     table td h3 {
-        color: #57B223;
+        color: #2c292f;
         font-size: 1.2em;
         font-weight: normal;
         margin: 0 0 0.2em 0;
@@ -149,7 +149,7 @@
     table .no {
         color: #FFFFFF;
         font-size: 1.6em;
-        background: #57B223;
+        background: #2c292f;
     }
 
     table .desc {
@@ -164,7 +164,7 @@
     }
 
     table .total {
-        background: #57B223;
+        background: #2c292f;
         color: #FFFFFF;
     }
 
@@ -192,9 +192,9 @@
     }
 
     table tfoot tr:last-child td {
-        color: #57B223;
+        color: #bf622c;
         font-size: 1.4em;
-        border-top: 1px solid #57B223;
+        border-top: 1px solid #bf622c;
 
     }
 
@@ -209,7 +209,7 @@
 
     #notices {
         padding-left: 6px;
-        border-left: 6px solid #0087C3;
+        border-left: 6px solid #fe6700;
     }
 
     #notices .notice {
@@ -249,7 +249,6 @@
 
 </header >
 <main >
-    <?php $contador = 0 ?>
     @foreach($servicios->chunk(8) as $chunk)
         <table border = "0" cellspacing = "0" cellpadding = "0" >
             <thead >
@@ -268,10 +267,10 @@
             @endforeach
             </tbody >
         </table >
-            @if($contador > 0)
-                <div class="page-break"></div>
-            @endif
-        <?php $contador++ ?>
+        @if( count($chunk) > 6 )
+            <div class="page-break"></div>
+        @endif
+
     @endforeach
     <div >
         <p class = "desc" >Este es el listado de servicios que ofrece el Restaurante Acordes, si hay algo que el cliente necesite y no aparezca en la lista, lo invitamos a preguntar.</p >
