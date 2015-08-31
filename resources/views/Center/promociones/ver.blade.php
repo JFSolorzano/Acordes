@@ -21,6 +21,7 @@
                 <div class="row">
                     <div class = "col-md-4" >
                         <a href = "{{ route('adminPromocionesCrear') }}" class="btn btn-primary pull-left">Nuevo<span class="glyphicon glyphicon-plus" aria-hidden="true"></a >
+                        <a href = "{{ route('PromocionesReport') }}" class="btn btn-danger pull-left" target="_blank">Reporte<span class="glyphicon glyphicon-plus" aria-hidden="true"></a >
                     </div >
                     <div class = "col-md-4" ></div >
                     <div class = "col-md-4" >
