@@ -20,8 +20,12 @@
                     <div class = "col-md-4" ></div >
                 </div>
                 <div class="row">
+                    <div class = "col-md-4" >
+                        <a href = "{{ route('ServiciosReport') }}" class="btn btn-danger pull-left" target="_blank">Reporte<span class="glyphicon glyphicon-plus" aria-hidden="true"></a >
+                    </div >
                     <div class = "col-md-4 col-md-offset-8" >
                         </br>
+
                         <!--<div class="pull-right">
                             {!! Form::open([ 'route'=>'adminEmpresa','method'=>'GET', 'class'=> 'navbar-form navbar-left','role'=>'search']) !!}
                             <button type="submit" class="btn btn-default fa fa-search"></button>
