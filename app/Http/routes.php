@@ -212,6 +212,7 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
     Route::get('paninis-report', ['uses' =>'MenuCtrl@paninis', 'as' => 'PaninisReport']);
     Route::get('comidas-report', ['uses' =>'MenuCtrl@comidas', 'as' => 'ComidasReport']);
     Route::get('bebidas-report', ['uses' =>'MenuCtrl@bebidas', 'as' => 'BebidasReport']);
+    Route::get('servicios-report', ['uses' =>'ServiciosCtrl@servicios', 'as' => 'ServiciosReport']);
     //------------------------------------------AUTENTICACION
 
     Route::controllers([

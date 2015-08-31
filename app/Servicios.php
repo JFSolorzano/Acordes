@@ -21,6 +21,11 @@ class Servicios extends Model {
      */
     protected $fillable = ['nombre', 'descripcion', 'imagen', 'estado'];
 
+    public function servicios()
+    {
+        return $this->hasMany('Acordes\Servicios','estado');
+    }
+
     public function scopeBuscar($return, $parametros){
 
         if(trim($parametros)!="")

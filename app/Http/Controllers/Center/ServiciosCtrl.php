@@ -135,4 +135,20 @@ class ServiciosCtrl extends Controller {
 
     }
 
+    public function servicios(){
+
+        $servicios = Servicios::With(['servicios' => function($query)
+        {
+            $query->where('estado', '=', 1);
+        }])->get();
+
+        $servicios = $servicios[0];
+
+//        dd($menu);
+
+        $view =  \View::make('Center.reportes.servicios', compact('servicios'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('servicios');
+    }
 }

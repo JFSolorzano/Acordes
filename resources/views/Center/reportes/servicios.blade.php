@@ -250,7 +250,7 @@
 </header >
 <main >
     <?php $contador = 0 ?>
-    @foreach($servicios->chunk(8) as $chunk)
+    @foreach($servicios->servicios->chunk(8) as $chunk)
         <table border = "0" cellspacing = "0" cellpadding = "0" >
             <thead >
             <tr >
