@@ -268,9 +268,9 @@
             @endforeach
             </tbody >
         </table >
-        @unless($contador > 0)
-            <div class="page-break"></div>
-        @endunless
+            @if($contador > 0)
+                <div class="page-break"></div>
+            @endif
         <?php $contador++ ?>
     @endforeach
     <div >

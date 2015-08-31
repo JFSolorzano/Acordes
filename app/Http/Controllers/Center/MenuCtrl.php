@@ -156,7 +156,7 @@ class MenuCtrl extends Controller {
 
 //        dd($menu);
 
-    $view =  \View::make('Center.reportes.menu', compact('menu'))->render();
+    $view =  \View::make('Center.reportes.botellas', compact('menu'))->render();
     $pdf = \App::make('dompdf.wrapper');
     $pdf->loadHTML($view);
     return $pdf->stream('menu');
