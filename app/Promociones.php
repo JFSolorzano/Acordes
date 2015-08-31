@@ -29,6 +29,7 @@ class Promociones extends Model implements SluggableInterface{
      */
     protected $fillable = ['nombre', 'descripcion', 'imagen', 'inicio', 'fin'];
 
+
     public function scopeBuscar($return, $parametros){
 
         if(trim($parametros)!="")

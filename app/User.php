@@ -25,6 +25,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 * @var array
 	 */
 	protected $fillable = ['email', 'password', 'feedback', 'type', 'name', 'avatar', 'facebook_id'];
+	public function usuarios()
+	{
+		return $this->hasMany('Acordes\User','type');
+	}
 
 	/**
 	 * The attributes excluded from the model's JSON form.

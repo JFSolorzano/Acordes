@@ -140,4 +140,17 @@ class PromocionesCtrl extends Controller {
 
     }
 
+    public function promociones(){
+
+        $promociones = Promociones::all()->toArray();
+
+        $promociones= $promociones[0];
+
+       //dd($promociones);
+
+        $view =  \View::make('Center.reportes.promociones', compact('promociones'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('promociones');
+    }
 }

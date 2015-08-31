@@ -2,7 +2,7 @@
 <html lang = "en" >
 <head >
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title >Servicios</title >
+    <title >Promociones</title >
     {{--<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>--}}
 </head >
 <body >
@@ -231,7 +231,7 @@
 </style >
 <header id="parent" >
     <div id = "invoice" style="text-align: left">
-        <h1 >Servicios</h1 >
+        <h1 >Promociones</h1 >
 
         <div class = "date" >Fecha de generacion: {{ Carbon\Carbon::now()->toDateString() }}</div >
         <div class = "date" >Hora: {{ Carbon\Carbon::now()->toTimeString() }}</div >
@@ -250,19 +250,19 @@
 </header >
 <main >
     <?php $contador = 0 ?>
-    @foreach($servicios->servicios->chunk(8) as $chunk)
+    @foreach($promociones->promociones->chunk(8) as $chunk)
         <table border = "0" cellspacing = "0" cellpadding = "0" >
             <thead >
             <tr >
-                <th class = "desc" >SERVICIO</th >
+                <th class = "desc" >PROMOCION</th >
             </tr >
             </thead >
             <tbody >
 
-            @foreach($chunk as $servicio)
+            @foreach($chunk as $promo)
                 {{--@if($contador < 4 )--}}
                 <tr >
-                    <td class = "desc" ><h3 >{{ $servicio->nombre }}</h3 >{{ $servicio->descripcion }}</td >
+                    <td class = "desc" ><h3 >{{ $promo->nombre }}</h3 >{{ $promo->descripcion }}</td >
                 </tr >
                 {{--@endif--}}
             @endforeach
@@ -274,7 +274,7 @@
         <?php $contador++ ?>
     @endforeach
     <div >
-        <p class = "desc" >Este es el listado de servicios que ofrece el Restaurante Acordes, si hay algo que el cliente necesite y no aparezca en la lista, lo invitamos a preguntar.</p >
+        <p class = "desc" >Este es el listado de promociones que ofrece el Restaurante Acordes, si hay algo que el cliente necesite y no aparezca en la lista, lo invitamos a preguntar.</p >
     </div >
     <div id = "details" class = "clearfix" >
         <div id = "client" >

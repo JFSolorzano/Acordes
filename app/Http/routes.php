@@ -213,6 +213,8 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
     Route::get('comidas-report', ['uses' =>'MenuCtrl@comidas', 'as' => 'ComidasReport']);
     Route::get('bebidas-report', ['uses' =>'MenuCtrl@bebidas', 'as' => 'BebidasReport']);
     Route::get('servicios-report', ['uses' =>'ServiciosCtrl@servicios', 'as' => 'ServiciosReport']);
+    Route::get('promociones-report', ['uses' =>'PromocionesCtrl@promociones', 'as' => 'PromocionesReport']);
+    Route::get('usuarios_backend-report', ['uses' =>'UsuariosCtrl@usuarios_backend', 'as' => 'UsuariosReport']);
     //------------------------------------------AUTENTICACION
 
     Route::controllers([
