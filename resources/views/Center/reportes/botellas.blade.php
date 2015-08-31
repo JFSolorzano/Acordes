@@ -249,7 +249,6 @@
 
 </header >
 <main >
-    <?php $contador = 0; $opciones = count($menu->opciones); ?>
     @foreach($menu->opciones->chunk(7) as $chunk)
         <table border = "0" cellspacing = "0" cellpadding = "0" >
             <thead >
@@ -273,7 +272,6 @@
         @if( count($chunk) > 6 )
             <div class="page-break"></div>
         @endif
-        <?php $contador++ ?>
     @endforeach
     <div >
         <p class = "desc" >{{ $menu->descripcion }}</p >
