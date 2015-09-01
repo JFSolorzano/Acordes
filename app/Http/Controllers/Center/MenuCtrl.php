@@ -3,7 +3,7 @@
 use Acordes\Http\Requests;
 use Acordes\Http\Controllers\Controller;
 use Acordes\Menus;
-
+use Acordes\Opciones;
 use RocketCandy\Exceptions\ValidationException;
 use RocketCandy\Services\Validation\menu as validador;
 
@@ -33,6 +33,7 @@ class MenuCtrl extends Controller {
             $registros = Opciones::buscar($request->get('parametros'))
             ->paginate(6);
             $menus= Menus::all(['id','nombre']);
+
             return view('Center.menu.ver')
                 ->with('registros',$registros)
                 ->with('menus', $menus);
