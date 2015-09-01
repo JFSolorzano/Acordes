@@ -36,7 +36,7 @@
         height: auto;
         margin: 0 auto;
         color: #555555;
-        background: #FFFFFF;
+        background: #1932ff;
         /*font-family: 'Source Sans Pro';*/
         font-size: 14px;
     }
