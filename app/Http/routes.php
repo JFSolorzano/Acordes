@@ -401,43 +401,31 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
 
 //================================================MENU
 
+        //================================================MENU
+
         //Restaurante
         Route::get('/menu', [
             'as' => 'adminMenu',
-            'uses' => 'MenuCtrl@inicio'
+            'uses' => 'MenuCtrl@inicio',
+            //'middleware' => 'restaurante'
         ]);
 
-        //Comidas
-        Route::get('/menu/comidas', [
-            'as' => 'adminMenuComidas',
-            'uses' => 'MenuCtrl@inicioComidas'
+        Route::get('/menu/nuevo-registro', [
+            'as' => 'adminMenusNuevo',
+            'uses' => 'MenuCtrl@nuevaOpcion',
+            //'middleware' => 'restaurante'
         ]);
 
-        Route::get('/menu/comidas/para-picar', [
-            'as' => 'adminMenuComidasParaPicar',
-            'uses' => 'MenuCtrl@inicioParaPicar'
+        Route::post('/menu/nuevo-registro', 'MenuCtrl@insertar');
+
+        Route::get('/menu/{id}/editar', [
+            'as' => 'adminMenusEditar',
+            'uses' => 'MenuCtrl@editar'
         ]);
 
-        Route::get('/menu/comidas/para-picar/{slug}', [
-            'as' => 'adminMenuComidasParaPicarOpcion',
-            'uses' => 'MenuCtrl@opcionParaPicar'
-        ]);
+        Route::post('/menu/{id}/actualizar', 'MenuCtrl@actualizar');
 
-        Route::get('/menu/comidas/platos-fuertes', [
-            'as' => 'adminMenuComidasPlatosFuertes',
-            'uses' => 'MenuCtrl@inicioPlatosFuertes'
-        ]);
-
-        //Bebidas
-        Route::get('/menu/bebidas', [
-            'as' => 'adminMenuBebidas',
-            'uses' => 'MenuCtrl@inicioBebidas'
-        ]);
-
-        Route::get('/menu/bebidas/sin-alcohol', [
-            'as' => 'adminMenuBebidasSinAlcohol',
-            'uses' => 'MenuCtrl@inicioSinAlcohol'
-        ]);
+        Route::get('/menu/{id}/eliminar', 'MenuCtrl@eliminarOpcion');
 
 //================================================SUCURSALES
 

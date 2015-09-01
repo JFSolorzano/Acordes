@@ -7,7 +7,7 @@
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/metisMenu.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/sb-admin-2.css') }}" rel="stylesheet">
-    
+
     <title>@yield('titulo')</title>
 
     <!--[if lt IE 9]>
@@ -30,20 +30,6 @@
                 <li>
                     <a href="{{ route('adminInicio') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
-                @if(Entrust::can('crud-menu'))
-                    <li>
-                        <a href="#"><i class="fa fa-table fa-fw"></i> Menú<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="{{ url('menu/bebidas') }}">Bebidas</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('menu/comidas') }}">Comidas</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                @endif
                 <li>
                     <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Control de contenido<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
@@ -77,6 +63,12 @@
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
+                @if(Entrust::can('crud-menu'))
+                    <li>
+                        <a href="{{ route('adminMenu') }}"><i class="fa fa-table fa-fw"></i> Menú<span ></span></a>
+                        <!-- /.nav-second-level -->
+                    </li>
+                @endif
                 @if(Entrust::can('crud-preguntas'))
                     <li><a href="{{ route('adminPreguntas') }}"><i class="fa fa-files-o fa-fw"></i>Preguntas frecuentes</a></li>
                 @endif
@@ -106,7 +98,7 @@
         </ul>
     </nav>
 
-@endunless
+    @endunless
 
 
 

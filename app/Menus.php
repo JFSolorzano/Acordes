@@ -22,16 +22,12 @@ class Menus extends Model {
     {
         return $this->hasMany('Acordes\Opciones','menu','id');
     }
-    public function menus()
-    {
-        return $this->hasMany('Acordes\Menus','tipo');
-    }
 
     public function scopeBuscar($return, $parametros){
 
         if(trim($parametros)!="")
         {
-            $return->where(\DB::raw("tipo"),"=","%$parametros%");
+            $return->where(\DB::raw("CONCAT(nombre)"),"LIKE","%$parametros%");
         }
 
     }

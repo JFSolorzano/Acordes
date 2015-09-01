@@ -4,15 +4,15 @@ use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 
-class Opciones extends Model implements SluggableInterface{
+class Opciones extends Model{
 
-    use SluggableTrait;
+    /**use SluggableTrait;
 
-    protected $sluggable = [
+     protected $sluggable = [
         'build_from' => 'nombre',
         'save_to'    => 'slug',
     ];
-    /**
+
      * The database table used by the model.
      *
      * @var string
@@ -29,11 +29,6 @@ class Opciones extends Model implements SluggableInterface{
     public function menu()
     {
         return $this->belongsTo('Acordes\Menus','menu','id')->select(['id', 'nombre']);
-    }
-
-    public function opcionesreservadas()
-    {
-        return $this->hasMany('Acordes\Opcionesreservadas','opcion','id')->select(['id', 'nombre']);
     }
 
     public function scopeBuscar($return, $parametros){
