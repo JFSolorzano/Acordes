@@ -16,8 +16,6 @@ class ReservacionCtrl extends Controller
 
     public function __construct(validador $validador)
     {
-
-        $this->middleware('auth');//Verificacion de la autenticidad de la sesion
         $this->_validador = $validador;//asignacion de la clase a la variable protegida
     }
 
@@ -119,6 +117,7 @@ class ReservacionCtrl extends Controller
             }
 
             $registro = new Reservaciones;
+
 
             $fecha = date_create_from_format('j.m.Y h:i a', $request->get('fecha'));
             $fecha = $fecha->format('Y-m-j H:i:s');

@@ -17,10 +17,6 @@
             'servicios' => $datos -> servicios
         ])
 
-        @include('Club.acercaDe.personal',[
-            'empleados'=> $datos -> empleados
-        ])
-
         @include('Club.menu.inicio',[
             'menus' => $datos -> menus
         ])

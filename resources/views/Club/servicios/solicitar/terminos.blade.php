@@ -4,7 +4,7 @@
             <header class="col-md-12 section-title wow fadeInDown">
                 <h1><span>Indicaciones</span></h1>
             </header>
-            <div class="col-md-12 wow fadeInLeft">
+            <div class="col-md-5 col-md-offset-4 wow fadeInLeft">
                 <div class="term">
                     <span>Los pasos para solicitar un servicio son los siguientes:</span>
                     <ol>

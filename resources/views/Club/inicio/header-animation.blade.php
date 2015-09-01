@@ -10,7 +10,7 @@
      data-elementdelay="0.5"
      data-endspeed="600"
      data-endeasing="Linear.easeNone">
-    <img src="{{ asset('club/img/slider-images/restaurante.png') }}" alt="Genuine" class="animateme"
+    <img src="{{ asset('img/logos/restaurante.png') }}" alt="Restaurante" class="animateme"
          data-when="exit"
          data-from="0"
          data-to="0.3"
@@ -28,7 +28,7 @@
      data-easing="Expo.easeInOut"
      data-endeasing="Linear.easeNone">
     {{--<img src="{{ asset('club/img/slider-images/food-passion.png') }}" alt="Food Pasion" class="animateme"--}}
-    <img src="{{ asset('club/img/logo/300x300p.png') }}" alt="Acordes" class="animateme"
+    <img src="{{ asset('img/logos/300x300p.png') }}" alt="Acordes" class="animateme"
          data-when="exit"
          data-from="0"
          data-to="0.4"

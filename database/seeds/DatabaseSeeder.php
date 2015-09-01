@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder {
         $this->call('RegistrosIniciales');
     }
 }
+
 class RegistrosIniciales extends Seeder {
 
     public function run()
@@ -242,6 +243,15 @@ class RegistrosIniciales extends Seeder {
         $vision = Datos::create( [
             'nombre' => 'Vision' ,
             'contenido' => 'Vacio'
+        ] );
+
+        $direccion = Datos::create( [
+            'nombre' => 'Direccion' ,
+            'contenido' => 'Primera Calle Oriente y Primera Avenida Norte. Frente a Plaza de la Cultura. Paseo El Carmen, Santa Tecla'
+        ] );
+        $email = Datos::create( [
+            'nombre' => 'E-Mail' ,
+            'contenido' => 'contacto@restauranteacordes.com'
         ] );
 
         //Cargos
@@ -917,6 +927,16 @@ class RegistrosIniciales extends Seeder {
             'pregunta' => 'Como llego a Acordes?' ,
             'respuesta' => 'Si sabes como llegar al paseo el carmen, solo debes caminar hasta encontrar la plaza de la cultura.'
         ] );
+
+        $pregunta2 = Preguntas::create( [
+            'pregunta' => 'Aceptan Tarjetas de Credito o Debito?' ,
+            'respuesta' => 'Si, aceptamos tarjetas Visa y Mastercard.'
+        ] );
+
+        $pregunta3 = Preguntas::create([
+            'pregunta'=> 'En que horario abren?',
+            'respuesta' => 'Abrimos de Miercoles a Domingo de 4:00 PM a 2:00 AM.'
+        ]);
 
 //-----------------------------------------PROMOCIONES
 

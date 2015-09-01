@@ -23,6 +23,7 @@ class Respuestas extends Migration {
 			$table->tinyInteger('usuario');
 			$table->text('mensaje');
 			$table->dateTime('fechayhora');
+			$table->timestamps();
 
             $table->foreign('solicitud')
                 ->references('id')

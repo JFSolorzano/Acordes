@@ -18,7 +18,7 @@
             @foreach($menu->opciones->chunk(ceil($menu->opciones->count() / 2)) as $chunk)
                 <div class = "col-md-6" >
                     @foreach($chunk as $opcion)
-                        @include('Club.menu.opcion',[
+                        @include('Club.menu.opcion2',[
                         'opcion' => $opcion
                         ])
                     @endforeach

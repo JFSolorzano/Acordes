@@ -4,7 +4,7 @@
             <div class="col-md-3 align-center">
                 <div class="logo-container wow fadeInLeft">
                     <a href="#">
-                        <img src="{{ asset('club/img/logo/150x150p-light-blue.png') }}" alt="Acordes Logo">
+                        <img src="{{ asset('img/logos/150x150p-light-blue.png') }}" alt="Acordes Logo">
                     </a>
                 </div><!-- /logo-container -->
                 <div class="socials-container">
@@ -23,11 +23,11 @@
                     <div class="section-title">
                         <h1><span>Contactanos</span></h1>
                     </div>
-                    <form id="contact-form" method="post">
-                        <input type="text" id="name" name="name" placeholder="Nombre*" required>
-                        <input type="email" id="email" name="email" placeholder="Email*" required>
-                        <textarea id="message" name="message" rows="6" placeholder="Mensaje" required></textarea>
-                        <button type="submit">Enviar Mensaje</button>
+                    <form  method="post" enctype="text/plain" id="contact-form">
+                        <input type="text" id="name-sender" name="name" placeholder="Nombre*" style="width: 100%" required>
+                        <input type="email" id="email-sender" name="email" placeholder="Email*" style="width: 100%" required>
+                        <textarea id="message" name="message-sender" rows="6" placeholder="Mensaje" style="width: 100%" required></textarea>
+                        <button onclick="enviaremail();">Enviar Mensaje</button>
                     </form>
                     <div id="form-messages"></div>
                 </div><!-- /contact-form-container -->

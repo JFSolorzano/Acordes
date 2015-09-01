@@ -35,7 +35,7 @@ class RedirectIfAuthenticated {
 	{
 		if ($this->auth->check())
 		{
-			return new RedirectResponse(route('publicInicio'));
+			return \Redirect::back();
 		}
 
 		return $next($request);

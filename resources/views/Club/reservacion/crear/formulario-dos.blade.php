@@ -110,6 +110,7 @@
                         <br ><br >
 
                         <p id = "cuenta-total" >${{ $costo_total }}</p >
+                        <input id = "cuenta-total-input" name="cuenta" class="hidden" value="{{ $costo_total }}">
                     </div >
                 </div >
 
@@ -125,6 +126,7 @@
                         {!! Form::submit('Enviar', ['id'=>'enviar']) !!}
                     </div >
                 </div >
+                {!! Form::close() !!}
             </div >
         </div >
     </div >

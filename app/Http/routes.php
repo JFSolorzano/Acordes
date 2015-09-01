@@ -65,7 +65,7 @@ Route::group(array('domain' => 'www.restauranteacordes.com', 'namespace' => 'Clu
     ]);
 
     // Social Auth
-    Route::get('facebook',[
+    Route::get('facebook', [
         'as' => 'clubFacebookAuth',
         'uses' => 'Auth\SocialController@fbRedirect'
     ]);
@@ -79,7 +79,9 @@ Route::group(array('domain' => 'www.restauranteacordes.com', 'namespace' => 'Clu
 
     Route::get('/mi-cuenta', [
         'as' => 'publicCuenta',
-        'uses' => 'CuentaCtrl@dashboard'
+        'uses' => 'CuentaCtrl@dashboard',
+        'middleware' => 'auth'
+
     ]);
 
 //-------------------------------------------INICIO
@@ -87,16 +89,6 @@ Route::group(array('domain' => 'www.restauranteacordes.com', 'namespace' => 'Clu
     Route::get('/', [
         'as' => 'publicInicio',
         'uses' => 'InicioCtrl@inicio'
-    ]);
-
-    Route::get('/menu', [
-        'as' => 'publicMenu',
-        'uses' => 'MenuCtrl@inicio'
-    ]);
-
-    Route::get('/menu/{id}', [
-        'as' => 'publicMenuEspecifico',
-        'uses' => 'MenuCtrl@inicio'
     ]);
 
     Route::get('/promociones', [
@@ -123,48 +115,61 @@ Route::group(array('domain' => 'www.restauranteacordes.com', 'namespace' => 'Clu
 
     Route::get('/mis-reservaciones', [
         'as' => 'publicMisReservacion',
-        'uses' => 'ReservacionCtrl@misReservaciones'
+        'uses' => 'ReservacionCtrl@misReservaciones',
+        'middleware' => 'auth'
     ]);
 
     //Formulario
     Route::get('/reservacion/paso-uno', [
         'as' => 'publicReservacionPasoUno',
-        'uses' => 'ReservacionCtrl@pasouno'
+        'uses' => 'ReservacionCtrl@pasouno',
+        'middleware' => 'auth'
+
     ]);
 
     Route::post('/reservacion/paso-dos', [
         'as' => 'publicReservacionPasoDos',
-        'uses' => 'ReservacionCtrl@pasodos'
+        'uses' => 'ReservacionCtrl@pasodos',
+        'middleware' => 'auth'
     ]);
 
     Route::post('/reservacion/resumen', [
         'as' => 'publicPostReservacionPasoDos',
-        'uses' => 'ReservacionCtrl@pasodosPost'
+        'uses' => 'ReservacionCtrl@pasodosPost',
+        'middleware' => 'auth'
     ]);
 
     Route::get('/mis-reservaciones/{id}', [
         'as' => 'publicReservacionDetalle',
-        'uses' => 'ReservacionCtrl@detalle'
+        'uses' => 'ReservacionCtrl@detalle',
+        'middleware' => 'auth'
     ]);
 
     Route::get('/mis-reservaciones/{id}/modificar', [
         'as' => 'publicReservacionModificar',
-        'uses' => 'ReservacionCtrl@modificar'
+        'uses' => 'ReservacionCtrl@modificar',
+        'middleware' => 'auth'
     ]);
 
-    Route::post('/mis-reservaciones/{id}/modificar', 'ReservacionCtrl@actualizar');
+    Route::post('/mis-reservaciones/{id}/modificar', [
+        'as' => 'publicPostReservacionModificar',
+        'uses' => 'ReservacionCtrl@actualizar'
+    ]);
 
-    Route::get('/mis-reservaciones/{id}/eliminar', 'ReservacionCtrl@eliminar');
+    Route::post('/mis-reservaciones/{id}/eliminar', [
+        'as' => 'publicReservacionEliminar',
+        'uses' => 'ReservacionCtrl@eliminar'
+    ]);
 
     //---------------------------------------------------SERVICIOS
 
-    Route::get('/solicitar-servicio',[
+    Route::get('/solicitar-servicio', [
         'as' => 'publicSolicitarServicio',
         'uses' => 'ServiciosCtrl@solicitud',
         'middleware' => 'auth'
     ]);
 
-    Route::post('/solicitar-servicio',[
+    Route::post('/solicitar-servicio', [
         'as' => 'publicPostSolicitarServicio',
         'uses' => 'ServiciosCtrl@solicitar',
         'middleware' => 'auth'
@@ -177,13 +182,36 @@ Route::group(array('domain' => 'www.restauranteacordes.com', 'namespace' => 'Clu
         'uses' => 'PreguntasCtrl@inicio'
     ]);
 
+    //------------------OPINION
+
+    Route::get('/danos-tu-opinion', [
+        'as' => 'publicOpinion',
+        'uses' => 'CuentaCtrl@opinion',
+        'middleware' => 'auth'
+    ]);
+
+    Route::post('/danos-tu-opinion', [
+        'as' => 'publicPostOpinion',
+        'uses' => 'CuentaCtrl@opinionPost',
+        'middleware' => 'auth'
+    ]);
+
     //----------------------------------------------------MENU
+
+    Route::get('/menu', [
+        'as' => 'publicMenu',
+        'uses' => 'MenuCtrl@inicio'
+    ]);
+
+    Route::get('/menu/{id}', [
+        'as' => 'publicMenuEspecifico',
+        'uses' => 'MenuCtrl@inicio'
+    ]);
 
     Route::get('/menu/opcion/{slug}', [
         'as' => 'publicMenuOpcion',
         'uses' => 'MenuCtrl@opcion'
     ]);
-
 
 
 });
@@ -198,23 +226,24 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
 
     //------------------------------------------REPORTES
 
-    Route::get('reporte-de-botellas', ['uses' =>'MenuCtrl@botellas', 'as' => 'BotellasReport']);
-    Route::get('reporte-sin-alcohol', ['uses' =>'MenuCtrl@bebidas_sin_alc', 'as' => 'BebidasSinAlcReport']);
-    Route::get('reporte-de-cervezas', ['uses' =>'MenuCtrl@cervezas', 'as' => 'CervezasReport']);
-    Route::get('reporte-con-alcohol', ['uses' =>'MenuCtrl@bebidas_con_alc', 'as' => 'BebidasConAlcReport']);
-    Route::get('reporte-de-bebidas-calientes', ['uses' =>'MenuCtrl@bebidas_calientes', 'as' => 'CalientesReport']);
-    Route::get('reporte-de-especiales', ['uses' =>'MenuCtrl@bebidas_especiales', 'as' => 'EspecialesReport']);
-    Route::get('reporte-de-para-picar', ['uses' =>'MenuCtrl@picar', 'as' => 'PicarReport']);
-    Route::get('reporte-de-fuertes', ['uses' =>'MenuCtrl@platos_fuertes', 'as' => 'FuertesReport']);
-    Route::get('reporte-de-bocas', ['uses' =>'MenuCtrl@bocas', 'as' => 'BocasReport']);
-    Route::get('reporte-de-paninis', ['uses' =>'MenuCtrl@paninis', 'as' => 'PaninisReport']);
-    Route::get('reporte-de-comidas', ['uses' =>'MenuCtrl@comidas', 'as' => 'ComidasReport']);
-    Route::get('reporte-de-bebidas', ['uses' =>'MenuCtrl@bebidas', 'as' => 'BebidasReport']);
-    Route::get('reporte-de-servicios', ['uses' =>'ServiciosCtrl@servicios', 'as' => 'ServiciosReport']);
-    Route::get('reporte-de-promociones', ['uses' =>'PromocionesCtrl@promociones', 'as' => 'PromocionesReport']);
-    Route::get('reporte-de-usuarios', ['uses' =>'UsuariosCtrl@usuarios_backend', 'as' => 'UsuariosReport']);
-    Route::get('reporte-de-clientes', ['uses' =>'UsuariosCtrl@usuarios_clientes', 'as' => 'ClientesReport']);
-    Route::get('reporte-de-informacion-empresarial', ['uses' =>'EmpresaCtrl@informacion_empresarial', 'as' => 'EmpresaReport']);
+    Route::get('reporte-de-botellas', ['uses' => 'MenuCtrl@botellas', 'as' => 'BotellasReport']);
+    Route::get('reporte-sin-alcohol', ['uses' => 'MenuCtrl@bebidas_sin_alc', 'as' => 'BebidasSinAlcReport']);
+    Route::get('reporte-de-cervezas', ['uses' => 'MenuCtrl@cervezas', 'as' => 'CervezasReport']);
+    Route::get('reporte-con-alcohol', ['uses' => 'MenuCtrl@bebidas_con_alc', 'as' => 'BebidasConAlcReport']);
+    Route::get('reporte-de-bebidas-calientes', ['uses' => 'MenuCtrl@bebidas_calientes', 'as' => 'CalientesReport']);
+    Route::get('reporte-de-especiales', ['uses' => 'MenuCtrl@bebidas_especiales', 'as' => 'EspecialesReport']);
+    Route::get('reporte-de-para-picar', ['uses' => 'MenuCtrl@picar', 'as' => 'PicarReport']);
+    Route::get('reporte-de-fuertes', ['uses' => 'MenuCtrl@platos_fuertes', 'as' => 'FuertesReport']);
+    Route::get('reporte-de-bocas', ['uses' => 'MenuCtrl@bocas', 'as' => 'BocasReport']);
+    Route::get('reporte-de-paninis', ['uses' => 'MenuCtrl@paninis', 'as' => 'PaninisReport']);
+    Route::get('reporte-de-comidas', ['uses' => 'MenuCtrl@comidas', 'as' => 'ComidasReport']);
+    Route::get('reporte-de-bebidas', ['uses' => 'MenuCtrl@bebidas', 'as' => 'BebidasReport']);
+    Route::get('reporte-de-servicios', ['uses' => 'ServiciosCtrl@servicios', 'as' => 'ServiciosReport']);
+    Route::get('reporte-de-promociones', ['uses' => 'PromocionesCtrl@promociones', 'as' => 'PromocionesReport']);
+    Route::get('reporte-de-usuarios', ['uses' => 'UsuariosCtrl@usuarios_backend', 'as' => 'UsuariosReport']);
+    Route::get('reporte-de-clientes', ['uses' => 'UsuariosCtrl@usuarios_clientes', 'as' => 'ClientesReport']);
+    Route::get('reporte-de-informacion-empresarial',
+        ['uses' => 'EmpresaCtrl@informacion_empresarial', 'as' => 'EmpresaReport']);
     //------------------------------------------AUTENTICACION
 
     Route::controllers([

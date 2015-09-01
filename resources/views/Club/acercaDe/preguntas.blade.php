@@ -7,10 +7,10 @@
     <!-- Start main-header -->
     <header class = "main-header" id = "top" >
         <div class = "top-banner-container top-banner-container-style1" >
-            <div class = "top-banner-bg custom-bg2 parallax" data-stellar-background-ratio = "0.5" ></div >
+            <div class = "top-banner-bg custom-bg3 parallax" data-stellar-background-ratio = "0.5" ></div >
             <div class = "top-banner" >
                 <div class = "top-image" >
-                    <img src = "{{ asset('img/encabezados/preguntas-frecuentes.png') }}" alt = "Preguntas Frecuentes" >
+                    <img src = "{{ asset('img/encabezados/preguntas.png') }}" alt = "Preguntas Frecuentes" >
                 </div >
                 <!-- /top-image -->
             </div >

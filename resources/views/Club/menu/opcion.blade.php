@@ -1,5 +1,7 @@
 <div class = "food" >
-    <h6 class = "food-name" >{{ $opcion -> nombre }}</h6 >
+    <a
+            href = "{{ route('publicMenuOpcion', ['slug' => $opcion->slug]) }}" >
+        <h6 class = "food-name" >{{ $opcion -> nombre }}</h6 ></a >
 
     <div class = "food-desc" >
         <div class = "food-details" >

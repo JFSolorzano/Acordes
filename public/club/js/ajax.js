@@ -67,6 +67,7 @@
             var agregar = parseFloat($this.parents('.comida-seleccionada').find('p.comida-costo').text());
             var nuevo_costo = costo_actual + agregar;
             $('#cuenta-total').text('$'+nuevo_costo);
+            $('#cuenta-total-input').val('$'+nuevo_costo);
         });
 
         $(".precio-bebida").bind('keyup mouseup', function () {
@@ -75,8 +76,30 @@
             var agregar = parseFloat($this.parents('.bebida-seleccionada').find('p.bebida-costo').text());
             var nuevo_costo = costo_actual + agregar;
             $('#cuenta-total').text('$'+nuevo_costo);
+            $('#cuenta-total-input').val('$'+nuevo_costo);
         });
 
+    });
+
+    $(document).on("ready", function() {
+        $.each(['xs', 'sm', 'md', 'lg'], function(idx, gridSize) {
+            $('.col-' + gridSize + '-auto:first').parent().each(function() {
+                //we count the number of childrens with class col-md-6
+                var numberOfCols = $(this).children('.col-' + gridSize + '-auto').length;
+                if (numberOfCols > 0 && numberOfCols < 13) {
+                    var minSpan = Math.floor(12 / numberOfCols);
+                    var remainder = (12 % numberOfCols);
+                    $(this).children('.col-' + gridSize + '-auto').each(function(idx, col) {
+                        var width = minSpan;
+                        if (remainder > 0) {
+                            width += 1;
+                            remainder--;
+                        }
+                        $(this).addClass('col-' + gridSize + '-' + width);
+                    });
+                }
+            });
+        });
     });
 
 }());

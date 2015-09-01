@@ -21,7 +21,7 @@
     <div class = "container" >
         <div class = "row" >
             <div class = "col-md-12 align-center wow fadeInUp" >
-                <a href = "#" class = "custom-button button-style1" ><i class = "icon-eye" ></i >Ver Detalles</a >
+                <a href = "{{ route('publicMenu') }}" class = "custom-button button-style1" ><i class = "icon-eye" ></i >Ver Detalles</a >
             </div >
         </div >
     </div >

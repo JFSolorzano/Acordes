@@ -68,6 +68,7 @@
         @yield('contenido')
 
         <script src="{{ asset('club/js/vendor/jquery-2.1.3.min.js') }}"></script>
+        <script src="{{ asset('club/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('club/js/imagesloaded.pkgd.min.js') }}"></script>
         <script src="{{ asset('club/js/jquery.themepunch.tools.min.js') }}"></script>
         <script src="{{ asset('club/js/jquery.themepunch.revolution.min.js') }}"></script>

@@ -17,7 +17,7 @@
     <div class="main-nav-inner">
         <div class="logo-container">
             <a href="{{ route('publicInicio') }}">
-                <img src="{{ asset('club/img/logo/150x150p.png') }}" alt="Acordes - Restaurante, Bar, Club">
+                <img src="{{ asset('img/logos/150x150p.png') }}" alt="Acordes - Restaurante, Bar, Club">
             </a>
         </div><!-- /logo-container -->
         <nav class="main-nav">
@@ -41,12 +41,6 @@
                 @endif
             </ul>
         </nav>
-        <div class="tweets-container">
-            <div class="twitter-logo">
-                <i class="fa fa-twitter"></i>
-            </div><!-- /twitter-logo -->
-            <div class="tweet"></div>
-        </div><!-- /tweets-container -->
         <div class="socials-container">
             <ul>
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>

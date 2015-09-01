@@ -10,7 +10,7 @@
             <div class = "top-banner-bg custom-bg2 parallax" data-stellar-background-ratio = "0.5" ></div >
             <div class = "top-banner" >
                 <div class = "top-image" >
-                    <img src = "{{ asset('img/encabezados/informacion-empresarial.png') }}" alt = "Informacion Empresarial" >
+                    <img src = "{{ asset('img/encabezados/informacion.png') }}" alt = "Informacion Empresarial" >
                 </div >
                 <!-- /top-image -->
             </div >
@@ -48,137 +48,137 @@
             <!-- /row -->
         </div >
         <!-- /contianer -->
-        <div class = "members-carousel wow fadeInDown" >
-            <div class = "members-carousel-nav" ></div >
-            <ul class = "clearfix" >
-                <li class = "overlay-container" >
-                    <img src = "{{ asset('club/img/team/member3.jpg') }}" alt = "Miembro" >
+        {{--<div class = "members-carousel wow fadeInDown" >--}}
+            {{--<div class = "members-carousel-nav" ></div >--}}
+            {{--<ul class = "clearfix" >--}}
+                {{--<li class = "overlay-container" >--}}
+                    {{--<img src = "{{ asset('club/img/team/member3.jpg') }}" alt = "Miembro" >--}}
 
-                    <div class = "overlay" >
-                        <div class = "overlay-details" >
-                            <h3 >Gustave Bernier</h3 >
+                    {{--<div class = "overlay" >--}}
+                        {{--<div class = "overlay-details" >--}}
+                            {{--<h3 >Gustave Bernier</h3 >--}}
 
-                            <p >Chef Ejecutivo</p >
-                        </div >
-                        <!-- /overlay-details -->
-                        <div class = "buttons-container" >
-                            <a href = "#" class = "button-link" ></a >
-                            <a href = "#" class = "button-zoom" ></a >
-                        </div >
-                        <!-- /buttons-container -->
-                    </div >
-                    <!-- /overlay -->
-                </li >
-                <li class = "overlay-container" >
-                    <img src = "{{ asset('club/img/team/member4.jpg') }}" alt = "Marine Food Gallery" >
+                            {{--<p >Chef Ejecutivo</p >--}}
+                        {{--</div >--}}
+                        {{--<!-- /overlay-details -->--}}
+                        {{--<div class = "buttons-container" >--}}
+                            {{--<a href = "#" class = "button-link" ></a >--}}
+                            {{--<a href = "#" class = "button-zoom" ></a >--}}
+                        {{--</div >--}}
+                        {{--<!-- /buttons-container -->--}}
+                    {{--</div >--}}
+                    {{--<!-- /overlay -->--}}
+                {{--</li >--}}
+                {{--<li class = "overlay-container" >--}}
+                    {{--<img src = "{{ asset('club/img/team/member4.jpg') }}" alt = "Marine Food Gallery" >--}}
 
-                    <div class = "overlay" >
-                        <div class = "overlay-details" >
-                            <h3 >Gustave Bernier</h3 >
+                    {{--<div class = "overlay" >--}}
+                        {{--<div class = "overlay-details" >--}}
+                            {{--<h3 >Gustave Bernier</h3 >--}}
 
-                            <p >Chef Ejecutivo</p >
-                        </div >
-                        <!-- /overlay-details -->
-                        <div class = "buttons-container" >
-                            <a href = "#" class = "button-link" ></a >
-                            <a href = "#" class = "button-zoom" ></a >
-                        </div >
-                        <!-- /buttons-container -->
-                    </div >
-                    <!-- /overlay -->
-                </li >
-                <li class = "overlay-container" >
-                    <img src = "{{ asset('club/img/team/member5.jpg') }}" alt = "Marine Food Gallery" >
+                            {{--<p >Chef Ejecutivo</p >--}}
+                        {{--</div >--}}
+                        {{--<!-- /overlay-details -->--}}
+                        {{--<div class = "buttons-container" >--}}
+                            {{--<a href = "#" class = "button-link" ></a >--}}
+                            {{--<a href = "#" class = "button-zoom" ></a >--}}
+                        {{--</div >--}}
+                        {{--<!-- /buttons-container -->--}}
+                    {{--</div >--}}
+                    {{--<!-- /overlay -->--}}
+                {{--</li >--}}
+                {{--<li class = "overlay-container" >--}}
+                    {{--<img src = "{{ asset('club/img/team/member5.jpg') }}" alt = "Marine Food Gallery" >--}}
 
-                    <div class = "overlay" >
-                        <div class = "overlay-details" >
-                            <h3 >Gustave Bernier</h3 >
+                    {{--<div class = "overlay" >--}}
+                        {{--<div class = "overlay-details" >--}}
+                            {{--<h3 >Gustave Bernier</h3 >--}}
 
-                            <p >Executive Chef</p >
-                        </div >
-                        <!-- /overlay-details -->
-                        <div class = "buttons-container" >
-                            <a href = "#" class = "button-link" ></a >
-                            <a href = "#" class = "button-zoom" ></a >
-                        </div >
-                        <!-- /buttons-container -->
-                    </div >
-                    <!-- /overlay -->
-                </li >
-                <li class = "overlay-container" >
-                    <img src = "{{ asset('club/img/team/member6.jpg') }}" alt = "Marine Food Gallery" >
+                            {{--<p >Executive Chef</p >--}}
+                        {{--</div >--}}
+                        {{--<!-- /overlay-details -->--}}
+                        {{--<div class = "buttons-container" >--}}
+                            {{--<a href = "#" class = "button-link" ></a >--}}
+                            {{--<a href = "#" class = "button-zoom" ></a >--}}
+                        {{--</div >--}}
+                        {{--<!-- /buttons-container -->--}}
+                    {{--</div >--}}
+                    {{--<!-- /overlay -->--}}
+                {{--</li >--}}
+                {{--<li class = "overlay-container" >--}}
+                    {{--<img src = "{{ asset('club/img/team/member6.jpg') }}" alt = "Marine Food Gallery" >--}}
 
-                    <div class = "overlay" >
-                        <div class = "overlay-details" >
-                            <h3 >Gustave Bernier</h3 >
+                    {{--<div class = "overlay" >--}}
+                        {{--<div class = "overlay-details" >--}}
+                            {{--<h3 >Gustave Bernier</h3 >--}}
 
-                            <p >Executive Chef</p >
-                        </div >
-                        <!-- /overlay-details -->
-                        <div class = "buttons-container" >
-                            <a href = "#" class = "button-link" ></a >
-                            <a href = "#" class = "button-zoom" ></a >
-                        </div >
-                        <!-- /buttons-container -->
-                    </div >
-                    <!-- /overlay -->
-                </li >
-                <li class = "overlay-container" >
-                    <img src = "{{ asset('club/img/team/member7.jpg') }}" alt = "Marine Food Gallery" >
+                            {{--<p >Executive Chef</p >--}}
+                        {{--</div >--}}
+                        {{--<!-- /overlay-details -->--}}
+                        {{--<div class = "buttons-container" >--}}
+                            {{--<a href = "#" class = "button-link" ></a >--}}
+                            {{--<a href = "#" class = "button-zoom" ></a >--}}
+                        {{--</div >--}}
+                        {{--<!-- /buttons-container -->--}}
+                    {{--</div >--}}
+                    {{--<!-- /overlay -->--}}
+                {{--</li >--}}
+                {{--<li class = "overlay-container" >--}}
+                    {{--<img src = "{{ asset('club/img/team/member7.jpg') }}" alt = "Marine Food Gallery" >--}}
 
-                    <div class = "overlay" >
-                        <div class = "overlay-details" >
-                            <h3 >Gustave Bernier</h3 >
+                    {{--<div class = "overlay" >--}}
+                        {{--<div class = "overlay-details" >--}}
+                            {{--<h3 >Gustave Bernier</h3 >--}}
 
-                            <p >Executive Chef</p >
-                        </div >
-                        <!-- /overlay-details -->
-                        <div class = "buttons-container" >
-                            <a href = "#" class = "button-link" ></a >
-                            <a href = "#" class = "button-zoom" ></a >
-                        </div >
-                        <!-- /buttons-container -->
-                    </div >
-                    <!-- /overlay -->
-                </li >
-                <li class = "overlay-container" >
-                    <img src = "{{ asset('club/img/team/member8.jpg') }}" alt = "Marine Food Gallery" >
+                            {{--<p >Executive Chef</p >--}}
+                        {{--</div >--}}
+                        {{--<!-- /overlay-details -->--}}
+                        {{--<div class = "buttons-container" >--}}
+                            {{--<a href = "#" class = "button-link" ></a >--}}
+                            {{--<a href = "#" class = "button-zoom" ></a >--}}
+                        {{--</div >--}}
+                        {{--<!-- /buttons-container -->--}}
+                    {{--</div >--}}
+                    {{--<!-- /overlay -->--}}
+                {{--</li >--}}
+                {{--<li class = "overlay-container" >--}}
+                    {{--<img src = "{{ asset('club/img/team/member8.jpg') }}" alt = "Marine Food Gallery" >--}}
 
-                    <div class = "overlay" >
-                        <div class = "overlay-details" >
-                            <h3 >Gustave Bernier</h3 >
+                    {{--<div class = "overlay" >--}}
+                        {{--<div class = "overlay-details" >--}}
+                            {{--<h3 >Gustave Bernier</h3 >--}}
 
-                            <p >Executive Chef</p >
-                        </div >
-                        <!-- /overlay-details -->
-                        <div class = "buttons-container" >
-                            <a href = "#" class = "button-link" ></a >
-                            <a href = "#" class = "button-zoom" ></a >
-                        </div >
-                        <!-- /buttons-container -->
-                    </div >
-                    <!-- /overlay -->
-                </li >
-                <li class = "overlay-container" >
-                    <img src = "{{ asset('club/img/team/member9.jpg') }}" alt = "Marine Food Gallery" >
+                            {{--<p >Executive Chef</p >--}}
+                        {{--</div >--}}
+                        {{--<!-- /overlay-details -->--}}
+                        {{--<div class = "buttons-container" >--}}
+                            {{--<a href = "#" class = "button-link" ></a >--}}
+                            {{--<a href = "#" class = "button-zoom" ></a >--}}
+                        {{--</div >--}}
+                        {{--<!-- /buttons-container -->--}}
+                    {{--</div >--}}
+                    {{--<!-- /overlay -->--}}
+                {{--</li >--}}
+                {{--<li class = "overlay-container" >--}}
+                    {{--<img src = "{{ asset('club/img/team/member9.jpg') }}" alt = "Marine Food Gallery" >--}}
 
-                    <div class = "overlay" >
-                        <div class = "overlay-details" >
-                            <h3 >Gustave Bernier</h3 >
+                    {{--<div class = "overlay" >--}}
+                        {{--<div class = "overlay-details" >--}}
+                            {{--<h3 >Gustave Bernier</h3 >--}}
 
-                            <p >Executive Chef</p >
-                        </div >
-                        <!-- /overlay-details -->
-                        <div class = "buttons-container" >
-                            <a href = "#" class = "button-link" ></a >
-                            <a href = "#" class = "button-zoom" ></a >
-                        </div >
-                        <!-- /buttons-container -->
-                    </div >
-                    <!-- /overlay -->
-                </li >
-            </ul >
-        </div >
+                            {{--<p >Executive Chef</p >--}}
+                        {{--</div >--}}
+                        {{--<!-- /overlay-details -->--}}
+                        {{--<div class = "buttons-container" >--}}
+                            {{--<a href = "#" class = "button-link" ></a >--}}
+                            {{--<a href = "#" class = "button-zoom" ></a >--}}
+                        {{--</div >--}}
+                        {{--<!-- /buttons-container -->--}}
+                    {{--</div >--}}
+                    {{--<!-- /overlay -->--}}
+                {{--</li >--}}
+            {{--</ul >--}}
+        {{--</div >--}}
         <!-- /members-carousel -->
         <div class = "promo wow fadeInUp" >
             <p >Uno no puede pensar bien, amar bien, dormir bien, <span >si no ha festejado bien.</span ></p >
@@ -186,7 +186,7 @@
         <!-- /promo -->
     </section >
 
-    <section class = "testimonials dark-bg custom-bg3 parallax" data-stellar-background-ratio = "0.5"
+    <section class = "testimonials dark-bg custom-bg7 parallax" data-stellar-background-ratio = "0.5"
              data-stellar-vertical-offset = "-100" >
         <div class = "container" >
             <div class = "row" >

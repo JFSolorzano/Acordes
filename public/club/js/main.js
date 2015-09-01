@@ -246,9 +246,9 @@
     //        var formData = $(form).serialize();
     //
     //        if (!$('#name').val() || !$('#email').val() || !$('#message').val()) {
-    //            $('#form-messages').text('Please Complete All inputs');
+    //            $('#form-messages').text('Por favor completa los campos');
     //        } else {
-    //            $('#form-messages').text('Sending your message. Please wait...').slideDown();
+    //            $('#form-messages').text('Enviando tu mensaje, espera por favor...').slideDown();
     //        }
     //        ;
     //

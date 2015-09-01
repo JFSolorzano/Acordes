@@ -8,7 +8,7 @@
                 <br ><br >
                 {!! Form::open(array('route'=>'publicReservacionPasoDos','method'=>'POST', 'id'=>'reservar')) !!}
                     <label for = "cantidadpersonas" >Cantidad de personas</label >
-                    <input name = "personas" type = "number" placeholder = "#" >
+                    <input name = "personas" type = "number" min="1" max="50" value="1" >
                     <br ><br ><br >
 
                     <label for = "comidas" >Seleccione los platillos que desea reservar</label >
