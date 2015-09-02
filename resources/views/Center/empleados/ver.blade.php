@@ -61,7 +61,7 @@
                 <table>
                     <thead>
                     <tr>
-                        <th class="item-thumb">Foto</th>
+                        <th class="item-thumb">Avatar</th>
                         <th>Nombre</th>
                         <th>Rol</th>
                         <th class="remove-item"> </th>
@@ -72,14 +72,14 @@
                     <tr>
                         <td class="item-thumb">
                             <figure>
-                                <img src = "{{asset('img/'.$registro->foto)}}" alt = "{{$registro->foto}}" />
+                                <img src = "{{asset('img/personal/'.$registro->avatar)}}" alt = "{{$registro->nombre_usuario}}" />
                             </figure>
                         </td>
-                        <td class="item-desc">{{$registro->nombres}}</td>
-                        <td>wr12454575</td>
+                        <td>{{$registro->nombre_usuario}} <br > {{ $registro->email }}</td>
+                        <td>{{$registro->display_name}}</td>
                         <td class="remove-item">
-                            <a href = "{{url('empleados/'.$registro->id.'/editar')}}" class="remove-items-link"><i class="fa fa-times-circle"></i></a >
-                            <a href = "{{url('empleados/'.$registro->id.'/eliminar')}}" onclick="return confirm('Esta seguro que desea eliminar este dato')" class="remove-items-link"><i class="fa fa-edit"></i></a >
+                            <a href = "{{url('empleados/'.Hashids::encode($registro->id_usuario).'/editar')}}" class="remove-items-link"><i class="fa fa-edit"></i></a >
+                            <a href = "{{url('empleados/'.$registro->id_usuario.'/eliminar')}}" onclick="return confirm('Esta seguro que desea eliminar este usuario?')" class="remove-items-link"><i class="fa fa-times-circle"></i></a >
                         </td>
                     </tr>
                     @endforeach

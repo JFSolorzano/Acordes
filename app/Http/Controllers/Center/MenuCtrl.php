@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
 use Request as BRequest;
+use Vinkla\Hashids\Facades\Hashids;
 
 class MenuCtrl extends Controller {
 
@@ -83,8 +84,12 @@ class MenuCtrl extends Controller {
 
     public function editar($id){
 
-        $registro = Opciones::find($id);
+        $record = Hashids::decode($id);
+
+        $registro = Opciones::find($record[0]);
+
         $menus= Menus::all(['id','nombre']);
+
         return view('Center.menu.editar')
             ->with('registro', $registro)->with('menus', $menus);
 
@@ -136,7 +141,7 @@ class MenuCtrl extends Controller {
         $registro = Opciones::find($id);
         $registro ->delete();
 
-        return \Redirect::route('adminMEnu')
+        return \Redirect::route('adminMenu')
             ->with('alerta','La opcion ha sido eliminada con exito!');
 
     }

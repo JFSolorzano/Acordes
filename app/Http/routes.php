@@ -334,7 +334,10 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
             'uses' => 'UsuariosCtrl@imagen'
         ]);
 
-        Route::post('/empleados/nuevo-registro', 'EmpleadosCtrl@insertar');
+        Route::post('/empleados/nuevo-registro', [
+            'as'=> 'adminPostEmpleadosCrear',
+            'uses'=>'EmpleadosCtrl@insertar'
+        ]);
 
         Route::get('/empleados/{id}/editar', [
             'as' => 'adminEmpleadosEditar',
@@ -470,7 +473,7 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
 
         Route::post('/menu/{id}/actualizar', 'MenuCtrl@actualizar');
 
-        Route::get('/menu/{id}/eliminar', 'MenuCtrl@eliminarOpcion');
+        Route::get('/menu/{id}/eliminar', 'MenuCtrl@eliminar');
 
 //================================================SUCURSALES
 

@@ -1,61 +1,98 @@
 @extends('Center.app')
 
 @section('titulo')
-    {{'Opciones | Acordes'}}
+    {{'Menu | Acordes'}}
 @endsection
 @section('contenido')
-    @if ( ! $errors->isEmpty() )
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 alert alert-danger">
-                <ul>
-                    @foreach ( $errors->all() as $error )
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    @endif
-    <div class="row-fluid">
-        <div class = "container" >
-            <div style="background:transparent !important" class = "jumbotron" >
-                <h1 class="text-center">
-                    Editar Promocion
-                </h1>
+    <header class = "main-header" id = "top" >
+        @if(\Session::has('alerta'))
+            <div class = "col-md-12 text-right alert alert-dismissible alert-success"
+                 style = "background-color: white" >
+                <button type = "button" class = "close" data-dismiss = "alert" >×</button >
+                <h1 >{{Session::get('alerta')}}</h1 >
+                <br >
             </div >
+        @endif
+        @if ( !$errors->isEmpty() )
+            <div class = "col-md-12 alert alert-dismissible alert-danger" >
+                <button type = "button" class = "close" data-dismiss = "alert" >×</button >
+                <ul >
+                    @foreach ( $errors->all() as $error )
+                        <li >{{ $error }}</li >
+                    @endforeach
+                </ul >
+                <br >
+            </div >
+        @endif
+        <div class = "logo-container light-shark-bg align-right" >
+            <br >
+            <h1 class="align-center"><span>EDITAR OPCION</span></h1>
+            <h2 style = "display: inline-block" >{{ Auth::user()->name }}</h2 >
+            <img class = "circular-image" src = "{{ Auth::user()->avatar }}" alt = "{{ Auth::user()->name }}" >
         </div >
-        <div class="container">
-            <div class = "col-md-2" ></div >
-            <div class = "col-md-8" >
-                {!! Form::open(['url'=>'menu/'.$registro['id'].'/actualizar','autocomplete'=>'off', 'files'=>'true']) !!}
-                <fieldset >
-                    {!! Form::text('nombre', $registro['nombre'], array('placeholder'=>'Nombre de la promocion', 'class'=>'text-center form-control')) !!}
-                    <br />
-                    {!! Form::text('extra', $registro['extra'], array('placeholder'=>'Extra', 'class'=>'text-center form-control')) !!}
-                    <br />
-                    {!! Form::textarea('descripcion', $registro['descripcion'], array('size' => '30x5','placeholder'=>'Descripcion', 'class'=>'text-center form-control')) !!}
-                    <br />
-                    <div class="form-group text-center">
-                        {!! Form::label('seleccionarImage', 'Selecciona la imagen de la promocion'); !!}
-                        {!! Form::file('imagen',null, array('class'=>'text-center')); !!}
+        <!-- /logo-container -->
+        <div class = "header-bottom-bar" >
+            <div class = "container" >
+                <div class = "row" >
+                    <div class = "col-md-12" >
+                        <div class = "contact-info align-right" >
+                            <ul >
+                                <li ><a href = "{{ route('adminMenu') }}" >VER REGISTROS</a ></li >
+                            </ul >
+                        </div >
+                        <!-- /contact-info -->
+                    </div >
+                    <!-- /col-md-12 -->
+                </div >
+                <!-- /row -->
+            </div >
+            <!-- /container -->
+        </div >
+        <!-- /header-bottom-bar -->
+    </header >
+    <section class = "reservation" >
+        <div class = "container" >
+            <div class = "row" >
+                {!! Form::open(['url'=>'menu/'.$registro->id.'/actualizar','autocomplete'=>'off','files'=>'true']) !!}
+                <div class = "col-md-12 wow fadeInLeft" >
+                    <header class = "section-title" >
+                        <h2 class="align-center"><span >Completa</span > el formulario</h2 >
+                    </header >
+                    <div class = "col-md-6" >
+                        <div class="form-group ">
+                            {!! Form::label('seleccionarImage', 'Selecciona la imagen de la opcion.') !!}
+                            {!! Form::file('imagen',null, array('class'=>'text-center')) !!}
+                        </div>
+                    </div >
+                    <div class = "col-md-6" >
+                        <fieldset >
+                            {!! Form::text('nombre', $registro->nombre, array('placeholder'=>'Nombre', 'style'=>'width: 100%')) !!}
+                            {!! Form::text('extra', $registro->opcion, array('placeholder'=>'Extra', 'style'=>'width: 100%')) !!}
+                            {!! Form::textarea('descripcion', $registro->descripcion, array('size' => '30x5','placeholder'=>'Descripcion', 'style'=>'width: 100%')) !!}
+                            <select class="text-center" name="menu" style="width: 100%" >
+                                @foreach($menus as $c)
+                                    @if($registro->menu==$c->id)
+                                        <option value="{{$c->id}}" selected="selected">{{$c->nombre}}</option>
+                                    @else
+                                        <option value="{{$c->id}}">{{$c->nombre}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                            <div class="align-right">
+                                <span>Costo:  </span><span>$</span><input type="number" name="costo" value="{{$registro->costo}}">
+                            </div>
+
+                        </fieldset>
+                    </div >
+                    <div class="col-md-8 col-md-offset-5">
+                        {!! Form::submit('ACTUALIZAR!',array('class'=>'text-center')) !!}
                     </div>
-                    <br />
-                    <select class="text-center form-control" name="menu" >
-                        @foreach($menus as $c)
-                            @if($registro->menu==$c->id)
-                                <option value="{{$c->id}}" selected="selected">{{$c->nombre}}</option>
-                            @else<option value="{{$c->id}}">{{$c->nombre}}</option>
-                            @endif
-                        @endforeach
-                    </select>
-                    <br />
-                    <input type="number" name="costo" class="form-control" value="{{$registro->costo}}">
-                    <br />
-                    <br />
-                    {!! Form::submit('Actualizar!',array('class'=>'text-center form-control btn btn-primary')) !!}
-                </fieldset>
+                </div >
+                <!-- /col-md-6 -->
                 {!! Form::close() !!}
             </div >
-            <div class = "col-md-2" ></div >
-        </div>
-    </div>
+            <!-- /row -->
+        </div >
+        <!-- /container -->
+    </section >
 @endsection

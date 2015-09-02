@@ -37,4 +37,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+	public function scopeBuscar($return, $parametros){
+
+		if(trim($parametros)!="")
+		{
+			$return->where(\DB::raw("CONCAT(email,' ',name)"),"LIKE","%$parametros%");
+		}
+
+	}
+
 }

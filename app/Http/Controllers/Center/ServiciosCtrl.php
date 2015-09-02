@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 
 use Request as BRequest;
+use Vinkla\Hashids\Facades\Hashids;
 
 class ServiciosCtrl extends Controller {
 
@@ -57,15 +58,18 @@ class ServiciosCtrl extends Controller {
 
             $registro = new Servicios;
 
-            $imagen = BRequest::file('imagen');
-            $extension = $imagen->getClientOriginalExtension();
-            Storage::disk('image')->put($imagen->getFilename().'.'.$extension,  File::get($imagen));
+            if(\Input::get('imagen')){
+                $imagen = BRequest::file('imagen');
+                $extension = $imagen->getClientOriginalExtension();
+                $nombre_imagen = preg_replace('/\s*/', '', \Input::get('nombre'));
+                $nombre_imagen = strtolower($nombre_imagen);
+                Storage::disk('image')->put($nombre_imagen.'.'.$extension,  File::get($nombre_imagen));
+                $registro ->imagen = $nombre_imagen.'.'.$extension;
+            }
 
             $registro ->nombre = \Input::get('nombre');
             $registro ->descripcion = \Input::get('descripcion');
-            $registro ->imagen = $imagen->getFilename().'.'.$extension;
-            if(\Input::get ('est') == 'Disponible')
-            {$registro ->estado = 1;}else{$registro ->estado = 0;}
+            $registro-> estado = \Input::get('estado');
             $registro ->save();
 
             return \Redirect::route('adminServicios')
@@ -83,7 +87,8 @@ class ServiciosCtrl extends Controller {
 
     public function editar($id){
 
-        $registro = Servicios::find($id);
+        $record = Hashids::decode($id);
+        $registro = Servicios::find($record[0]);
 
         return view('Center.servicios.editar')
             ->with('registro', $registro);
@@ -104,10 +109,12 @@ class ServiciosCtrl extends Controller {
             $registro = Servicios::find($id);
             $registro ->nombre = \Input::get('nombre');
             $registro ->descripcion = \Input::get('descripcion');
-            if($imagen = BRequest::file('imagen')) {
+            if($imagen = BRequest::file('imagen')){
                 $extension = $imagen->getClientOriginalExtension();
-                Storage::disk('image')->put($imagen->getFilename() . '.' . $extension, File::get($imagen));
-                $registro ->imagen = $imagen->getFilename().'.'.$extension;
+                $nombre_imagen = preg_replace('/\s*/', '', \Input::get('nombre'));
+                $nombre_imagen = strtolower($nombre_imagen);
+                Storage::disk('image')->put($nombre_imagen.'.'.$extension,  File::get($imagen));
+                $registro ->imagen = $nombre_imagen.'.'.$extension;
             }
             $registro ->estado = \Input::get ('est');
             $registro ->save();
@@ -127,8 +134,17 @@ class ServiciosCtrl extends Controller {
 
     public function eliminar($id){
 
-        $registro = Servicios::find($id);
-        $registro ->delete();
+        try{
+
+            $registro = Servicios::find($id);
+            $registro ->delete();
+
+        } catch (\Exception $e) {
+
+            return \Redirect::route('adminServicios')
+                ->with('alerta','Parece que hay registros vinculados con este servicio...');
+
+        }
 
         return \Redirect::route('adminServicios')
             ->with('alerta','El servicio ha sido eliminado con exito!');

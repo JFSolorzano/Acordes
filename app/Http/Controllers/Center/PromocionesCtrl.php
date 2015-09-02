@@ -10,6 +10,7 @@ use RocketCandy\Services\Validation\promociones as validador;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Vinkla\Hashids\Facades\Hashids;
 
 use Request as BRequest;
 
@@ -82,7 +83,8 @@ class PromocionesCtrl extends Controller {
 
     public function editar($id){
 
-        $registro = Promociones::find($id);
+        $record = Hashids::decode($id);
+        $registro = Promociones::find($record[0]);
 
         return view('Center.promociones.editar')
             ->with('registro', $registro);

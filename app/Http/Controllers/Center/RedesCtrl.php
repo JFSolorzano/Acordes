@@ -8,6 +8,7 @@ use RocketCandy\Exceptions\ValidationException;
 use RocketCandy\Services\Validation\redes as validador;
 
 use Illuminate\Http\Request;
+use Vinkla\Hashids\Facades\Hashids;
 
 
 class RedesCtrl extends Controller {
@@ -73,7 +74,8 @@ class RedesCtrl extends Controller {
 
     public function editar($id){
 
-        $registro = Redes::find($id);
+        $record = Hashids::decode($id);
+        $registro = Redes::find($record[0]);
 
         return view('Center.redes.editar')
             ->with('registro', $registro);

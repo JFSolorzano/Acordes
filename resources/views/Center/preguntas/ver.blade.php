@@ -24,13 +24,12 @@
                 <br >
             </div >
         @endif
-        <div class = "col-md-6" >
-            <h1>PREGUNTAS FRECUENTES</h1>
-        </div >
-        <div class = "col-md-6 logo-container light-shark-bg align-right" >
-            <h2 style = "display: inline-block" >{{ Auth::user()->name }}</h2 >
-            <img class = "circular-image" src = "{{ Auth::user()->avatar }}" alt = "{{ Auth::user()->name }}" >
-        </div >
+            <div class = "logo-container light-shark-bg align-right" >
+                <br >
+                <h1 class="align-center"><span>PREGUNTAS FRECUENTES</span></h1>
+                <h2 style = "display: inline-block" >{{ Auth::user()->name }}</h2 >
+                <img class = "circular-image" src = "{{ Auth::user()->avatar }}" alt = "{{ Auth::user()->name }}" >
+            </div >
         <!-- /logo-container -->
         <div class = "header-bottom-bar" >
             <div class = "container" >
@@ -74,7 +73,7 @@
                         <td>{{$registro->respuesta}}</td>
                         <td >
                             <div class="btn-group-sm">
-                                <a href = "{{url('preguntas-frecuentes/'.$registro->id.'/editar')}}" ><i class="fa fa-edit"></i></a >
+                                <a href = "{{url('preguntas-frecuentes/'.Hashids::encode($registro->id).'/editar')}}" ><i class="fa fa-edit"></i></a >
                                 <a href = "{{url('preguntas-frecuentes/'.$registro->id.'/eliminar')}}" onclick="return confirm('Esta seguro que desea eliminar este dato')"><i class="fa fa-trash"></i></a >
                             </div>
                         </td>

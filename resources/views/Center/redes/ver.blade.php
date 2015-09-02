@@ -75,7 +75,7 @@
                         <td >{{$registro->link}}</td>
                         <td >
                             <div class="btn-group-sm">
-                                <a href = "{{url('redes-sociales/'.$registro->id.'/editar')}}" ><i class="fa fa-edit"></i></a >
+                                <a href = "{{url('redes-sociales/'.Hashids::encode($registro->id).'/editar')}}" ><i class="fa fa-edit"></i></a >
                                 <a href = "{{url('redes-sociales/'.$registro->id.'/eliminar')}}" onclick="return confirm('Esta seguro que desea eliminar este dato')"><i class="fa fa-trash"></i></a >
                             </div>
                         </td>

@@ -1,9 +1,8 @@
 <?php namespace Acordes\Http\Controllers\Center;
 
-use Acordes\Cargos;
 use Acordes\Http\Requests;
 use Acordes\Http\Controllers\Controller;
-use Acordes\Empleados;
+use Acordes\User;
 
 use RocketCandy\Exceptions\ValidationException;
 use RocketCandy\Services\Validation\empleados as validador;
@@ -13,6 +12,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 
 use Request as BRequest;
+use Vinkla\Hashids\Facades\Hashids;
 
 class EmpleadosCtrl extends Controller {
 
@@ -45,13 +45,16 @@ class EmpleadosCtrl extends Controller {
 
         } else {
 
-            $registros = Empleados::buscar($request->get('parametros'))
-                ->orderBy('nombres','desc')
+            $registros = \DB::table('users')
+                ->join('role_user','users.id','=','user_id')
+                ->join('roles','roles.id','=','role_id')
+                ->where('users.type','=',0)
+                ->select('users.id AS id_usuario', 'users.name AS nombre_usuario', 'users.email', 'users.avatar', 'roles.display_name')
+                ->orderBy('roles.display_name','asc')
                 ->paginate(6);
-            $cargos = Cargos::all(['id','nombre','descripcion']);
+
             return view('Center.empleados.ver')
-                ->with('registros',$registros)
-                ->with('cargos',$cargos);
+                ->with('registros',$registros);
 
         }
 
@@ -61,31 +64,44 @@ class EmpleadosCtrl extends Controller {
      * Funcion que retorna la vista de creacion de nuevas promociones
      */
     public function crear(Request $request){
-        $cargos = Cargos::all(['id','nombre','descripcion']);
+
+        $roles = \DB::table('roles')->get();
+
         return view('Center.empleados.crear')
-            ->with('cargos',$cargos);//el punto equivale a usar pleca
+            ->with('roles',$roles);
+
     }
 
     public function insertar(){
 
         $inputs = \Input::all();
 
+//        dd($inputs);
+
         try {
 
-            $this->_validador->validate( $inputs );
+//            $this->_validador->validate( $inputs );
 
-            $registro = new Empleados;
+            $registro = new User;
 
-            $foto = BRequest::file('foto');
-            $extension = $foto->getClientOriginalExtension();
-            Storage::disk('image')->put($foto->getFilename().'.'.$extension,  File::get($foto));
-
-            $registro ->foto = $foto->getFilename().'.'.$extension;
-            $registro ->nombres = \Input::get('nombres');
-            $registro ->apellidos = \Input::get('apellidos');
-            $registro ->cargo = \Input::get('cargo');
-            $registro ->biografia = \Input::get('biografia');
+            if(\Input::get('avatar')){
+                $avatar = BRequest::file('foto');
+                $extension = $avatar->getClientOriginalExtension();
+                $avatar_name = preg_replace('/\s*/', '', \Input::get('nombres'));
+                $avatar_name = strtolower($avatar_name);
+                Storage::disk('image')->put($avatar_name.'.'.$extension,  File::get($avatar));
+                $registro ->avatar = $avatar_name.'.'.$extension;
+            }
+            $registro ->name = \Input::get('nombres');
+            $registro ->password = \Hash::make(\Input::get('password'));
+            $registro ->type = 0;
+            $registro ->email = \Input::get('email');
             $registro ->save();
+
+            \DB::table('role_user')->insert([
+               'user_id' => $registro ->id,
+                'role_id' => \Input::get('rol')
+            ]);
 
             return \Redirect::route('adminEmpleados')
                 ->with('alerta','El integrante ha sido agregado con exito!');
@@ -106,11 +122,13 @@ class EmpleadosCtrl extends Controller {
      */
     public function editar($id){
 
-        $registro = Empleados::find($id);
-        $cargos = Cargos::all(['id','nombre','descripcion']);
+        $record = Hashids::decode($id);
+        $registro = User::find($record[0]);
+
+        $roles = \DB::table('roles')->get();
+
         return view('Center.empleados.editar')
-            ->with('cargos',$cargos)
-            ->with('registro',$registro);
+            ->with('registro',$registro)->with('roles', $roles);
 
     }
 
@@ -123,25 +141,39 @@ class EmpleadosCtrl extends Controller {
 
         try {
 
-            $rules = array(
-                'nombres' => array( 'required', 'string', 'min:10' ),
-                'apellidos' => array( 'required', 'string', 'min:10' ),
-                'biografia' => array( 'required', 'string', 'min:50'),
-                'foto' => array('image','image_size:>=300,>=300')
-            );
-            $this->validate( $request,$rules );
+//            $rules = array(
+//                'nombres' => array( 'required', 'string', 'min:10' ),
+//                'apellidos' => array( 'required', 'string', 'min:10' ),
+//                'biografia' => array( 'required', 'string', 'min:50'),
+//                'foto' => array('image','image_size:>=300,>=300')
+//            );
+//            $this->validate( $request,$rules );
 
-            $registro = Empleados::find($id);
-            if($archivo = BRequest::file('foto')) {//si se ingreso una imagen la guarda si no matiene la anterior
-                $extension = $archivo->getClientOriginalExtension();
-                Storage::disk('local')->put($archivo->getFilename() . '.' . $extension, File::get($archivo));
-                $registro->foto = $archivo->getFilename().'.'.$extension;
+            $registro = User::find($id);
+
+//            dd($registro);
+
+            if(\Input::get('avatar')){
+                $avatar = BRequest::file('foto');
+                $extension = $avatar->getClientOriginalExtension();
+                $avatar_name = preg_replace('/\s*/', '', \Input::get('nombres'));
+                $avatar_name = strtolower($avatar_name);
+                Storage::disk('image')->put($avatar_name.'.'.$extension,  File::get($avatar));
+                $registro ->avatar = $avatar_name.'.'.$extension;
             }
-            $registro->nombres = \Input::get('nombres');
-            $registro->apellidos = \Input::get('apellidos');
-            $registro->cargo = \Input::get('cargo');
-            $registro->biografia = \Input::get('biografia');
-            $registro->save();
+            $registro ->name = \Input::get('nombres');
+
+            if(\Input::get('password')){
+                $registro ->password = \Hash::make(\Input::get('password'));
+            }
+
+            $registro ->type = 0;
+            $registro ->email = \Input::get('email');
+            $registro ->save();
+
+            \DB::table('role_user')
+                ->where('user_id',$registro ->id)
+                ->update(['role_id' => \Input::get('rol')]);
 
             return \Redirect::route('adminEmpleados')
                 ->with('alerta','El integrante ha sido modificado con exito!');
@@ -158,11 +190,11 @@ class EmpleadosCtrl extends Controller {
 
     public function eliminar($id){
 
-        $registro = Empleados::find($id);
+        $registro = User::find($id);
         $registro ->delete();
 
         return \Redirect::route('adminEmpleados')
-            ->with('alerta','El integrante ha sido eliminado con exito!');
+            ->with('alerta','El empleado ha sido eliminado con exito!');
 
     }
 

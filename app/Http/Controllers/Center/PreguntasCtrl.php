@@ -8,6 +8,7 @@ use RocketCandy\Exceptions\ValidationException;
 use RocketCandy\Services\Validation\preguntas as validador;
 
 use Illuminate\Http\Request;
+use Vinkla\Hashids\Facades\Hashids;
 
 class PreguntasCtrl extends Controller {
 
@@ -80,7 +81,8 @@ class PreguntasCtrl extends Controller {
 
     public function editar($id){
 
-        $registro = Preguntas::find($id);
+        $record = Hashids::decode($id);
+        $registro = Preguntas::find($record[0]);
 
         return view('Center.preguntas.editar')
             ->with('registro',$registro);
@@ -92,7 +94,7 @@ class PreguntasCtrl extends Controller {
         try {
 
             $rules = array(
-                'pregunta' => array( 'required', 'string', 'min:10','unique:preguntas,pregunta'. $id ),
+//                'pregunta' => array( 'required', 'string', 'min:10','unique:preguntas' ),
                 'respuesta' => array( 'required', 'string', 'min:10' )
             );
             $this->validate( $request,$rules );

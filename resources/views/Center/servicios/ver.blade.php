@@ -84,8 +84,8 @@
                         @if($registro->estado == 0)<td> No disponible</td> @endif
                         <td >
                             <div class="btn-group-sm">
-                                <a href = "{{url('servicios/'.$registro->id.'/editar')}}" ><i class="fa fa-edit"></i></a >
-                                <a href = "{{url('servicios/'.$registro->id.'/eliminar')}}" onclick="return confirm('Esta seguro que desea eliminar este dato')" ><i class="fa fa-trash"></i></a >
+                                <a href = "{{url('servicios/'.Hashids::encode($registro->id).'/editar')}}" ><i class="fa fa-edit"></i></a >
+                                <a href = "{{url('servicios/'.$registro->id.'/eliminar')}}" onclick="return confirm('Esta seguro que desea eliminar este servicio?')" ><i class="fa fa-trash"></i></a >
                             </div>
                         </td>
                     </tr>

@@ -27,11 +27,12 @@ class SocialController extends Controller {
         $user->name = $fbUser->getName();
         $user->email = $fbUser->getEmail();
         $user->avatar = $fbUser->getAvatar();
+        $user->type = 1;
         $user->save();
 
         Auth::login($user);
 
-        return redirect(route('publicInicio'));
+        return \Redirect::back();
     }
 
 }

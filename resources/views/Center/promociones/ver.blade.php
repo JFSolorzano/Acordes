@@ -1,7 +1,7 @@
 @extends('Center.app')
 
 @section('titulo')
-    {{'Informacion Empresarial | Acordes'}}
+    {{'Promociones | Acordes'}}
 @endsection
 @section('contenido')
     <header class = "main-header" id = "top" >
@@ -39,7 +39,7 @@
                         <div class = "contact-info align-right" >
                             <ul >
                                 <li ><a href = "{{ route('PromocionesReport') }}" >IMPRIMIR</a ></li >
-                                <li ><a href = "{{ route('adminPromocionesCrear') }}" >NUEVA PREGUNTA</a ></li >
+                                <li ><a href = "{{ route('adminPromocionesCrear') }}" >NUEVA PROMOCION</a ></li >
                             </ul >
                         </div >
                         <!-- /contact-info -->
@@ -85,7 +85,7 @@
                         <td>{{$registro->fin}}</td>
                         <td >
                             <div class="btn-group-sm">
-                                <a href = "{{url('promociones/'.$registro->id.'/editar')}}" ><i class="fa fa-edit"></i></a >
+                                <a href = "{{url('promociones/'.Hashids::encode($registro->id).'/editar')}}" ><i class="fa fa-edit"></i></a >
                                 <a href = "{{url('promociones/'.$registro->id.'/eliminar')}}" onclick="return confirm('Esta seguro que desea eliminar este dato')" ><i class="fa fa-trash"></i></a >
                             </div>
                         </td>

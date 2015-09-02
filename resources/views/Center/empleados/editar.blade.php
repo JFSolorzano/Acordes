@@ -50,45 +50,47 @@
         </div >
         <!-- /header-bottom-bar -->
     </header >
-    <section class="reservation">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 wow fadeInLeft">
-                    {!! Form::open(['url'=>'empleados/'.$registro['id'].'/actualizar','autocomplete'=>'off', 'files'=>'true']) !!}
-                    <header class="section-title">
-                        <h2><span>Completa</span> el formulario</h2>
-                    </header>
+    <section class = "reservation" >
+        <div class = "container" >
+            <div class = "row" >
+                {!! Form::open(['url'=>'/empleados/'.$registro->id.'/actualizar','autocomplete'=>'off', 'files'=>'true']) !!}
+                <div class = "col-md-12 wow fadeInLeft" >
+                    <header class = "section-title" >
+                        <h2 ><span >Completa</span > el formulario</h2 >
+                    </header >
                     <div class = "col-md-6" >
+                        <div class = "form-group text-center" >
+                            {!! Form::label('ava', 'Selecciona el avatar del usuario', ['for'=>'avatar']) !!}
+                            {!! Form::file('avatar',null, array('class'=>'text-center')) !!}
+                        </div >
                     </div >
                     <div class = "col-md-6" >
-
                         <fieldset >
-                            {!! Form::text('nombres', $registro['nombres'], array( 'placeholder'=>'Nombres', 'class'=>'text-center')) !!}
-                            <br />
-                            {!! Form::text('apellidos', $registro['apellidos'], array( 'placeholder'=>'Apellidos', 'class'=>'text-center')) !!}
-                            <br />
-                            <select class="text-center" name="cargo" >
-                                @foreach($cargos as $c)
-                                    @if($registro->cargo==$c->id)
-                                        <option value="{{$c->id}}" selected="selected">{{$c->nombre}}</option>
-                                    @else<option value="{{$c->id}}">{{$c->nombre}}</option>
-                                    @endif
+                            <div class = "input-container" >
+                                {!! Form::text('nombres', $registro->name, array( 'placeholder'=>'Nombres', 'style'=>'width: 100%')) !!}
+                            </div >
+                            <select class = "text-center" style = "width: 100%" name = "rol" >
+                                @foreach($roles as $rol)
+                                    <option value = "{{$rol->id}}" >{{$rol->display_name}}</option >
                                 @endforeach
-                            </select>
+                            </select >
                             <br />
-                            <div class="form-group pull-right">
-                                {!! Form::label('seleccionarImage', 'Selecciona la foto del integrante') !!}
-                                {!! Form::file('foto',null, array('class'=>'text-center')) !!}
-                            </div>
+                            {!! Form::text('email', $registro ->email, array( 'placeholder'=>'Email', 'autocomplete'=>'off', 'style'=>'width: 100%')) !!}
                             <br />
-                            {!! Form::submit('Actualizar',array('class'=>'text-center')) !!}
-                        </fieldset>
+                            <input type = "password" name = "password" autocomplete = "off"
+                                   placeholder = "Nueva Contrasena" style = "width: 100%" >
+                            <br >
+                            <input type = "password" name = "password_confirmation"
+                                   placeholder = "Confirma la Contrasena" style = "width: 100%" >
+                            {!! Form::submit('Actualizar!',array('class'=>'text-center pull-right')) !!}
+                        </fieldset >
                     </div >
-                </div><!-- /col-md-6 -->
+                </div >
+                <!-- /col-md-6 -->
                 {!! Form::close() !!}
-            </div><!-- /row -->
-        </div><!-- /container -->
-    </section>
+            </div >
+            <!-- /row -->
+        </div >
+        <!-- /container -->
+    </section >
 @endsection
-
-n

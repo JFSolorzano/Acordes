@@ -4,57 +4,87 @@
     {{'Promociones | Acordes'}}
 @endsection
 @section('contenido')
-    @if ( ! $errors->isEmpty() )
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 alert alert-danger">
-                <ul>
-                    @foreach ( $errors->all() as $error )
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    @endif
-    <div class="row-fluid">
-        <div class = "container" >
-            <div style="background:transparent !important" class = "jumbotron" >
-                <h1 class="text-center">
-                    Nueva Promocion
-                </h1>
+    <header class = "main-header" id = "top" >
+        @if(\Session::has('alerta'))
+            <div class = "col-md-12 text-right alert alert-dismissible alert-success"
+                 style = "background-color: white" >
+                <button type = "button" class = "close" data-dismiss = "alert" >×</button >
+                <h1 >{{Session::get('alerta')}}</h1 >
+                <br >
             </div >
+        @endif
+        @if ( !$errors->isEmpty() )
+            <div class = "col-md-12 alert alert-dismissible alert-danger" >
+                <button type = "button" class = "close" data-dismiss = "alert" >×</button >
+                <ul >
+                    @foreach ( $errors->all() as $error )
+                        <li >{{ $error }}</li >
+                    @endforeach
+                </ul >
+                <br >
+            </div >
+        @endif
+        <div class = "logo-container light-shark-bg align-right" >
+            <br >
+            <h1 class="align-center"><span>NUEVA PROMOCIONES</span></h1>
+            <h2 style = "display: inline-block" >{{ Auth::user()->name }}</h2 >
+            <img class = "circular-image" src = "{{ Auth::user()->avatar }}" alt = "{{ Auth::user()->name }}" >
         </div >
+        <!-- /logo-container -->
+        <div class = "header-bottom-bar" >
+            <div class = "container" >
+                <div class = "row" >
+                    <div class = "col-md-12" >
+                        <div class = "contact-info align-right" >
+                            <ul >
+                                <li ><a href = "{{ route('adminPromociones') }}" >VER REGISTROS</a ></li >
+                            </ul >
+                        </div >
+                        <!-- /contact-info -->
+                    </div >
+                    <!-- /col-md-12 -->
+                </div >
+                <!-- /row -->
+            </div >
+            <!-- /container -->
+        </div >
+        <!-- /header-bottom-bar -->
+    </header >
+    <section class="reservation">
         <div class="container">
-            <div class = "col-md-2" ></div >
-            <div class = "col-md-8" >
+            <div class="row">
                 {!! Form::open(['url'=>'promociones/nuevo-registro','autocomplete'=>'off', 'class'=>'form', 'files'=>'true']) !!}
+                <div class="col-md-12 wow fadeInLeft">
+                    <header class="section-title center">
+                        <h2 class="align-center"><span>Completa</span> el formulario</h2>
+                    </header>
+                    <fieldset >
+                        <div class = "col-md-6" >
+                            <div class="form-group text-center">
+                                {!! Form::label('seleccionarImage', 'Selecciona la imagen de la promocion') !!}
+                                {!! Form::file('imagen',null, array('class'=>'text-center')) !!}
+                            </div>
+                        </div >
+                        <div class = "col-md-6" >
+                            {!! Form::text('nombre',null, array('placeholder'=>'Nombre de la promocion', 'style'=>'width: 100%')) !!}
+                            {!! Form::textarea('descripcion', null, array('size' => '30x5','placeholder'=>'Descripcion', 'style'=>'width: 100%')) !!}
 
-                <fieldset>
-                    {!! Form::text('nombre', null, array('placeholder'=>'Nombre', 'class'=>'text-center form-control')) !!}
-                    <br />
-                    {!! Form::textarea('descripcion', null, array('size' => '30x5', 'placeholder'=>'Descripcion', 'class'=>'text-center form-control')) !!}
-                    <br />
-                    <div class="form-group text-center">
-                        {!! Form::label('seleccionarImage', 'Selecciona la imagen de la promocion'); !!}
-                        {!! Form::file('imagen',null, array('class'=>'text-center')); !!}
+                            <div class="form-group text-center">
+                                <label>Fecha de Inicio : </label>
+                                {!! Form::date('inicio',\Carbon\Carbon::now(),array('style'=>'width: 100%')) !!}
+                            </div>
+                            <div class="form-group text-center">
+                                <label>Fecha de Fin : </label>
+                                {!! Form::date('fin',null,array('style'=>'width: 100%')) !!}
+                            </div>
+                        </div >
+                    </fieldset>
+                    <div class="col-md-8 col-md-offset-5">
+                        {!! Form::submit('Actualizar',array( 'class' => 'align-center')) !!}
                     </div>
-                    <br />
-                    <br />
-                    <div class="form-group text-center" >
-                        {!! Form::label('fechaInicioLabel', 'Fecha de Inicio'); !!}
-                        {!! Form::date('inicio',\Carbon\Carbon::now(), array('class'=>'text-center form-control')) !!}
-                    </div>
-                    <br />
-                    <div class="form-group text-center">
-                        {!! Form::label('fechaFinLabel', 'Fecha de Fin'); !!}
-                        {!! Form::date('fin',\Carbon\Carbon::now(),array('class'=>'text-center form-control')) !!}
-                    </div>
-                    <br />
-                    {!! Form::submit('Crear!',array('class'=>'text-center form-control btn btn-primary')) !!}
-                </fieldset>
-
+                </div><!-- /col-md-12 -->
                 {!! Form::close() !!}
-
-            </div>
-        </div >
-    </div>
+            </div><!-- /row -->
+        </div><!-- /container -->
+    </section>
 @endsection
