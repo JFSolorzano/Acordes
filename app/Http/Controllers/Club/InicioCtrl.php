@@ -2,7 +2,6 @@
 
 use Acordes\Http\Requests;
 use Acordes\Http\Controllers\Controller;
-use Acordes\Empleados;
 use Acordes\Opciones;
 use Acordes\Promociones;
 use Acordes\Menus;
@@ -17,8 +16,6 @@ class InicioCtrl extends Controller {
 	function inicio(Request $request)
     {
         $datos = new stdClass;
-
-        $datos -> empleados = Empleados::with('cargo')->get();
 
         $opcionesMenu = Opciones::with('menu')->get();
 

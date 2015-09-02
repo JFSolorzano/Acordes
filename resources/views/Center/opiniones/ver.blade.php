@@ -1,7 +1,7 @@
 @extends('Center.app')
 
 @section('titulo')
-    {{'Informacion Empresarial | Acordes'}}
+    {{'Opiniones | Acordes'}}
 @endsection
 @section('contenido')
     <header class = "main-header" id = "top" >
@@ -27,49 +27,39 @@
         <div class = "logo-container light-shark-bg align-right" >
             <br >
 
-            <h1 class = "align-center" ><span >INFORMACION EMPRESARIAL</span ></h1 >
+            <h1 class = "align-center" ><span >OPINIONES DE LOS CLIENTES</span ></h1 >
 
             <h2 style = "display: inline-block" >{{ Auth::user()->name }}</h2 >
             <img class = "circular-image" src = "{{ Auth::user()->avatar }}" alt = "{{ Auth::user()->name }}" >
         </div >
-        <!-- /logo-container -->
-        <div class = "header-bottom-bar" >
-            <div class = "container" >
-                <div class = "row" >
-                    <!-- /col-md-12 -->
-                    <div class = "col-md-3 col-md-offset-9" >
-                        {!! Form::open([ 'route'=>'adminEmpresa','method'=>'GET', 'class'=> 'search-form','role'=>'search']) !!}
-                        <input type = "search" name = "parametros" id = "search" placeholder = "Buscar" >
-                        <button type = "submit" ><i class = "fa fa-search" ></i ></button >
-                        {!! Form::close() !!}
-                    </div >
-                    <!-- /col-md-3 -->
-                </div >
-                <!-- /row -->
-            </div >
-            <!-- /container -->
-        </div >
-        <!-- /header-bottom-bar -->
     </header >
     <section class = "store-cart" >
+        {!! Form::open(['route'=>'adminPostOpiniones','autocomplete'=>'off']) !!}
         <div class = "container items-table" >
             <table >
                 <thead >
                 <tr >
-                    <th >Dato</th >
-                    <th >Contenido</th >
-                    <th class = "remove-item" ></th >
+                    <th >Cliente</th >
+                    <th >Opinion</th >
+                    <th class = "remove-item" >Mostrar</th >
                 </tr >
                 </thead >
                 <tbody >
                 @foreach($registros as $registro)
                     <tr >
                         <td >{{ $registro->nombre }}</td >
-                        <td >{{ $registro->contenido }}</td >
+                        <td >{{ $registro->mensaje }}</td >
                         <td >
                             <div class = "btn-group-sm" >
-                                <a href = "{{ url('empresa/'.Hashids::encode($registro->id).'/editar') }}"
-                                   class = "remove-items-link" ><i class = "fa fa-edit" ></i ></a >
+                                @if($registro->estado == 1)
+                                    <input type = "checkbox" class = "chk " checked = "checked" id = "{{ $registro->opinion }}"
+                                           name = "estado[]"
+                                           value = "{{ $registro->opinion }}" />
+                                @else
+                                    <input type = "checkbox" class = "chk " id = "{{ $registro->opinion }}"
+                                           name = "estado[]"
+                                           value = "{{ $registro->opinion }}" />
+                                @endif
                             </div >
                         </td >
                     </tr >
@@ -77,9 +67,15 @@
                 </tbody >
             </table >
             <div class = "container" align = "center" >
-                <?php echo $registros->render() ?>
+                <div class = "col-md-6" >
+                    <?php echo $registros->render() ?>
+                </div >
+                <div class = "col-md-6" >
+                    {!! Form::submit('Guardar',array('class'=>'pull-right')) !!}
+                </div >
             </div >
         </div >
+        {!! Form::close() !!}
         <!-- /container -->
     </section >
 @endsection

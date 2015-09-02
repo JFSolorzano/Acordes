@@ -302,6 +302,19 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
             'uses' => 'EmpresaCtrl@actualizar'
         ]);
 
+
+//================================================OPINIONES
+
+        Route::get('/opiniones', [
+            'as' => 'adminOpiniones',
+            'uses' => 'OpinionesCtrl@inicio',
+        ]);
+
+        Route::post('/opiniones', [
+            'as' => 'adminPostOpiniones',
+            'uses' => 'OpinionesCtrl@guardar',
+        ]);
+
 //================================================EMPLEADOS
 
         Route::get('/empleados', [

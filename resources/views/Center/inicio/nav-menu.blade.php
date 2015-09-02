@@ -56,11 +56,14 @@
                         <a href = "{{ route('adminPreguntas') }}" >Preguntas Frecuentes</a >
                     </li >
                 @endif
+                    <li >
+                        <a href = "{{ route('adminOpiniones') }}" >Opiniones</a >
+                    </li >
             </ul >
         </nav >
         <nav class = "main-nav" >
             <ul >
-                <li><a href="{{ url('/cerrar-sesion') }}">Cerrar sesión</a>
+                <li><a href="{{ url('/salir') }}">Cerrar sesión</a>
             </ul >
         </nav >
         <!-- /socials-container -->
