@@ -29,4 +29,6 @@ class UsuariosCtrl extends Controller {
         $pdf->loadHTML($view);
         return $pdf->stream('usuarios');
     }
+
+
 }

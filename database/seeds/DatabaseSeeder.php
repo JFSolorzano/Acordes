@@ -230,10 +230,6 @@ class RegistrosIniciales extends Seeder {
         ]);
 
         //Datos
-        $valores = Datos::create( [
-            'nombre' => 'Valores' ,
-            'contenido' => 'Vacio'
-        ] );
 
         $mision = Datos::create( [
             'nombre' => 'Mision' ,

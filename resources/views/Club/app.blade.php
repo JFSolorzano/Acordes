@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>@yield('titulo')</title>
-        <meta name="description" content="Food And Restaurant HTML Template">
+        <meta name="description" content="Restaurante Acordes">
         <meta name="viewport" content="width=device-width, initial-scale=1">        
         <meta name="theme-color" content="#23292c"> <!-- Android 5.0 Tab Color -->
         <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
@@ -28,6 +28,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('club/css/magnific-popup.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('club/css/mediaelementplayer.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('club/css/jquery.datetimepicker.css') }}">
+        <link rel="stylesheet" href="{{ asset('club/css/dropzone.css') }}">
 
         <!-- Template CSS -->
         <link rel="stylesheet" type="text/css" href="{{ asset('club/css/bootstrap.min.css') }}">
@@ -67,6 +68,7 @@
 
         @yield('contenido')
 
+        <script src="{{ asset('club/js/dropzone.js') }}"></script>
         <script src="{{ asset('club/js/vendor/jquery-2.1.3.min.js') }}"></script>
         <script src="{{ asset('club/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('club/js/imagesloaded.pkgd.min.js') }}"></script>

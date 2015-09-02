@@ -1,66 +1,91 @@
 @extends('Center.app')
 
 @section('titulo')
-    {{'Redes Sociales | Acordes'}}
+    {{'Informacion Empresarial | Acordes'}}
 @endsection
-
 @section('contenido')
-    <div class = "row-fluid" >
-        <div class = "container" id="admin">
-            @if(\Session::has('alerta'))
-                <div class="alert alert-dismissible alert-success">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    <strong>{{Session::get('alerta')}}</strong>
-                </div>
-            @endif
-            <div class="container">
-                <div class="row">
-                    <div class = "col-md-4" > </div >
-                    <div class = "col-md-4" ><h3 class="text-center">Redes sociales</h3></div >
-                    <div class = "col-md-4" ></div >
-                </div>
-                <div class="row">
-                    <div class = "col-md-4" >
-                        <a href = "{{ route('adminRedesCrear') }}" class="btn btn-primary pull-left">Nuevo<span class="glyphicon glyphicon-plus" aria-hidden="true"></a >
-                    </div >
-                    <div class = "col-md-4" ></div >
-                    <div class = "col-md-4" >
-                        <div class="pull-right">
-                            {!! Form::open([ 'route'=>'adminRedes','method'=>'GET', 'class'=> 'navbar-form navbar-left','role'=>'search']) !!}
-                            <button type="submit" class="btn btn-default fa fa-search"></button>
-                            {!! Form::text('parametros',null,['class'=>'form-control','placeholder'=>'Busqueda' ]) !!}
-                            {!! Form::close() !!}
-                        </div>
-                    </div >
-                </div>
-            </div>
+    <header class = "main-header" id = "top" >
+        @if(\Session::has('alerta'))
+            <div class = "col-md-12 text-right alert alert-dismissible alert-success"
+                 style = "background-color: white" >
+                <button type = "button" class = "close" data-dismiss = "alert" >×</button >
+                <h1 >{{Session::get('alerta')}}</h1 >
+                <br >
+            </div >
+        @endif
+        @if ( !$errors->isEmpty() )
+            <div class = "col-md-12 alert alert-dismissible alert-danger" >
+                <button type = "button" class = "close" data-dismiss = "alert" >×</button >
+                <ul >
+                    @foreach ( $errors->all() as $error )
+                        <li >{{ $error }}</li >
+                    @endforeach
+                </ul >
+                <br >
+            </div >
+        @endif
 
-            <table class="table table-striped table-hover">
+        <div class = "logo-container light-shark-bg align-right" >
+            <br >
+            <h1 class="align-center"><span>REDES SOCIALES</span></h1>
+            <h2 style = "display: inline-block" >{{ Auth::user()->name }}</h2 >
+            <img class = "circular-image" src = "{{ Auth::user()->avatar }}" alt = "{{ Auth::user()->name }}" >
+        </div >
+        <!-- /logo-container -->
+        <div class = "header-bottom-bar" >
+            <div class = "container" >
+                <div class = "row" >
+                    <div class = "col-md-9" >
+                        <div class = "contact-info align-right" >
+                            <ul >
+                                <li ><a href = "{{ route('PromocionesReport') }}" >IMPRIMIR</a ></li >
+                                <li ><a href = "{{ route('adminRedesCrear') }}" >NUEVO REGISTRO</a ></li >
+                            </ul >
+                        </div >
+                        <!-- /contact-info -->
+                    </div >
+                    <!-- /col-md-12 -->
+                    <div class="col-md-3">
+                        {!! Form::open([ 'route'=>'adminRedes','method'=>'GET', 'class'=> 'search-form','role'=>'search']) !!}
+                        <input type="search" name="parametros" id="search" placeholder="Buscar">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                        {!! Form::close() !!}
+                    </div><!-- /col-md-3 -->
+                </div >
+                <!-- /row -->
+            </div >
+            <!-- /container -->
+        </div >
+        <!-- /header-bottom-bar -->
+    </header >
+    <section class="store-cart">
+        <div class="container items-table">
+            <table>
                 <thead>
+                <tr>
                     <th>Nombre</th>
                     <th>Enlace</th>
-                    <th class="text-center">Acciones</th>
+                    <th class="remove-item"> </th>
+                </tr>
                 </thead>
                 <tbody>
-                    @foreach($registros as $registro)
-                        <tr >
-                            <td class="vert-align"><i class="fa {{$registro->nombre}}" ></i>{{$registro->nombre}}</td>
-                            <td class="vert-align" >{{$registro->link}}</td>
-                            <td class="vert-align" >
-                                <div class="btn-group-sm">
-                                    <a href = "{{url('redes-sociales/'.$registro->id.'/editar')}}" class="btn btn-warning"><i class="fa fa-edit"></i></a >
-                                    <a href = "{{url('redes-sociales/'.$registro->id.'/eliminar')}}" onclick="return confirm('Esta seguro que desea eliminar este dato')" class="btn btn-danger"><i class="fa fa-trash"></i></a >
-                                    <br />
-                                    <small class="text-info"><i>Ultima actualizacion:</i> {{$registro->updated_at}}</small>
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
+                @foreach($registros as $registro)
+                    <tr>
+                        <td ><i class="fa {{$registro->nombre}}" ></i>{{$registro->nombre}}</td>
+                        <td >{{$registro->link}}</td>
+                        <td >
+                            <div class="btn-group-sm">
+                                <a href = "{{url('redes-sociales/'.$registro->id.'/editar')}}" ><i class="fa fa-edit"></i></a >
+                                <a href = "{{url('redes-sociales/'.$registro->id.'/eliminar')}}" onclick="return confirm('Esta seguro que desea eliminar este dato')"><i class="fa fa-trash"></i></a >
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
             <div class="container" align="center">
                 <?php echo $registros->render() ?>
             </div>
-        </div >
-    </div >
+        </div><!-- /container -->
+    </section>
 @endsection

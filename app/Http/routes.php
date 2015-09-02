@@ -316,6 +316,11 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
             //'middleware' => 'empleados'
         ]);
 
+        Route::post('/cargar/imagen',[
+           'as' => 'adminCargarImagen',
+            'uses' => 'UsuariosCtrl@imagen'
+        ]);
+
         Route::post('/empleados/nuevo-registro', 'EmpleadosCtrl@insertar');
 
         Route::get('/empleados/{id}/editar', [
@@ -429,8 +434,6 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
         Route::get('/servicios/{id}/eliminar', 'ServiciosCtrl@eliminar');
 
 //================================================MENU
-
-        //================================================MENU
 
         //Restaurante
         Route::get('/menu', [

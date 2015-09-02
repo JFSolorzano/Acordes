@@ -78,7 +78,6 @@
             $('#cuenta-total').text('$'+nuevo_costo);
             $('#cuenta-total-input').val('$'+nuevo_costo);
         });
-
     });
 
     $(document).on("ready", function() {

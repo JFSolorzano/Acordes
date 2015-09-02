@@ -88,6 +88,7 @@ textarea {
    ========================================================================== */
 
 
+
 /* ==========================================================================
    comidas carousel
    ========================================================================== */
@@ -682,7 +683,7 @@ form button:hover {
 
 .dropcap {
     display: inline-block;
-    width: 43px;
+    width: 150px;
     height: 43px;
     font-size: 32px;
     text-transform: uppercase;
@@ -3443,51 +3444,51 @@ input.chk {
     margin-bottom: 47px;
 }
 
-form.cart-items table {
+div.items-table table {
     width: 100%;
 }
 
-form.cart-items table thead,
-form.cart-items table tfoot {
+div.items-table table thead,
+div.items-table table tfoot {
     background: #f7f5ef;
 }
 
-form.cart-items table thead th,
-form.cart-items table tbody td {
+div.items-table table thead th,
+div.items-table table tbody td {
     padding: 20px;
     text-align: center;
 }
 
-form.cart-items table .item-thumb,
-form.cart-items table .item-desc {
+div.items-table table .item-thumb,
+div.items-table table .item-desc {
     text-align: left;
 }
 
-form.cart-items table .item-thumb {
+div.items-table table .item-thumb {
     width: 250px;
     border-right: none;
 }
 
-form.cart-items table .item-desc {
+div.items-table table .item-desc {
     width: 180px;
 }
 
-form.cart-items table figure {
+div.items-table table figure {
     width: 230px;
     display: inline-block;
 }
 
-form.cart-items table .remove-item {
+div.items-table table .remove-item {
     width: 45px;
     padding-right: 0;
     padding-left: 0;
 }
 
-form.cart-items table thead {
+div.items-table table thead {
     border: 1px solid #eceded;
 }
 
-form.cart-items table thead th {
+div.items-table table thead th {
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
@@ -3497,16 +3498,16 @@ form.cart-items table thead th {
     padding-bottom: 14px;
 }
 
-form.cart-items table tbody {
+div.items-table table tbody {
     border: 1px solid #eceded;
     border-top: none;
 }
 
-form.cart-items table tbody tr {
+div.items-table table tbody tr {
     border-bottom: 1px solid #eceded;
 }
 
-form.cart-items table tbody td {
+div.items-table table tbody td {
     font-size: 14px;
     color: #283233;
     vertical-align: top;
@@ -3515,19 +3516,19 @@ form.cart-items table tbody td {
     border-right: 1px solid #eceded;
 }
 
-form.cart-items table tbody .item-desc {
+div.items-table table tbody .item-desc {
     font-size: 18px;
 }
 
-form.cart-items table tbody strong {
+div.items-table table tbody strong {
     font-weight: 700;
 }
 
-form.cart-items table .stepper {
+div.items-table table .stepper {
     position: relative;
 }
 
-form.cart-items table .stepper span {
+div.items-table table .stepper span {
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -3538,21 +3539,21 @@ form.cart-items table .stepper span {
     cursor: pointer;
 }
 
-form.cart-items table .stepper .stepper-arrow.down {
+div.items-table table .stepper .stepper-arrow.down {
     background-image: url(../img/template-assets/icon-minus.png);
     background-repeat: no-repeat;
     background-position: center;
     left: 0;
 }
 
-form.cart-items table .stepper .stepper-arrow.up {
+div.items-table table .stepper .stepper-arrow.up {
     background-image: url(../img/template-assets/icon-plus.png);
     background-repeat: no-repeat;
     background-position: center;
     right: 0;
 }
 
-form.cart-items table .cart-item-count {
+div.items-table table .cart-item-count {
     font-size: 14px;
     font-weight: 700;
     text-align: center;
@@ -3987,65 +3988,65 @@ table.order-table tbody td.total {
         visibility: visible;
     }
 
-    form.cart-items table,
-    form.cart-items table thead,
-    form.cart-items table tbody,
-    form.cart-items table tr,
-    form.cart-items table th,
-    form.cart-items table td {
+    div.items-table table,
+    div.items-table table thead,
+    div.items-table table tbody,
+    div.items-table table tr,
+    div.items-table table th,
+    div.items-table table td {
         display: block;
         position: relative;
     }
 
-    form.cart-items table thead tr {
+    div.items-table table thead tr {
         position: absolute;
         top: -99999px;
         left: -99999px;
     }
 
-    form.cart-items table tbody tr {
+    div.items-table table tbody tr {
         border-bottom: 1px solid #eceded;
     }
 
-    form.cart-items table tbody .item-desc {
+    div.items-table table tbody .item-desc {
         font-size: 16px;
     }
 
-    form.cart-items table .item-desc,
-    form.cart-items table .remove-link {
+    div.items-table table .item-desc,
+    div.items-table table .remove-link {
         border-right: none;
         text-align: center;
     }
 
-    form.cart-items table tbody td {
+    div.items-table table tbody td {
         /*text-align: left;*/
         padding-left: 50%;
         border-right: none;
     }
 
-    form.cart-items table .item-thumb {
+    div.items-table table .item-thumb {
         width: auto;
         border-right: none;
     }
 
-    form.cart-items table .item-thumb img {
+    div.items-table table .item-thumb img {
         width: 100%;
     }
 
-    form.cart-items table .item-desc {
+    div.items-table table .item-desc {
         width: auto;
     }
 
-    form.cart-items table figure {
+    div.items-table table figure {
         width: auto;
     }
 
-    form.cart-items table .remove-item {
+    div.items-table table .remove-item {
         width: auto;
         padding-left: 45%;
     }
 
-    form.cart-items table tbody td:before {
+    div.items-table table tbody td:before {
         position: absolute;
         top: 20px;
         left: 20px;
@@ -4061,31 +4062,31 @@ table.order-table tbody td.total {
     /*
     Label the data
     */
-    form.cart-items table tbody td:nth-of-type(1):before {
+    div.items-table table tbody td:nth-of-type(1):before {
         content: "Item";
     }
 
-    form.cart-items table tbody td:nth-of-type(2):before {
+    div.items-table table tbody td:nth-of-type(2):before {
         content: "Description";
     }
 
-    form.cart-items table tbody td:nth-of-type(3):before {
+    div.items-table table tbody td:nth-of-type(3):before {
         content: "Product Code";
     }
 
-    form.cart-items table tbody td:nth-of-type(4):before {
+    div.items-table table tbody td:nth-of-type(4):before {
         content: "Unit Price";
     }
 
-    form.cart-items table tbody td:nth-of-type(5):before {
+    div.items-table table tbody td:nth-of-type(5):before {
         content: "Quantity";
     }
 
-    form.cart-items table tbody td:nth-of-type(6):before {
+    div.items-table table tbody td:nth-of-type(6):before {
         content: "Subtotal";
     }
 
-    form.cart-items table tbody td:nth-of-type(7):before {
+    div.items-table table tbody td:nth-of-type(7):before {
         content: "";
     }
 

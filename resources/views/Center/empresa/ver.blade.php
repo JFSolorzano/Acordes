@@ -1,58 +1,73 @@
 @extends('Center.app')
 
 @section('titulo')
-    {{'Empresa | Acordes'}}
+    {{'Informacion Empresarial | Acordes'}}
 @endsection
-
 @section('contenido')
-    <div class = "row-fluid" >
-        <div class = "container" id="admin">
-            @if(\Session::has('alerta'))
-                <div class="alert alert-dismissible alert-success">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    <strong>{{Session::get('alerta')}}</strong>
-                </div>
-            @endif
-            <div class="container">
-                <div class="row">
-                    <div class = "col-md-4" > </div >
-                    <div class = "col-md-4" ><h3 class="text-center">Informacion empresarial</h3></div >
-                    <div class = "col-md-4" ></div >
-                </div>
-                <div class="row">
-                    <div class = "col-md-4" >
-                        <a href = "{{ route('EmpresaReport') }}" class="btn btn-danger pull-left" target="_blank">Reporte<span class="glyphicon glyphicon-plus" aria-hidden="true"></a >
-                    </div >
-                    <div class = "col-md-4 col-md-offset-8" >
-                        </br>
-
-                        <!--<div class="pull-right">
-                            {!! Form::open([ 'route'=>'adminEmpresa','method'=>'GET', 'class'=> 'navbar-form navbar-left','role'=>'search']) !!}
-                            <button type="submit" class="btn btn-default fa fa-search"></button>
-                            {!! Form::text('parametros',null,['class'=>'form-control','placeholder'=>'Busqueda' ]) !!}
-                            {!! Form::close() !!}
-                        </div>-->
-                    </div >
-                </div>
-            </div>
-
-            <table class="table table-striped table-hover table-responsive">
+    <header class = "main-header" id = "top" >
+        @if(\Session::has('alerta'))
+            <div class = "col-md-12 text-right alert alert-dismissible alert-success"
+                 style = "background-color: white" >
+                <button type = "button" class = "close" data-dismiss = "alert" >×</button >
+                <h1 >{{Session::get('alerta')}}</h1 >
+                <br >
+            </div >
+        @endif
+        @if ( !$errors->isEmpty() )
+            <div class = "col-md-12 alert alert-dismissible alert-danger" >
+                <button type = "button" class = "close" data-dismiss = "alert" >×</button >
+                <ul >
+                    @foreach ( $errors->all() as $error )
+                        <li >{{ $error }}</li >
+                    @endforeach
+                </ul >
+                <br >
+            </div >
+        @endif
+        <div class = "col-md-6" >
+            <h1>INFORMACION EMPRESARIAL</h1>
+        </div >
+        <div class = "col-md-6 logo-container light-shark-bg align-right" >
+            <h2 style = "display: inline-block" >{{ Auth::user()->name }}</h2 >
+            <img class = "circular-image" src = "{{ Auth::user()->avatar }}" alt = "{{ Auth::user()->name }}" >
+        </div >
+        <!-- /logo-container -->
+        <div class = "header-bottom-bar" >
+            <div class = "container" >
+                <div class = "row" >
+                    <!-- /col-md-12 -->
+                    <div class="col-md-3 col-md-offset-9">
+                        {!! Form::open([ 'route'=>'adminEmpresa','method'=>'GET', 'class'=> 'search-form','role'=>'search']) !!}
+                        <input type="search" name="parametros" id="search" placeholder="Buscar">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                        {!! Form::close() !!}
+                    </div><!-- /col-md-3 -->
+                </div >
+                <!-- /row -->
+            </div >
+            <!-- /container -->
+        </div >
+        <!-- /header-bottom-bar -->
+    </header >
+    <section class="store-cart">
+        <div class="container items-table">
+            <table>
                 <thead>
-                <th>Dato</th>
-                <th>Contenido</th>
-                <th class="foo">Acciones</th>
+                <tr>
+                    <th>Dato</th>
+                    <th>Contenido</th>
+                    <th class="remove-item"> </th>
+                </tr>
                 </thead>
                 <tbody>
                 @foreach($registros as $registro)
                     <tr>
                         <td>{{ $registro->nombre }}</td>
                         <td>{{ $registro->contenido }}</td>
-                        <td width="50px">
+                        <td >
                             <div class="btn-group-sm">
-                                <a href = "{{ url('empresa/'.Hashids::encode($registro->id).'/editar') }}" class="btn btn-warning"><i class="fa fa-edit"></i></a >
+                                <a href = "{{ url('empresa/'.Hashids::encode($registro->id).'/editar') }}" class="remove-items-link"><i class="fa fa-edit"></i></a >
                             </div>
-                            <br />
-                            <small class="text-info"><i>Ultima actualizacion:</i> {{$registro->updated_at}}</small>
                         </td>
                     </tr>
                 @endforeach
@@ -61,6 +76,6 @@
             <div class="container" align="center">
                 <?php echo $registros->render() ?>
             </div>
-        </div >
-    </div >
+        </div><!-- /container -->
+    </section>
 @endsection

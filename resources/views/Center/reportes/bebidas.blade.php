@@ -269,7 +269,7 @@
         </table >
             @if( count($chunk) > 6 )
                 <div class="page-break"></div>
-                {{ $PAGE_NUM }}
+                <?php $PAGE_NUM ?>
             @endif
     @endforeach
 
@@ -281,7 +281,7 @@
             <div class = "email" ><a href = "mailto:{{ Auth::user()->email }}" >{{ Auth::user()->email }}</a ></div >
         </div >
     </div >
-    {{ $PAGE_NUM }}
+        <?php $PAGE_NUM ?>
 </main >
 <footer >
     Restaurante Acordes

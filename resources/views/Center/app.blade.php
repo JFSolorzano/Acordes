@@ -1,111 +1,116 @@
-<html>
-<head>
-    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <link href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.4/paper/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="{{ asset("/css/center.css") }}" rel="stylesheet">
-    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/metisMenu.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/sb-admin-2.css') }}" rel="stylesheet">
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>@yield('titulo')</title>
+        <meta name="description" content="Restaurante Acordes">
+        <meta name="viewport" content="width=device-width, initial-scale=1">        
+        <meta name="theme-color" content="#23292c"> <!-- Android 5.0 Tab Color -->
+        <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
 
-    <title>@yield('titulo')</title>
+        <!-- Web Fonts -->
+        {{--<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700,300,400' rel='stylesheet' type='text/css'>--}}
+        {{--<link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>--}}
 
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-<body>
-@unless(Auth::guest())
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Cambiar navegación</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="" data-toggle="dropdown" class="navbar-brand" href="{{ route('adminInicio') }}">Panel de administración<span class="fa fa-fw"></span></a>
-            <ul class="dropdown-menu" id="">
-                <li>
-                    <a href="{{ route('adminInicio') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Control de contenido<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        @if(Entrust::can('crud-promociones'))
-                            <li>
-                                <a href="{{ route('adminPromociones') }}">Promociones</a>
-                            </li>
-                        @endif
-                        @if(Entrust::can('crud-empleados'))
-                            <li>
-                                <a href="{{ route('adminEmpleados') }}">Empleados</a>
-                            </li>
-                        @endif
-                        @if(Entrust::can('crud-servicios'))
-                            <li>
-                                <a href="{{ route('adminServicios') }}">Servicios</a>
-                            </li>
-                        @endif
-                    </ul>
-                    <!-- /.nav-second-level -->
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        @if(Entrust::can('crud-redes'))
-                            <li><a href="{{ route('adminRedes') }}">Redes Sociales</a></li>
-                        @endif
-                        @if(Entrust::can('crud-datos'))
-                            <li><a href="{{ route('adminEmpresa') }}">Empresa</a></li>
-                        @endif
-                    </ul>
-                    <!-- /.nav-second-level -->
-                </li>
-                @if(Entrust::can('crud-menu'))
-                    <li>
-                        <a href="{{ route('adminMenu') }}"><i class="fa fa-table fa-fw"></i> Menú<span ></span></a>
-                        <!-- /.nav-second-level -->
-                    </li>
-                @endif
-                @if(Entrust::can('crud-preguntas'))
-                    <li><a href="{{ route('adminPreguntas') }}"><i class="fa fa-files-o fa-fw"></i>Preguntas frecuentes</a></li>
-                @endif
-            </ul>
-        </div>
-        <!-- /.navbar-header -->
+        <!-- Icon Fonts -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('club/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('club/css/fontello.css') }}">
+        
+        <!-- Plugins CSS -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('club/css/rev-slider-settings.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('club/css/animate.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('club/css/owl.carousel.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('club/css/owl.theme.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('club/css/magnific-popup.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('club/css/mediaelementplayer.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('club/css/jquery.datetimepicker.css') }}">
+        <link rel="stylesheet" href="{{ asset('club/css/dropzone.css') }}">
 
-        <ul class="nav navbar-top-links navbar-right">
-            <!-- /.dropdown -->
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-user">
-                    <li><a href=""><i class="fa fa-user fa-fw"></i>{{ Auth::user()->name }}<br>{{ Auth::user()->email}}</a>
-                    </li>
-                    @if(Entrust::can('crud-usuarios'))
-                        <li><a href="{{ url('/auth/register') }}"><i class="fa fa-gear fa-fw"></i> Usuarios</a>
-                        </li>@endif
-                    <li class="divider"></li>
-                    <li><a href="{{ url('/auth/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Cerrar sesión</a>
-                    </li>
-                </ul>
-                <!-- /.dropdown-user -->
-            </li>
-            <!-- /.dropdown -->
-        </ul>
-    </nav>
+        <!-- Template CSS -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('club/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('club/css/reset.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('club/css/main.css') }}">
 
-    @endunless
+        <!-- Demo Purpose CSS -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('club/css/custom-bg.css') }}">
 
+        <!-- Head JS Libraries -->
+        <script src="{{ asset('club/js/vendor/modernizr-2.6.2.min.js') }}"></script>
+        {{--<script src="http://maps.google.com/maps/api/js"></script><!-- REQUIRED FOR GOOGLE MAP -->--}}
+    </head>
+    <body>
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '467232153438758',
+                xfbml      : true,
+                version    : 'v2.4'
+            });
+        };
 
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">Estas usando un navegador <strong>desactualizado</strong>. Por favor <a href="http://browsehappy.com/">actualiza tu navegador</a> para mejorar tu experiencia.</p>
+        <![endif]-->
 
-    @yield('contenido')
+        @include('Center.inicio.nav-menu')
 
-    <!-- Scripts -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
-</body>
+        @yield('contenido')
+
+        <script src="{{ asset('club/js/dropzone.js') }}"></script>
+        <script src="{{ asset('club/js/vendor/jquery-2.1.3.min.js') }}"></script>
+        <script src="{{ asset('club/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('club/js/imagesloaded.pkgd.min.js') }}"></script>
+        <script src="{{ asset('club/js/jquery.themepunch.tools.min.js') }}"></script>
+        <script src="{{ asset('club/js/jquery.themepunch.revolution.min.js') }}"></script>
+        <script src="{{ asset('club/js/retina.min.js') }}"></script>
+        <script src="{{ asset('club/js/SmoothScroll.js') }}"></script>
+        <script src="{{ asset('club/js/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('club/js/jquery.mixitup.min.js') }}"></script>
+        <script src="{{ asset('club/js/jquery.magnific-popup.min.js') }}"></script>
+        <script src="{{ asset('club/js/jquery.stellar.min.js') }}"></script>
+        <script src="{{ asset('club/js/jquery.nicescroll.min.js') }}"></script>
+        <script src="{{ asset('club/js/jquery.nav.js') }}"></script>
+        {{--<script src="{{ asset('club/js/cd-google-map.js') }}"></script>--}}
+        <script src="{{ asset('club/js/wow.min.js') }}"></script>
+        <script src="{{ asset('club/js/mediaelement-and-player.min.js') }}"></script>
+        <script src="{{ asset('club/js/tweetie.min.js') }}"></script>
+        <script src="{{ asset('club/js/jquery.scrollme.min.js') }}"></script>
+        <script src="{{ asset('club/js/jquery.dotdotdot.min.js') }}"></script>
+        <script src="{{ asset('club/js/jquery.datetimepicker.js') }}"></script>
+        <script src="{{ asset('club/js/moment.min.js') }}"></script>
+        <script src="{{ asset('club/js/plugins.js') }}"></script>
+
+        <script src="{{ asset('club/js/ajax.js') }}"></script>
+        <script src="{{ asset('club/js/main.js') }}"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+               jQuery('.main-slider').revolution(
+                {
+                    delay:9000,
+                    startwidth:1170,
+                    startheight: 960,
+                    hideThumbs:10,
+                    fullScreen: 'on',
+                    navigationStyle: 'preview4',
+                    parallax: 'scroll',
+                    parallaxLevels:[100,-80]
+                });
+            });
+
+        </script>
+
+    </body>
 </html>
+

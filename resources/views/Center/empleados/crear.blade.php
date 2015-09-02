@@ -4,53 +4,82 @@
     {{'Empleados | Acordes'}}
 @endsection
 @section('contenido')
-    @if ( ! $errors->isEmpty() )
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 alert alert-danger">
-                <ul>
+    <header class = "main-header" id = "top" >
+        @if(\Session::has('alerta'))
+            <div class = "col-md-12 text-right alert alert-dismissible alert-success"
+                 style = "background-color: white" >
+                <button type = "button" class = "close" data-dismiss = "alert" >×</button >
+                <h1 >{{Session::get('alerta')}}</h1 >
+                <br >
+            </div >
+        @endif
+        @if ( !$errors->isEmpty() )
+            <div class = "col-md-12 alert alert-dismissible alert-danger" >
+                <button type = "button" class = "close" data-dismiss = "alert" >×</button >
+                <ul >
                     @foreach ( $errors->all() as $error )
-                        <li>{{ $error }}</li>
+                        <li >{{ $error }}</li >
                     @endforeach
-                </ul>
-            </div>
-        </div>
-    @endif
-    <div class="row-fluid">
-        <div class = "container" >
-            <div style="background:transparent !important" class = "jumbotron" >
-                <h1 class="text-center">
-                    Nuevo Empleado
-                </h1>
+                </ul >
+                <br >
             </div >
+        @endif
+        <div class = "col-md-6" >
+            <h1>NUEVO USUARIO</h1>
         </div >
-        <div class="container">
-            <div class = "col-md-2" ></div >
-            <div class = "col-md-8" >
-                {!! Form::open(['url'=>'empleados/nuevo-registro','autocomplete'=>'off', 'files'=>'true']) !!}
-                <fieldset >
-                    {!! Form::text('nombres', null, array( 'placeholder'=>'Nombres', 'class'=>'text-center form-control')) !!}
-                    <br />
-                    {!! Form::text('apellidos', null, array( 'placeholder'=>'Apellidos', 'class'=>'text-center form-control')) !!}
-                    <br />
-                    <select class="text-center form-control" name="cargo" >
-                        @foreach($cargos as $c)
-                        <option value="{{$c->id}}">{{$c->nombre}}</option>
-                        @endforeach
-                    </select>
-                    <br />
-                    {!! Form::textarea('biografia', null, array('size' => '30x5', 'placeholder'=>'Biografia', 'class'=>'text-center form-control')) !!}
-                    <br />
-                    <div class="form-group pull-right">
-                        {!! Form::label('seleccionarImage', 'Selecciona la foto del integrante.'); !!}
-                        {!! Form::file('foto',null, array('class'=>'text-center')); !!}
-                    </div>
-                    <br />
-                    <br />
-                    {!! Form::submit('Crear!',array('class'=>'text-center form-control btn btn-primary')) !!}
-                </fieldset>
-                {!! Form::close() !!}
+        <div class = "col-md-6 logo-container light-shark-bg align-right" >
+            <h2 style = "display: inline-block" >{{ Auth::user()->name }}</h2 >
+            <img class = "circular-image" src = "{{ Auth::user()->avatar }}" alt = "{{ Auth::user()->name }}" >
+        </div >
+        <!-- /logo-container -->
+        <div class = "header-bottom-bar" >
+            <div class = "container" >
+                <div class = "row" >
+                    <div class = "col-md-12" >
+                        <div class = "contact-info align-right" >
+                            <ul >
+                                <li ><a href = "{{ route('adminEmpleados') }}" >VER REGISTROS</a ></li >
+                            </ul >
+                        </div >
+                        <!-- /contact-info -->
+                    </div >
+                    <!-- /col-md-12 -->
+                </div >
+                <!-- /row -->
             </div >
-            <div class = "col-md-2" ></div >
-        </div>
-    </div>
+            <!-- /container -->
+        </div >
+        <!-- /header-bottom-bar -->
+    </header >
+    <section class="reservation">
+        <div class="container">
+            <div class="row">
+                {!! Form::open(['url'=>'empleados/nuevo-registro','autocomplete'=>'off', 'files'=>'true']) !!}
+                <div class="col-md-12 wow fadeInLeft">
+                    <header class="section-title">
+                        <h2><span>Completa</span> el formulario</h2>
+                    </header>
+                    <div class = "col-md-6" >
+                    </div >
+                    <div class = "col-md-6" >
+                        <fieldset >
+                            <div class="input-container">
+                                {!! Form::text('nombres', null, array( 'placeholder'=>'Nombres', 'style'=>'width: 100%')) !!}
+                            </div>
+                            <select class = "text-center" style="width: 100%" name = "rol" >
+                                {{--@foreach($roles as $c)--}}
+                                {{--<option value = "{{$c->id}}" >{{$c->display_name}}</option >--}}
+                                {{--@endforeach--}}
+                            </select >
+                            <br />
+                            {!! Form::text('email', null, array( 'placeholder'=>'Email', 'style'=>'width: 100%')) !!}
+                            <br />
+                            {!! Form::submit('Crear!',array('class'=>'text-center pull-right')) !!}
+                        </fieldset >
+                    </div >
+                </div><!-- /col-md-6 -->
+                {!! Form::close() !!}
+            </div><!-- /row -->
+        </div><!-- /container -->
+    </section>
 @endsection

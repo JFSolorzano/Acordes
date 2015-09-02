@@ -1,49 +1,100 @@
 @extends('Center.app')
 
+@section('titulo')
+{{ 'Inicia Sesion | Acordes' }}
+@endsection
+
 @section('contenido')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="login-panel panel panel-default">
-                    <div class="panel-heading" align="center">
-                        <h3 class="panel-title">Sitio administrativo de Acordes</h3>
-                    </div>
-                    <div class="panel-body">
-                        @if (count($errors) > 0)
-                            <div class="alert alert-danger">
-                                <strong>Ooops!</strong> Hay problemas con los datos ingresados.<br><br>
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                        <form role="form" method="POST"  action="{{ route('adminPostIngresar') }}">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <fieldset>
-                                <div class="form-group">
-                                    <input class="form-control" autocomplete="off" placeholder="E-mail" name="email" type="email" autofocus>
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Contraseña" name="password" type="password" value="">
-                                </div>
-                                <div class="checkbox" >
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Recordarme
-                                    </label>
-                                </div>
-                                <!-- Change this to a button or input when using this as a form -->
-                                <div align="center">
-                                    {!! Form::submit('Iniciar Sesión',array('class'=>'text-center form-control btn btn-primary')) !!}
-                                    <a  class="btn btn-link"  href="{{ url('/password/email') }}">Olvidaste tu contraseña?</a>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        <!-- Start wrapper -->
+<div class = "wrapper" >
+
+    <!-- Start main-header -->
+    <header class = "main-header" id = "top" >
+        @if(\Session::has('alerta'))
+            <div class = "col-md-12 text-right alert alert-dismissible alert-success"
+                 style = "background-color: white" >
+                <button type = "button" class = "close" data-dismiss = "alert" >×</button >
+                <h1 >{{Session::get('alerta')}}</h1 >
+                <br >
+            </div >
+        @endif
+        @if ( !$errors->isEmpty() )
+            <div class = "col-md-12 alert alert-dismissible alert-danger" >
+                <button type = "button" class = "close" data-dismiss = "alert" >×</button >
+                <strong>Ooops!</strong> Hay problemas con los datos ingresados.<br><br>
+                <ul >
+                    @foreach ( $errors->all() as $error )
+                        <li >{{ $error }}</li >
+                    @endforeach
+                </ul >
+                <br >
+            </div >
+        @endif
+        <div class = "logo-container light-shark-bg align-center" >
+            <a href = "#" class = "logo" >
+                <img src = "{{ asset('club/img/logo/243x100p.png') }}" alt = "Restaurante Acordes" >
+            </a >
+        </div >
+        <!-- /logo-container -->
+        <div class = "header-bottom-bar" >
+            <div class = "container" >
+                <div class = "row" >
+                    <div class = "col-md-12" >
+                        <div class = "contact-info align-right" >
+                            <ul >
+                                {{--<li ><a href = "{{ route('adminOlvide') }}" >OLVIDE MI CONTRASENA!</a ></li >--}}
+                            </ul >
+                        </div >
+                        <!-- /contact-info -->
+                    </div >
+                    <!-- /col-md-12 -->
+                </div >
+                <!-- /row -->
+            </div >
+            <!-- /container -->
+        </div >
+        <!-- /header-bottom-bar -->
+    </header >
+    <!-- End main-header -->
+
+    <section class = "store-checkout" >
+        <div class = "container wow fadeInDown" >
+            <div class = "row" >
+                <div class = "col-md-12" >
+                    <div class = "container" >
+                        <div class = "row" >
+                            <div class = "col-md-6 col-md-offset-3 wow fadeInDown" >
+                                <div class = "contact-form-contaienr" >
+                                    <div class = "section-title" >
+                                        <h1 ><span >Inicia Sesion</span ></h1 >
+                                    </div >
+                                    {!! Form::open(['route' => 'adminPostIngresar',
+                                     'method' => 'post', 'id' => 'contact-form', 'role' => 'form' ]) !!}
+                                    {!! Form::token() !!}
+                                    {!! Form::email('email', old('email'), ['autocomplete' => 'off', 'placeholder' => 'E-Mail*','style'=>'width: 100%','required']) !!}
+                                    {!! Form::password('password', ['placeholder' => 'Contrasena','style'=>'width: 100%']) !!}
+                                    <div class="checkbox" >
+                                        <label>
+                                            <input name="remember" type="checkbox" value="Remember Me">Recordarme
+                                        </label>
+                                    </div>
+                                    {!! Form::submit('Ingresar!',['style'=>'width: 100%']) !!}
+                                    {!! Form::close() !!}
+                                </div >
+                                <!-- /contact-form-container -->
+                            </div >
+                            <!-- /col-md-6 -->
+                        </div >
+                        <!-- /row -->
+                    </div >
+                    <!-- /container -->
+                </div >
+                <!-- /col-md-12 -->
+            </div >
+            <!-- /row -->
+        </div >
+        <!-- /container -->
+    </section >
+</div >
 
 @endsection
