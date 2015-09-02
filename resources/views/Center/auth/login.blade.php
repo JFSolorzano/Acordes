@@ -75,7 +75,7 @@
                                     {!! Form::password('password', ['placeholder' => 'Contrasena','style'=>'width: 100%']) !!}
                                     <div class="checkbox" >
                                         <label>
-                                            <input name="remember" type="checkbox" value="Remember Me">Recordarme
+                                            <input name="remember" type="checkbox" value="Recordarme">Recordarme
                                         </label>
                                     </div>
                                     {!! Form::submit('Ingresar!',['style'=>'width: 100%']) !!}

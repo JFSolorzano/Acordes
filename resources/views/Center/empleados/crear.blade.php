@@ -54,7 +54,7 @@
     <section class="reservation">
         <div class="container">
             <div class="row">
-                {!! Form::open(['url'=>'empleados/nuevo-registro','autocomplete'=>'off', 'files'=>'true']) !!}
+                {!! Form::open(['route'=>'adminPostCrearUsuario','autocomplete'=>'off', 'files'=>'true']) !!}
                 <div class="col-md-12 wow fadeInLeft">
                     <header class="section-title">
                         <h2><span>Completa</span> el formulario</h2>

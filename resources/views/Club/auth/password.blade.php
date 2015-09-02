@@ -1,3 +1,4 @@
+
 @extends('Club.app')
 
 @section('contenido')

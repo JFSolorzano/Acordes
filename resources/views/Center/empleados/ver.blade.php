@@ -24,13 +24,12 @@
                 <br >
             </div >
         @endif
-        <div class = "col-md-6" >
-            <h1>USUARIOS</h1>
-        </div >
-        <div class = "col-md-6 logo-container light-shark-bg align-right" >
-            <h2 style = "display: inline-block" >{{ Auth::user()->name }}</h2 >
-            <img class = "circular-image" src = "{{ Auth::user()->avatar }}" alt = "{{ Auth::user()->name }}" >
-        </div >
+            <div class = "logo-container light-shark-bg align-right" >
+                <br >
+                <h1 class="align-center"><span>USUARIOS</span></h1>
+                <h2 style = "display: inline-block" >{{ Auth::user()->name }}</h2 >
+                <img class = "circular-image" src = "{{ Auth::user()->avatar }}" alt = "{{ Auth::user()->name }}" >
+            </div >
         <!-- /logo-container -->
         <div class = "header-bottom-bar" >
             <div class = "container" >
