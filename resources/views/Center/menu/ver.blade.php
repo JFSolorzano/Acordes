@@ -51,6 +51,8 @@
                                         <option value = "/menu/bocas" >Bocas</option >
                                         <option value = "/menu/paninis" >Paninis</option >
                                 </select ></li>
+                                <li ><a href = "{{ route('ComidasReport') }}" target="_blank" >RESUMEN DE COMIDAS</a ></li >
+                                <li ><a href = "{{ route('BebidasReport') }}" target="_blank">RESUMEN DE BEBIDAS</a ></li >
                                 <li ><a href = "{{ route('adminMenusNuevo') }}" >NUEVA OPCION</a ></li >
                             </ul >
                         </div >
