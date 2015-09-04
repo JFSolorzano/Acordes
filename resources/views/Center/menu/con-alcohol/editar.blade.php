@@ -37,7 +37,7 @@
                     <div class = "col-md-12" >
                         <div class = "contact-info align-right" >
                             <ul >
-                                <li ><a href = "{{ route('adminMenu') }}" >VER REGISTROS</a ></li >
+                                <li ><a href = "{{ route('adminMenuConAlcohol') }}" >VER REGISTROS</a ></li >
                             </ul >
                         </div >
                         <!-- /contact-info -->
