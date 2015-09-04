@@ -1,7 +1,7 @@
 @extends('Center.app')
 
 @section('titulo')
-    {{'Informacion Empresarial | Acordes'}}
+    {{'Menu| Acordes'}}
 @endsection
 @section('contenido')
     <header class = "main-header" id = "top" >
@@ -27,7 +27,7 @@
 
         <div class = "logo-container light-shark-bg align-right" >
             <br >
-            <h1 class="align-center"><span>SERVICIOS</span></h1>
+            <h1 class="align-center"><span>MENÚ</span></h1>
             <h2 style = "display: inline-block" >{{ Auth::user()->name }}</h2 >
             <img class = "circular-image" src = "{{ Auth::user()->avatar }}" alt = "{{ Auth::user()->name }}" >
         </div >
@@ -38,7 +38,19 @@
                     <div class = "col-md-9" >
                         <div class = "contact-info align-right" >
                             <ul >
-                                <li ><a href = "{{ route('ServiciosReport') }}" >IMPRIMIR</a ></li >
+                                <li><select name = "menu" onchange="location = this.value" >
+                                        <option value = "#" >Seleccione una opcion...</option >
+                                        <option value = "/menu" >Todos</option >
+                                        <option value = "/menu/sin-alcohol" >Bebidas Sin Alcohol</option >
+                                        <option value = "/menu/cervezas"  >Cervezas</option >
+                                        <option value = "/menu/bebidas-calientes" >Bebidas Calientes</option >
+                                        <option value = "/menu/bebidas-especiales" >Bebidas Especiales</option >
+                                        <option value = "/menu/botellas" >Botellas</option >
+                                        <option value = "/menu/para-picar" >Para Picar</option >
+                                        <option value = "/menu/platos-fuertes" >Platos Fuertes</option >
+                                        <option value = "/menu/bocas" >Bocas</option >
+                                        <option value = "/menu/paninis" >Paninis</option >
+                                </select ></li>
                                 <li ><a href = "{{ route('adminMenusNuevo') }}" >NUEVA OPCION</a ></li >
                             </ul >
                         </div >

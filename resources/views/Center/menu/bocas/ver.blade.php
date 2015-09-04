@@ -1,7 +1,7 @@
 @extends('Center.app')
 
 @section('titulo')
-    {{'Menu Botellas | Acordes'}}
+    {{'Menu Bocas | Acordes'}}
 @endsection
 @section('contenido')
     <header class = "main-header" id = "top" >
@@ -38,6 +38,20 @@
                     <div class = "col-md-9" >
                         <div class = "contact-info align-right" >
                             <ul >
+                                <li><select name = "menu" onchange="location = this.value" >
+                                        <option value = "#" >Seleccione una opcion...</option >
+                                        <option value = "/menu" >Todos</option >
+                                        <option value = "/menu/sin-alcohol" >Bebidas Sin Alcohol</option >
+                                        <option value = "/menu/cervezas"  >Cervezas</option >
+                                        <option value = "/menu/con-alcohol" >Bebidas Con Alcohol</option >
+                                        <option value = "/menu/bebidas-calientes" >Bebidas Calientes</option >
+                                        <option value = "/menu/bebidas-especiales" >Bebidas Especiales</option >
+                                        <option value = "/menu/botellas" >Botellas</option >
+                                        <option value = "/menu/para-picar" >Para Picar</option >
+                                        <option value = "/menu/platos-fuertes" >Platos Fuertes</option >
+                                        <option value = "/menu/bocas" >Bocas</option >
+                                        <option value = "/menu/paninis" >Paninis</option >
+                                    </select ></li>
                                 <li ><a href = "{{ route('BocasReport') }}" target="_blank" >IMPRIMIR</a ></li >
                                 <li ><a href = "{{ route('adminMenusNuevo') }}" >NUEVA OPCION</a ></li >
                             </ul >
