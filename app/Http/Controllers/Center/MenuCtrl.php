@@ -947,6 +947,22 @@ class MenuCtrl extends Controller {
 
     }
 
+    public function Detalles($id){
+
+        $record = Hashids::decode($id);
+
+        $registro = \DB::table('Opciones')
+            ->join('menus','menus.id','=','Opciones.menu')
+            ->where('Opciones.id','=',$record[0])
+            ->select('Opciones.id', 'Opciones.nombre', 'Opciones.imagen', 'Opciones.extra', 'Opciones.descripcion','Opciones.costo', 'menus.nombre AS menu')
+            ->first();
+
+        return view('Center.menu.detalles')
+            ->with('registro', $registro);
+
+    }
+
+    //REPORTES-----------------------------------------------
     public function botellas(){
 
         $menu = Menus::With(['opciones' => function($query)

@@ -103,6 +103,7 @@
                         @endforeach
                         <td >
                             <div class="btn-group-sm">
+                                <a href = "{{url('menu/'.Hashids::encode($registro->id).'/detalles')}}" ><i class="fa fa-archive"></i></a >
                                 <a href = "{{url('menu/'.Hashids::encode($registro->id).'/editar')}}" ><i class="fa fa-edit"></i></a >
                                 <a href = "{{url('menu/'.$registro->id.'/eliminar')}}" onclick="return confirm('Esta seguro que desea eliminar esta opcion?')" ><i class="fa fa-trash"></i></a >
                             </div>

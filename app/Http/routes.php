@@ -705,6 +705,11 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
 
         Route::get('/menu/{id}/eliminar', 'MenuCtrl@eliminar');
 
+        Route::get('/menu/{id}/detalles',[
+            'as' => 'adminMenuDetalles',
+            'uses' => 'MenuCtrl@Detalles'
+        ]);
+
 //================================================SUCURSALES
 
         Route::get('/sucursales', [
