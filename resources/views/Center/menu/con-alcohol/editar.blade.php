@@ -67,7 +67,7 @@
                     <div class = "col-md-6" >
                         <fieldset >
                             {!! Form::text('nombre', $registro->nombre, array('placeholder'=>'Nombre', 'style'=>'width: 100%')) !!}
-                            {!! Form::text('extra', $registro->opcion, array('placeholder'=>'Extra', 'style'=>'width: 100%')) !!}
+                            {!! Form::text('extra', $registro->extra, array('placeholder'=>'Extra', 'style'=>'width: 100%')) !!}
                             {!! Form::textarea('descripcion', $registro->descripcion, array('size' => '30x5','placeholder'=>'Descripcion', 'style'=>'width: 100%')) !!}
                             <div class="align-right">
                                 <span>Costo:  </span><span>$</span><input type="number" name="costo" value="{{$registro->costo}}">

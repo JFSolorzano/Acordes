@@ -78,6 +78,12 @@
                                         <li><a href="{{ url('/menu/con-alcohol') }}">{{ $registro -> menu }}</a></li>
                                     </ul>
                                 </div><!-- /category -->
+                                <div class="food-category">
+                                    <h6>Acciones: </h6>
+                                    <ul>
+                                        <li><a href = "{{url('menu/con-alcohol/'.Hashids::encode($registro->id).'/editar')}}" >Editar Registro</a ></li>
+                                    </ul>
+                                </div><!-- /category -->
                             </div><!-- /food-tags-category -->
                         </div><!-- /col-md-6 -->
                     </div><!-- /store-item -->
