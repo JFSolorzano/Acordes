@@ -284,6 +284,30 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
         ]);
 
 
+//================================================RESERVACIONES
+
+        Route::get('/reservaciones/hoy', [
+            'as' => 'adminReservacionesHoy',
+            'uses' => 'ReservacionesCtrl@hoy',
+        ]);
+
+        Route::post('/reservaciones/hoy/aprobar', [
+            'as' => 'adminPostReservacionesHoy',
+            'uses' => 'ReservacionesCtrl@hoyPost'
+        ]);
+
+        Route::get('/reservaciones/esta-semana', [
+            'as' => 'adminEmpresa',
+            'uses' => 'EmpresaCtrl@inicio',
+            //'middleware' => 'empresa'
+        ]);
+
+        Route::get('/reservaciones/este-mes', [
+            'as' => 'adminEmpresa',
+            'uses' => 'EmpresaCtrl@inicio',
+            //'middleware' => 'empresa'
+        ]);
+
 //================================================EMPRESA
 
         Route::get('/empresa', [
@@ -457,6 +481,212 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
             'uses' => 'MenuCtrl@inicio',
             //'middleware' => 'restaurante'
         ]);
+        //Rutas para botellas
+        Route::get('/menu/botellas', [
+            'as' => 'adminMenuBotellas',
+            'uses' => 'MenuCtrl@inicioBotellas'
+        ]);
+
+        //BOTELLAS
+        Route::get('/menu/botellas/{id}/editar', [
+            'as' => 'adminMenuBotellasEditar',
+            'uses' => 'MenuCtrl@botellasEditar'
+        ]);
+
+        Route::get('/menu/botellas/{id}/eliminar', 'MenuCtrl@eliminarBotellas');
+
+        Route::get('/menu/botellas/{id}/detalles',[
+            'as' => 'adminMenuBotellasDetalles',
+            'uses' => 'MenuCtrl@botellasDetalles'
+        ]);
+
+        //Ruta para sin alcohol
+
+        Route::get('/menu/sin-alcohol', [
+            'as' => 'adminMenuSinAlcohol',
+            'uses' => 'MenuCtrl@inicioSinAlcohol'
+        ]);
+
+        Route::get('/menu/sin-alcohol/{id}/editar', [
+            'as' => 'adminMenuSinAlcoholEditar',
+            'uses' => 'MenuCtrl@SinAlcoholEditar'
+        ]);
+
+        Route::get('/menu/sin-alcohol/{id}/eliminar', 'MenuCtrl@eliminarSinAlcohol');
+
+        Route::get('/menu/sin-alcohol/{id}/detalles',[
+            'as' => 'adminMenuSinAlcoholDetalles',
+            'uses' => 'MenuCtrl@SinAlcoholDetalles'
+        ]);
+
+        //Ruta para cervezas
+
+        Route::get('/menu/cervezas', [
+            'as' => 'adminMenuCervezas',
+            'uses' => 'MenuCtrl@inicioCervezas'
+        ]);
+
+        Route::get('/menu/cervezas/{id}/editar', [
+            'as' => 'adminMenuCervezasEditar',
+            'uses' => 'MenuCtrl@CervezasEditar'
+        ]);
+
+        Route::post('/menu/cervezas/{id}/actualizar', 'MenuCtrl@actualizarCervezas');
+
+        Route::get('/menu/cervezas/{id}/eliminar', 'MenuCtrl@eliminarCervezas');
+
+        Route::get('/menu/cervezas/{id}/detalles',[
+            'as' => 'adminMenuCervezasDetalles',
+            'uses' => 'MenuCtrl@CervezasDetalles'
+        ]);
+
+        //Ruta para con alcohol
+
+        Route::get('/menu/con-alcohol', [
+            'as' => 'adminMenuConAlcohol',
+            'uses' => 'MenuCtrl@inicioconAlcohol'
+        ]);
+
+        Route::get('/menu/con-alcohol/{id}/editar', [
+            'as' => 'adminMenuConAlcoholEditar',
+            'uses' => 'MenuCtrl@ConAlcoholEditar'
+        ]);
+
+        Route::get('/menu/con-alcohol/{id}/eliminar', 'MenuCtrl@eliminarConAlcohol');
+
+        Route::get('/menu/con-alcohol/{id}/detalles',[
+            'as' => 'adminMenuconAlcoholDetalles',
+            'uses' => 'MenuCtrl@ConAlcoholDetalles'
+        ]);
+
+        //Ruta para bebidas calientes
+
+        Route::get('/menu/bebidas-calientes', [
+            'as' => 'adminMenuCalientes',
+            'uses' => 'MenuCtrl@inicioCalientes'
+        ]);
+
+        Route::get('/menu/bebidas-calientes/{id}/editar', [
+            'as' => 'adminMenuCalientesEditar',
+            'uses' => 'MenuCtrl@CalientesEditar'
+        ]);
+
+        Route::post('/menu/bebidas-calientes/{id}/actualizar', 'MenuCtrl@actualizarCalientes');
+
+        Route::get('/menu/bebidas-calientes/{id}/eliminar', 'MenuCtrl@eliminarCalientes');
+
+        Route::get('/menu/bebidas-calientes/{id}/detalles',[
+            'as' => 'adminMenuCalientesDetalles',
+            'uses' => 'MenuCtrl@CalientesDetalles'
+        ]);
+
+        //Ruta para bebidas especiales
+
+        Route::get('/menu/bebidas-especiales', [
+            'as' => 'adminMenuEspeciales',
+            'uses' => 'MenuCtrl@inicioEspeciales'
+        ]);
+
+        Route::get('/menu/bebidas-especiales/{id}/editar', [
+            'as' => 'adminMenuEspecialesEditar',
+            'uses' => 'MenuCtrl@EspecialesEditar'
+        ]);
+
+        Route::post('/menu/bebidas-especiales/{id}/actualizar', 'MenuCtrl@actualizarEspeciales');
+
+        Route::get('/menu/bebidas-especiales/{id}/eliminar', 'MenuCtrl@eliminarEspeciales');
+
+        Route::get('/menu/bebidas-especiales/{id}/detalles',[
+            'as' => 'adminMenuEspecialesDetalles',
+            'uses' => 'MenuCtrl@EspecialesDetalles'
+        ]);
+
+        //Ruta para para picar
+
+        Route::get('/menu/para-picar', [
+            'as' => 'adminMenuParaPicar',
+            'uses' => 'MenuCtrl@inicioParaPicar'
+        ]);
+
+        Route::get('/menu/para-picar/{id}/editar', [
+            'as' => 'adminMenuParaPicarEditar',
+            'uses' => 'MenuCtrl@ParaPicarEditar'
+        ]);
+
+        Route::post('/menu/para-picar/{id}/actualizar', 'MenuCtrl@actualizarParaPicar');
+
+        Route::get('/menu/para-picar/{id}/eliminar', 'MenuCtrl@eliminarParaPicar');
+
+        Route::get('/menu/para-picar/{id}/detalles',[
+            'as' => 'adminMenuParaPicarDetalles',
+            'uses' => 'MenuCtrl@ParaPicarDetalles'
+        ]);
+
+
+        //Ruta para platos fuertes
+
+        Route::get('/menu/platos-fuertes', [
+            'as' => 'adminMenuPlatosFuertes',
+            'uses' => 'MenuCtrl@inicioPlatosFuertes'
+        ]);
+
+        Route::get('/menu/platos-fuertes/{id}/editar', [
+            'as' => 'adminMenuPlatosFuertesEditar',
+            'uses' => 'MenuCtrl@PlatosFuertesEditar'
+        ]);
+
+        Route::post('/menu/platos-fuertes/{id}/actualizar', 'MenuCtrl@actualizarPlatosFuertes');
+
+        Route::get('/menu/platos-fuertes/{id}/eliminar', 'MenuCtrl@eliminarPlatosFuertes');
+
+        Route::get('/menu/platos-fuertes/{id}/detalles',[
+            'as' => 'adminMenuPlatosFuertesDetalles',
+            'uses' => 'MenuCtrl@PlatosFuertesDetalles'
+        ]);
+
+        //Ruta para bocas
+
+        Route::get('/menu/bocas', [
+            'as' => 'adminMenuBocas',
+            'uses' => 'MenuCtrl@inicioBocas'
+        ]);
+
+        Route::get('/menu/bocas/{id}/editar', [
+            'as' => 'adminMenuBocasEditar',
+            'uses' => 'MenuCtrl@BocasEditar'
+        ]);
+
+        Route::post('/menu/bocas/{id}/actualizar', 'MenuCtrl@actualizarBocas');
+
+        Route::get('/menu/bocas/{id}/eliminar', 'MenuCtrl@eliminarBocas');
+
+        Route::get('/menu/bocas/{id}/detalles',[
+            'as' => 'adminMenuBocasDetalles',
+            'uses' => 'MenuCtrl@BocasDetalles'
+        ]);
+
+        //Ruta para paninis
+
+        Route::get('/menu/paninis', [
+            'as' => 'adminMenuPaninis',
+            'uses' => 'MenuCtrl@inicioPaninis'
+        ]);
+
+        Route::get('/menu/paninis/{id}/editar', [
+            'as' => 'adminMenuPaninisEditar',
+            'uses' => 'MenuCtrl@PaninisEditar'
+        ]);
+
+        Route::post('/menu/paninis/{id}/actualizar', 'MenuCtrl@actualizarPaninis');
+
+        Route::get('/menu/paninis/{id}/eliminar', 'MenuCtrl@eliminarPaninis');
+
+        Route::get('/menu/paninis/{id}/detalles',[
+            'as' => 'adminMenuPaninisDetalles',
+            'uses' => 'MenuCtrl@PaninisDetalles'
+        ]);
+
+        //GENERALES-----------------
 
         Route::get('/menu/nuevo-registro', [
             'as' => 'adminMenusNuevo',

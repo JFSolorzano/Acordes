@@ -10,7 +10,7 @@
         <meta name="description" content="Restaurante Acordes">
         <meta name="viewport" content="width=device-width, initial-scale=1">        
         <meta name="theme-color" content="#23292c"> <!-- Android 5.0 Tab Color -->
-        <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}?v=3" />
 
         <!-- Web Fonts -->
         {{--<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700,300,400' rel='stylesheet' type='text/css'>--}}
