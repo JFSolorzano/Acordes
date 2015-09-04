@@ -1,0 +1,91 @@
+@extends('Center.app')
+
+@section('titulo')
+    {{'Promociones | Acordes'}}
+@endsection
+@section('contenido')
+    <header class = "main-header" id = "top" >
+        @if(\Session::has('alerta'))
+            <div class = "col-md-12 text-right alert alert-dismissible alert-success"
+                 style = "background-color: white" >
+                <button type = "button" class = "close" data-dismiss = "alert" >×</button >
+                <h1 >{{Session::get('alerta')}}</h1 >
+                <br >
+            </div >
+        @endif
+        @if ( !$errors->isEmpty() )
+            <div class = "col-md-12 alert alert-dismissible alert-danger" >
+                <button type = "button" class = "close" data-dismiss = "alert" >×</button >
+                <ul >
+                    @foreach ( $errors->all() as $error )
+                        <li >{{ $error }}</li >
+                    @endforeach
+                </ul >
+                <br >
+            </div >
+        @endif
+        <div class = "logo-container light-shark-bg align-right" >
+            <br >
+            <h1 class="align-center"><span>DETALLES</span></h1>
+            <h2 style = "display: inline-block" >{{ Auth::user()->name }}</h2 >
+            <img class = "circular-image" src = "{{ Auth::user()->avatar }}" alt = "{{ Auth::user()->name }}" >
+        </div >
+        <!-- /logo-container -->
+        <div class = "header-bottom-bar" >
+            <div class = "container" >
+                <div class = "row" >
+                    <div class = "col-md-12" >
+                        <div class = "contact-info align-right" >
+                            <ul >
+                                <li ><a href = "{{ route('adminPromociones') }}" >VER REGISTROS</a ></li >
+                            </ul >
+                        </div >
+                        <!-- /contact-info -->
+                    </div >
+                    <!-- /col-md-12 -->
+                </div >
+                <!-- /row -->
+            </div >
+            <!-- /container -->
+        </div >
+        <!-- /header-bottom-bar -->
+    </header >
+    <section class="store-items store-items-details">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="store-item store-item-detail row">
+                        <div class="col-md-6 wow fadeInLeft">
+                            <div class="item-slideshow">
+                                <div class="main-image">
+                                    <figure><img src="{{ asset('img/promociones/'.$registro->imagen) }}" alt="{{ $registro -> nombre }}"></figure>
+                                </div><!-- /main-image -->
+                            </div><!-- /item-slideshow -->
+                        </div><!-- /col-md-6 -->
+                        <div class="col-md-6 wow fadeInRight">
+                            <div class="food-info">
+                                <h3 class="food-name">{{ $registro -> nombre }}</h3>
+                                <p> {{ $registro -> descripcion }}</p>
+                                <p>Fecha de Inicio: {{ $registro -> inicio }} <br>Fecha de Fin: {{ $registro -> fin }} </p>
+                            </div><!-- /food-info -->
+                            <div class="food-tags-category">
+                                <div class="food-category">
+                                    <h6>Categoria: </h6>
+                                    <ul>
+                                        <li><a href="{{ url('/promociones') }}">Promociones</a></li>
+                                    </ul>
+                                    </div>
+                                <div class="food-category">
+                                    <h6>Acciones: </h6>
+                                    <ul>
+                                        <li><a href = "{{url('promociones/'.Hashids::encode($registro->id).'/editar')}}" >Editar Registro</a ></li>
+                                    </ul>
+                                </div><!-- /category -->
+                            </div><!-- /food-tags-category -->
+                        </div><!-- /col-md-6 -->
+                    </div><!-- /store-item -->
+                </div><!-- /col-md-12 -->
+            </div><!-- /row -->
+        </div><!-- /container -->
+    </section>
+@endsection

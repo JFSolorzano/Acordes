@@ -150,7 +150,19 @@ class ServiciosCtrl extends Controller {
             ->with('alerta','El servicio ha sido eliminado con exito!');
 
     }
+    public function Detalles($id){
 
+        $record = Hashids::decode($id);
+
+        $registro = \DB::table('Servicios')
+            ->where('Servicios.id','=',$record[0])
+            ->select('Servicios.id', 'Servicios.nombre', 'Servicios.imagen',  'Servicios.descripcion','Servicios.estado')
+            ->first();
+
+        return view('Center.servicios.detalles')
+            ->with('registro', $registro);
+
+    }
     public function servicios(){
 
         $servicios = Servicios::all();

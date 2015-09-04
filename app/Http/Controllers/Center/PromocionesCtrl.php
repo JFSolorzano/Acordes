@@ -141,7 +141,19 @@ class PromocionesCtrl extends Controller {
             ->with('alerta','La promocion ha sido eliminada con exito!');
 
     }
+    public function Detalles($id){
 
+        $record = Hashids::decode($id);
+
+        $registro = \DB::table('Promociones')
+            ->where('Promociones.id','=',$record[0])
+            ->select('Promociones.id', 'Promociones.nombre', 'Promociones.imagen',  'Promociones.descripcion','Promociones.inicio','Promociones.fin')
+            ->first();
+
+        return view('Center.promociones.detalles')
+            ->with('registro', $registro);
+
+    }
     public function promociones(){
 
         $promociones = Promociones::all();

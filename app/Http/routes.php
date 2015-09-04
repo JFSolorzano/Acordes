@@ -106,6 +106,8 @@ Route::group(array('domain' => 'www.restauranteacordes.com', 'namespace' => 'Clu
         'uses' => 'InformacionEmpresarialCtrl@inicio'
     ]);
 
+
+
 //================================================RESERVACION
 
     Route::get('/reservacion', [
@@ -422,6 +424,11 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
 
         Route::get('/promociones/{id}/eliminar', 'PromocionesCtrl@eliminar');
 
+        Route::get('/promociones/{id}/detalles',[
+            'as' => 'adminPromocionesDetalles',
+            'uses' => 'PromocionesCtrl@Detalles'
+        ]);
+
 //===============================================REDES SOCIALES
 
         Route::get('/redes-sociales', [
@@ -472,6 +479,11 @@ Route::group(array('domain' => 'www.restauranteacordes.net', 'namespace' => 'Cen
         Route::post('/servicios/{id}/actualizar', 'ServiciosCtrl@actualizar');
 
         Route::get('/servicios/{id}/eliminar', 'ServiciosCtrl@eliminar');
+
+        Route::get('/servicios/{id}/detalles',[
+            'as' => 'adminServiciosDetalles',
+            'uses' => 'ServiciosCtrl@Detalles'
+        ]);
 
 //================================================MENU
 

@@ -85,6 +85,7 @@
                         <td>{{$registro->fin}}</td>
                         <td >
                             <div class="btn-group-sm">
+                                <a href = "{{url('promociones/'.Hashids::encode($registro->id).'/detalles')}}" ><i class="fa fa-archive"></i></a >
                                 <a href = "{{url('promociones/'.Hashids::encode($registro->id).'/editar')}}" ><i class="fa fa-edit"></i></a >
                                 <a href = "{{url('promociones/'.$registro->id.'/eliminar')}}" onclick="return confirm('Esta seguro que desea eliminar este dato')" ><i class="fa fa-trash"></i></a >
                             </div>
